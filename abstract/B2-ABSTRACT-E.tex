@@ -1,0 +1,48 @@
+\newpage
+\vspace{-1cm}
+\chapter*{\zihao{-2}\heiti{ABSTRACT}}
+\vspace{-0.5cm}
+With the development of information technology, people's demand for wireless broadband technology is increasing. Worldwide Interoperability for Microwave Access is a new technology based on Wireless Metropolitan Area Network (WLAN), which enables the combination of broadband access technology and mobile services. IEEE802.16m is a supplement standard based on the IEEE802.16e, it defines a new generation of WiMAX technical specifications. Since the wireless system uses completely open and unprotected wireless communication channels, it is necessary to implement trusted and robust encryption protection in wireless communication technology to achieve the confidentiality, privacy and integrity of communications.
+
+IEEE802.16m standard defines the key management PKMv3 protocol in the MAC security sub-layer. It aims to implement mutual authentication and security key distribution between the base station and the subscriber station. In PKMv3 protocol, the base station acts as the server while the subscriber station as the client. They implement mutual authentication by means of X.509 digital certificate to establish the authorization key, and exchange security parameters by means of security association negotiation, and finally generate a traffic key to encrypt subsequent messages. PKMv3 is the third-generation key management protocol. At present, a large number of studies have pointed out security vulnerabilities that exits in the previous two generations of protocols, and the researches on the third generation protocol are still not sufficient. Therefore, it is very important to analyze the specific process of PKMv3 protocol and verify the security property of the protocol.
+
+This paper uses formal modeling method to study the security protocols. The formal analysis of security protocol adopts the mathematical model to realize the simulation of the protocol structure and the communication process, and then validates the condition that the system can satisfy. Maude is a formal modeling language based on rewriting logic. It defines a simple and unambiguous grammar,  and provides a variety of verification methods, which is suitable as a programming language, algorithmic analysis tools and system modeling tools. This paper will implement the modeling of each execution phase of PKMv3 protocol through the executable formalization specification defined by Maude. Different from the existing research work, this paper takes consider of the lifetime of secret keys in PKMv3 protocol, adding time mechanism in the protocol model to simulate the key re-authentication process, and introduces the intruder model to simulate the intruder's behavior of  eavesdropping, replaying and faking messages in the network.
+
+Based on the executable specification of PKMv3 protocol, this paper can realize the verification of the time-related properties such as succession, key freshness, period of AK and TEK by means of LTL model checker, and realize the verification of security properties such as confidentiality, authentication, integrity and availability by means of search command. The verification results show that PKMv3 protocol model can meet the time characteristics of the protocol standard. However it may encounter intruder attacks, so it can not guarantee the integrity and availability. In view of the security vulnerabilities in PKMv3 protocol, this paper proposes corresponding solutions in each phase of the protocol, and then adapts the formal specification to prove that the improved protocol can meet safety requirements.
+
+\hspace{-0.5cm}
+
+{\sihao{\textbf{Keywords:}}} \textit{IEEE802.16 Standard,\, PKMv3 Protocol,\, Key Management,\, Rewriting Logic,\, Maude,\, Formal Verification
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

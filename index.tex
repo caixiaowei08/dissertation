@@ -1,0 +1,211 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                           %
+%          LaTeX File for Doctor (Master) Thesis of ECNU                    %
+%            华东师范大学博士（硕士）论文模板 ____lizb                      %
+%                                                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\documentclass[12pt,openany,a4paper,fancyhdr,oneside]{ctexbook}
+
+%draft 选项可以使插入的图形只显示外框，以加快预览速度。
+%\documentclass[11pt,a4paper,openany,draft]{book}
+
+\usepackage[CJKbookmarks]{hyperref}
+\usepackage{shortvrb,indentfirst,ulem,makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{indentfirst,latexsym,amsthm,colortbl,subfigure,clrscode}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{bm}                     % 处理数学公式中的黑斜体的宏包
+\usepackage{amsmath}                % AMSLaTeX宏包 用来排出更加漂亮的公式
+\usepackage{amssymb}                % AMSLaTeX宏包 用来排出更加漂亮的公式
+\usepackage{mathrsfs}
+\usepackage[subnum]{cases}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{hypernat}
+\usepackage{geometry}
+
+\usepackage{times}
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage{caption}
+\usepackage{titletoc}
+
+
+\makeindex
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[CO,CE]{\thepage}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+%                    根据自己正文需要做的一些定义                 %
+%==================================================================
+\def\diag{{\rm diag}}
+\def\rank{{\rm rank}}
+\def\RR{{\cal R}}
+\def\NN{{\cal N}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\let\dis=\displaystyle
+
+\def\p{\partial}
+\def\f{\frac}
+\def\mr{\mathrm}
+\def\mb{\mathbf}
+\def\mc{\mathcal}
+\def\b{\begin}
+\def\e{\end}
+
+\newtheorem{thm1}{Theorem}[part]
+\newtheorem{thm2}{Theorem}[section]
+\newtheorem{thm3}{Theorem}[subsection]
+\newtheorem{them}[thm2]{定理}
+\newtheorem{theorem}[thm2]{定理}
+\newtheorem{defn}[thm2]{定义}
+\newtheorem{define}[thm2]{定义}
+\newtheorem{ex}[thm2]{例}
+\newtheorem{exs}[thm2]{例}
+\newtheorem{example}[thm2]{例}
+\newtheorem{prop}[thm2]{命题}
+\newtheorem{lemma}[thm2]{引理}
+\newtheorem{cor}[thm2]{推论}
+\newtheorem{remark}[thm2]{注释}
+\newtheorem{notation}[thm2]{记号}
+\newtheorem{abbre}[thm2]{缩写}
+% \newtheorem{algorithm}[thm2]{算法}
+\newtheorem{problem}[thm2]{问题}
+
+
+
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}           % 一号, 1.4 倍行距
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}          % 二号, 1.25倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}          % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}        % 三号, 1.5倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}        % 小三, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}            % 四号, 1.5 倍行距
+\newcommand{\banxiaosi}{\fontsize{13pt}{19.5pt}\selectfont}    % 半小四, 1.5倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}            % 小四, 1.5倍行距
+\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}       % 大五号, 单倍行距
+\newcommand{\wuhao}{\fontsize{10.5pt}{15.75pt}\selectfont}    % 五号, 单倍行距
+
+%============================ 可以自定义文字块 ================================%
+
+\newcommand{\aaa}{Example}
+\newcommand{\bbb}{\aaa \aaa \aaa}
+\newcommand{\ccc}{\bbb \bbb \bbb \bbb \bbb
+
+\bbb \bbb \bbb \bbb \bbb }
+\newcommand{\abc}{abcdefg1234567890}
+\newcommand{\upabc}{ABCDEFGHIJK}
+%%% ----------------------------------------------------------------------
+
+
+
+%============================= 版芯控制 ================================%
+\setlength{\oddsidemargin}{0.57cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\voffset-6mm \textwidth=150mm \textheight=230mm \headwidth=150mm
+%\rightmargin=35mm
+%                                                                       %
+
+
+%============================= 页面设置 ================================%
+%-------------------- 定义页眉和页脚 使用fancyhdr 宏包 -----------------%
+% 定义页眉与正文间双隔线
+\newcommand{\makeheadrule}{%
+\makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}%
+\rule[0.85\baselineskip]{\headwidth}{0.4pt} \vskip-.8\baselineskip}
+\makeatletter
+\renewcommand{\headrule}{%
+{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+\makeheadrule}} \makeatother
+
+\newcommand{\adots}{\mathinner{\mkern 2mu%
+\raisebox{0.1em}{.}\mkern 2mu\raisebox{0.4em}{.}%
+\mkern2mu\raisebox{0.7em}{.}\mkern 1mu}}
+
+\setmainfont{Times New Roman}
+\dottedcontents{chapter}[1.5cm]{\xiaosi\heiti}{3.8em}{9.5pt}
+\dottedcontents{section}[1.5cm]{\xiaosi\heiti}{2.8em}{9.5pt}
+
+%=============my addition
+\usepackage{listings}
+ \lstset{
+ 	xleftmargin=7pt,
+ 	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+ 	numbersep=3pt,                   % how far the line-numbers are from the code
+ 	numberstyle=\tiny\color{black}, 
+ 	basicstyle=\fontsize{8}{9}\selectfont\ttfamily, 
+ 	tabsize=2,                  
+ 	extendedchars=true,         
+ 	breaklines=true,           
+ 	%frame=single,
+ 	keywordstyle=\bfseries\color{blue},
+ 	escapeinside={@}{@},
+ 	morecomment=[l]{--},
+ 	frame=shadowbox,
+ 	columns=flexible,
+ 	commentstyle=\color{dark-gray}\footnotesize\rmfamily\itshape,
+ 	stringstyle=\color{black}\ttfamily, 
+ 	showspaces=false,           
+ 	showtabs=false,             
+ 	framexrightmargin=-6pt,
+ 	framexleftmargin=-2pt,
+ 	framexbottommargin=0pt,
+ 	backgroundcolor=\color[rgb]{0.75, 0.75, 0.75},
+ 	morekeywords={such, that, search, var,rl,op,eq,ops,then,else,fi,subsorts,subsort,red,id,including,mod,endm,fmod,endfm,is,if,crl,ceq,assoc,comm,sorts,inc,bop,bceq,vars,sort,ctor, msg},
+ 	showstringspaces=false      
+ }
+
+%=============================== 正文部分 ================================%
+\include{cover/A1-COVER-C.tex}
+\include{cover/A2-COVER-E.tex}
+\include{copyright/A3-COPYRIGHT.tex}
+\include{member/A4-MEMBERLIST.tex}
+\include{abstract/B1-ABSTRACT.tex}
+\include{abstract/B2-ABSTRACT-E.tex}
+
+\include{chapter/C1-CHAP1.tex}
+\include{chapter/B2-ABSTRACT-E.tex}
+
+\begin{document}
+\input cover/A1-COVER-C.tex
+\input cover/A2-COVER-E.tex
+\input copyright/A3-COPYRIGHT.tex
+\input member/A4-MEMBERLIST.tex
+
+\newpage
+\pagenumbering{roman}
+\pagestyle{plain}
+\input abstract/B1-ABSTRACT.tex
+\input abstract/B2-ABSTRACT-E.tex
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\CTEXsetup[format+={\zihao{3}\heiti}]{chapter}
+\CTEXsetup[format+={\zihao{4}\heiti}]{section}
+\CTEXsetup[format+={\zihao{-4}\heiti}]{subsection}
+
+
+
+
+
+
+
+\end{document}
+
