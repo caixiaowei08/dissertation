@@ -145,11 +145,11 @@
  	xleftmargin=7pt,
  	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
  	numbersep=3pt,                   % how far the line-numbers are from the code
- 	numberstyle=\tiny\color{black}, 
- 	basicstyle=\fontsize{8}{9}\selectfont\ttfamily, 
- 	tabsize=2,                  
- 	extendedchars=true,         
- 	breaklines=true,           
+ 	numberstyle=\tiny\color{black},
+ 	basicstyle=\fontsize{8}{9}\selectfont\ttfamily,
+ 	tabsize=2,
+ 	extendedchars=true,
+ 	breaklines=true,
  	%frame=single,
  	keywordstyle=\bfseries\color{blue},
  	escapeinside={@}{@},
@@ -157,15 +157,15 @@
  	frame=shadowbox,
  	columns=flexible,
  	commentstyle=\color{dark-gray}\footnotesize\rmfamily\itshape,
- 	stringstyle=\color{black}\ttfamily, 
- 	showspaces=false,           
- 	showtabs=false,             
+ 	stringstyle=\color{black}\ttfamily,
+ 	showspaces=false,
+ 	showtabs=false,
  	framexrightmargin=-6pt,
  	framexleftmargin=-2pt,
  	framexbottommargin=0pt,
  	backgroundcolor=\color[rgb]{0.75, 0.75, 0.75},
  	morekeywords={such, that, search, var,rl,op,eq,ops,then,else,fi,subsorts,subsort,red,id,including,mod,endm,fmod,endfm,is,if,crl,ceq,assoc,comm,sorts,inc,bop,bceq,vars,sort,ctor, msg},
- 	showstringspaces=false      
+ 	showstringspaces=false
  }
 
 %=============================== 正文部分 ================================%
@@ -176,8 +176,9 @@
 \include{abstract/B1-ABSTRACT.tex}
 \include{abstract/B2-ABSTRACT-E.tex}
 
-\include{chapter/C1-CHAP1.tex}
-\include{chapter/B2-ABSTRACT-E.tex}
+\include{chapter/C1-CHAP-1.tex}
+\include{chapter/C2-CHAP-1.tex}
+\include{chapter/C3-CHAP-1.tex}
 
 \begin{document}
 \input cover/A1-COVER-C.tex
@@ -190,6 +191,7 @@
 \pagestyle{plain}
 \input abstract/B1-ABSTRACT.tex
 \input abstract/B2-ABSTRACT-E.tex
+
 \setcounter{tocdepth}{2}
 \tableofcontents
 
@@ -202,7 +204,12 @@
 \CTEXsetup[format+={\zihao{-4}\heiti}]{subsection}
 
 
+\setlength{\baselineskip}{25pt}  %%正文设为25磅行间距
 
+\input chapter/C1-CHAP-1.tex
+\input chapter/C2-CHAP-1.tex
+\input chapter/C3-CHAP-1.tex
+\cleardoublepage
 
 
 
