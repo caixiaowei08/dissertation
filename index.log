@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.9.4)  21 SEP 2017 18:26
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.9.4)  25 SEP 2017 02:34
 entering extended mode
 **index.tex
 (E:\paper\index.tex
@@ -1073,33 +1073,45 @@ No file chapter/C1-CHAP-1.tex.tex.
 No file chapter/C2-CHAP-1.tex.tex.
 \@input{chapter/C3-CHAP-1.tex.aux}
 No file chapter/C3-CHAP-1.tex.tex.
+\@input{chapter/C4-CHAP-1.tex.aux}
+No file chapter/C4-CHAP-1.tex.tex.
+\@input{chapter/C5-CHAP-1.tex.aux}
+No file chapter/C5-CHAP-1.tex.tex.
+\@input{chapter/C6-CHAP-1.tex.aux}
+No file chapter/C6-CHAP-1.tex.tex.
+\@input{suffix/D1-REFERENCE.tex.aux}
+No file suffix/D1-REFERENCE.tex.tex.
+\@input{suffix/D2-ACHNOWLEDGEMENT.tex.aux}
+No file suffix/D2-ACHNOWLEDGEMENT.tex.tex.
+\@input{suffix/D3-MYACHIEVEMENTS.tex.aux}
+No file suffix/D3-MYACHIEVEMENTS.tex.tex.
 (E:\paper\index.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 183.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 183.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 189.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 189.
  (D:\CTEX\MiKTeX\tex\latex\tipa\t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 183.
-LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 189.
+LaTeX Font Info:    ... okay on input line 189.
 .................................................
 . fontspec info: "setup-math"
 . 
@@ -1107,72 +1119,72 @@ LaTeX Font Info:    ... okay on input line 183.
 .................................................
 \symlegacymaths=\mathgroup12
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 183.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 183.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 183.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 183.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 183.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 183.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 183.
-LaTeX Font Info:    Redeclaring math accent \check on input line 183.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 183.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 183.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 183.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 183.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 183.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 189.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 189.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 189.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 189.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 189.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 189.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 189.
+LaTeX Font Info:    Redeclaring math accent \check on input line 189.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 189.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 189.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 189.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 189.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 189.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `normal' on input line 183.
+(Font)              `operators' in the math version `normal' on input line 189.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> EU1/TimesNewRoman(0)/m/n on input line 
-183.
+189.
 LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
-(Font)              `operators' in the math version `bold' on input line 183.
+(Font)              `operators' in the math version `bold' on input line 189.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> EU1/TimesNewRoman(0)/m/n on input line
- 183.
+ 189.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/m/n o
-n input line 183.
+n input line 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
 (Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/m/n o
-n input line 183.
+n input line 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> EU1/TimesNewRoman(0)/m/it on input lin
-e 183.
+e 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> EU1/TimesNewRoman(0)/bx/n on input lin
-e 183.
+e 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> EU1/phv/m/n on input line 183.
+(Font)                  OT1/cmss/m/n --> EU1/phv/m/n on input line 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> EU1/pcr/m/n on input line 183.
+(Font)                  OT1/cmtt/m/n --> EU1/pcr/m/n on input line 189.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/bx/n 
-on input line 183.
+on input line 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
 (Font)                  EU1/TimesNewRoman(0)/m/n --> EU1/TimesNewRoman(0)/bx/n 
-on input line 183.
+on input line 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> EU1/TimesNewRoman(0)/bx/it on input l
-ine 183.
+ine 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> EU1/phv/bx/n on input line 183.
+(Font)                  OT1/cmss/bx/n --> EU1/phv/bx/n on input line 189.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> EU1/pcr/bx/n on input line 183.
+(Font)                  OT1/cmtt/m/n --> EU1/pcr/bx/n on input line 189.
 \AtBeginShipoutBox=\box46
-Package hyperref Info: Link coloring OFF on input line 183.
+Package hyperref Info: Link coloring OFF on input line 189.
 
 (D:\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -1182,9 +1194,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count309
 )
-LaTeX Info: Redefining \ref on input line 183.
-LaTeX Info: Redefining \pageref on input line 183.
-LaTeX Info: Redefining \nameref on input line 183.
+LaTeX Info: Redefining \ref on input line 189.
+LaTeX Info: Redefining \pageref on input line 189.
+LaTeX Info: Redefining \nameref on input line 189.
  (E:\paper\index.out)
 (E:\paper\index.out)
 \@outlinefile=\write4
@@ -1639,6 +1651,18 @@ File: se-ascii-print.def 2010/03/01 v1.8 stringenc: Printable ASCII characters
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ]
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;mapping=tex-text;
 " at 24.88pt
@@ -2017,11 +2041,11 @@ Requested font "SimHei/ICU" at 12.0pt
 .................................................
 Requested font "SimHei/ICU:mapping=tex-text;" at 12.0pt
  -> C:/Windows/Fonts/simhei.ttf
-)
-\tf@toc=\write5
  [4
 
-] (E:\paper\chapter/C1-CHAP-1.tex
+] [5])
+\tf@toc=\write5
+ [6] (E:\paper\chapter/C1-CHAP-1.tex
 第一章
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2089,14 +2113,28 @@ Requested font "SimHei/ICU:mapping=tex-text;embolden=4;" at 14.05pt
 
 
 LaTeX Font Warning: Font shape `EU1/SimSun(0)/m/sl' undefined
-(Font)              using `EU1/SimSun(0)/m/n' instead on input line 26.
+(Font)              using `EU1/SimSun(0)/m/n' instead on input line 13.
 
-[2]) (E:\paper\chapter/C2-CHAP-1.tex [3]
+[2] [3] [4]) [5] (E:\paper\chapter/C2-CHAP-1.tex
 第二章
-[4
+[6
 
-]) (E:\paper\chapter/C3-CHAP-1.tex [5]
-第三章
+
+]
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font SimSun does not contain any OpenType `Script' information.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'SimSun(0)' created for font 'SimSun' with options
+. [Ligatures=TeX,BoldFont={SimHei},ItalicFont={[SIMKAI.TTF]}].
+. 
+. This font family consists of the following shapes:
+.................................................
+ [7]
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;mapping=tex-tex
 t;" at 14.4pt
  -> C:/Windows/Fonts/timesbd.ttf
@@ -2122,41 +2160,42 @@ Requested font "SimHei/ICU" at 12.05pt
 .................................................
 Requested font "SimHei/ICU:mapping=tex-text;embolden=4;" at 12.05pt
  -> C:/Windows/Fonts/simhei.ttf
-File: fig/normalspace.png Graphic file (type QTm)
-<use  "fig/normalspace.png" > [6
-
-]
-File: fig/robotthreephase.png Graphic file (type QTm)
- <use  "fig/robotthreephase.png" > [7]
-LaTeX Font Info:    Try loading font information for EU1+pcr on input line 40.
-LaTeX Font Info:    No file EU1pcr.fd. on input line 40.
+LaTeX Font Info:    Try loading font information for EU1+pcr on input line 43.
+LaTeX Font Info:    No file EU1pcr.fd. on input line 43.
 
 
 LaTeX Font Warning: Font shape `EU1/pcr/m/n' undefined
-(Font)              using `EU1/lmr/m/n' instead on input line 40.
+(Font)              using `EU1/lmr/m/n' instead on input line 43.
 
 Requested font "[lmroman8-regular]:mapping=tex-text" at 8.0pt
  -> D:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf
-[8]
+[8] [9]
 Requested font "[lmroman12-regular]:mapping=tex-text" at 12.0pt
  -> D:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-regular.otf
- [9]
-File: fig/ring.png Graphic file (type QTm)
- <use  "fig/ring.png" >
-.................................................
-. fontspec info: "no-scripts"
-. 
-. Font SimSun does not contain any OpenType `Script' information.
-.................................................
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'SimSun(0)' created for font 'SimSun' with options
-. [Ligatures=TeX,BoldFont={SimHei},ItalicFont={[SIMKAI.TTF]}].
-. 
-. This font family consists of the following shapes:
-.................................................
  [10]
+Overfull \hbox (26.32446pt too wide) in paragraph at lines 180--181
+[]\xeCJK@rm/m/sl/12 在 分 配 定 义 的 左 侧，| 标 识 符[]\EU1/pcr/m
+/n/12 identifier \xeCJK@rm/m/sl/12 表 示 变 量 的 当 前 值，| 初 始 
+化 定 义[]\EU1/pcr/m/n/12 init(identifier)
+ []
+
+[11]
+
+LaTeX Font Warning: Font shape `EU1/pcr/bx/n' undefined
+(Font)              using `EU1/pcr/m/n' instead on input line 184.
+
+[12] [13] [14] [15] [16]) [17] [18] (E:\paper\chapter/C3-CHAP-1.tex
+第三章
+File: fig/normalspace.png Graphic file (type QTm)
+<use  "fig/normalspace.png" > [19
+
+
+]
+File: fig/robotthreephase.png Graphic file (type QTm)
+ <use  "fig/robotthreephase.png" > [20]
+[21] [22]
+File: fig/ring.png Graphic file (type QTm)
+ <use  "fig/ring.png" > [23]
 Requested font "[SIMFANG.TTF]" at 12.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
 Requested font "[SIMFANG.TTF]/ICU" at 12.0pt
@@ -2194,7 +2233,7 @@ Requested font "[SIMFANG.TTF]/I/I/ICU" at 12.0pt
 .................................................
 Requested font "[SIMFANG.TTF]/ICU:mapping=tex-text;" at 12.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
- [11] [12]
+ [24] [25]
 Overfull \hbox (21.54718pt too wide) in paragraph at lines 159--169
  [][] 
  []
@@ -2206,17 +2245,17 @@ Overfull \hbox (42.96365pt too wide) in paragraph at lines 175--176
  []
 
 
-LaTeX Warning: Reference `fig:minalgotithmconvergence' on page 13 undefined on 
+LaTeX Warning: Reference `fig:minalgotithmconvergence' on page 26 undefined on 
 input line 203.
 
-[13]
+[26]
 File: fig/cp_lp.png Graphic file (type QTm)
  <use  "fig/cp_lp.png" >
 Overfull \hbox (6.82866pt too wide) in paragraph at lines 209--210
  [][] 
  []
 
-[14] [15]
+[27] [28]
 ! Missing \right. inserted.
 <inserted text> 
                 \right .
@@ -2232,12 +2271,95 @@ l.254 $ \rightarrow \Chi
 l.254 ...nd c\left(r_j\right) =h \right)   \right)
                                                   $。
 ? 
-[16]) [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
+[29]) [30] (E:\paper\chapter/C4-CHAP-1.tex
+第四章
+) [31
+
+
+] (E:\paper\chapter/C5-CHAP-1.tex
+第五章
+) [32
+
+
+] (E:\paper\chapter/C6-CHAP-1.tex
+第六章
+) [33
+
+
+]
+No file index.bbl.
+(E:\paper\suffix/D2-ACHNOWLEDGEMENT.tex
+Requested font "[SIMKAI.TTF]" at 12.0pt
+ -> C:/Windows/Fonts/SIMKAI.TTF
+Requested font "[SIMKAI.TTF]/ICU" at 12.0pt
+ -> C:/Windows/Fonts/SIMKAI.TTF
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font [SIMKAI.TTF] does not contain any OpenType `Script' information.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family '[SIMKAI.TTF](0)' created for font '[SIMKAI.TTF]' with options
+. [Ligatures=TeX,BoldFont={[SIMKAI.TTF]},BoldFeatures={RawFeature={embolden=4}}
+].
+. 
+. This font family consists of the following shapes:
+.................................................
+Requested font "[SIMKAI.TTF]/ICU:mapping=tex-text;" at 12.0pt
+ -> C:/Windows/Fonts/SIMKAI.TTF
+) [34
+
+
+
+]
+(E:\paper\suffix/D3-MYACHIEVEMENTS.tex
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font SimSun does not contain any OpenType `Script' information.
+.................................................
+Requested font "SimSun/I/ICU" at 14.05pt
+ -> D:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font SimSun/I (it probably doesn't exist).
+.................................................
+Requested font "SimSun/I/ICU" at 14.05pt
+ -> D:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf
+.................................................
+. fontspec info: "no-font-shape"
+. 
+. Could not resolve font SimSun/I (it probably doesn't exist).
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'SimSun(1)' created for font 'SimSun' with options
+. [Ligatures=TeX,BoldFont={SimSun},BoldFeatures={RawFeature={embolden=4}}].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"SimSun/ICU:mapping=tex-text;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"SimSun/ICU:mapping=tex-text;embolden=4;"
+.................................................
+Requested font "SimSun/ICU:mapping=tex-text;embolden=4;" at 14.05pt
+ -> D:/CTEX/CTeX/fonts/truetype/chinese/simsun.ttf
+)
+No file index.ind.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 244.
+[35
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 244.
  (E:\paper\index.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 217.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 217.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 244.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 244.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2249,14 +2371,17 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 25254 strings out of 430478
- 464004 string characters out of 3191503
- 527791 words of memory out of 3000000
- 27879 multiletter control sequences out of 15000+200000
- 42183 words of font info for 269 fonts, out of 3000000 for 9000
+ 25432 strings out of 430478
+ 466812 string characters out of 3191503
+ 577292 words of memory out of 3000000
+ 28028 multiletter control sequences out of 15000+200000
+ 42215 words of font info for 273 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,14n,92p,1541b,2028s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,14n,92p,1541b,2030s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on index.pdf (27 pages).
+Output written on index.pdf (47 pages).

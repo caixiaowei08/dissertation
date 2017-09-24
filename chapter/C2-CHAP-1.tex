@@ -1,13 +1,359 @@
+\chapter{nuXmv介绍}
+muXmv是一种新的符号模型验证器，主要使用有限状态系统和无限状态系统的形式化验证和分析。nuXmv 是经典符号模型检测工具NuSMV 的后续版本，nuXmv 主要从两个方面对NuSMV进行拓展：1、对于有限状态系统，采用基于最新的SAT-based算法的验证引擎；2、对于无限状态系统，采用基于SMT 验证技术，通过内部集成MathSAT5实现。
 
-\chapter{nuXmv的介绍}
-nuXmv是一种新的符号模型检测器，支持有限状态系统和无限状态系统的建模分析。nuXmv继承NuSMV，支持所有的NuSMV 的功能。在NuSMV功能基础上，不仅在限状态系统和无限状态系统两个方面增加了新的特性，还在其他方面进行了提升。NuSMV是在一种基于BDD算法实现的SMV 验证器上进行重新实现和功能拓展所得出验证工具。NuSMV 被设计成一种开放式的模型检测框架，作为一个高可信的验证工具被广泛的应用于工业设计以及其他研究领域。在NuSMV2版本中，功能得到进一步提升，不仅具备原来由科罗拉多大学研发的BDD算法模型检测组件，而且添加了SAT 模型检测组件，SAT模型检测组件中包含基于RBC的边界模型验证器。到了2.5.0版本，热那亚大学为NuSMV 捐献了SIM，SIM中包含最新的SAT算法解析器，其中的RBC 软件包支持边界模型检测算法。
+nuXmv在同步系统语言方面进行了扩展，支持AIGER规范，在NUSMV的基础上新增了整数(Integer)和实数(Reals) 两种数据类型以及解释功能。有限状态系统模型新添加验证算法，基于不变量验证的插值算法、IC3 算法以及K-liveness算法。同样，在无限状态系统中
+引入基于SMT验证技术，包括有界模型验证(Bounded Model Checking)、K-induction、K-liveness、 插入值算法(Interpolation Based)、IC3 算法，以及抽象基础技术(Abstraction based techniques)。不仅如此，nuXmv 还在功能上进行了扩展，新增FSM视图生成、模型的简化和重新编码技术。
 
-同NuSMV相比较，nuXmv为状态和输入变量新增两种数据类型实数(real)和整数(integer),这使用户能够对无限状态转换系统的规范进行建模。添加了新的结构，用于指定抽象技术中谓词。nuXmv不仅支持所有的NuSMV交互式命令，而且添加一些新特性对应的新的操作命令，应用于有限状态转移系统中新的模型检测算法和无限状态转移系统中基于SMT 的新的检测算法。
+nuXmv继承了nuXmv模块化建模特性。每个模块(Module)可描述一个状态迁移系统.模块主要包含三个部分:变量(variables), 约束(constraints) 和规范(specification).变量用于定义系统状态,约束用于定义状态转移关系及模型的一些约束条件。模块化建模不仅使得代码语言简洁清晰，而且可以代码复用，使得建模过程简单。模块化的代码，表达能力更强，逻辑层次明朗。nuXmv 基于已经构建的形式化描述，对嵌入式硬件系统、软件系统相关属性依据数学分析和证明。不仅如此，nuXmv还可以通过计算逻辑树(CTL, Computation Tree Logic) 或者线性时序逻辑(LTL,inear Temporary Logic)对系统性质进行描述和验证。因此，nuXmv验证器在形式化验证领域被广泛的应用，不仅可以为系统提供精准的数学模型，而且可以对系统模型进行形式化的验证和分析。
 
-nuXmv支持计算树逻辑(CTL)和线性时态逻辑(LTL)，在nuXmv代码中使用CTL或者LTL公式描述初始性质和验证性质，使得代码比较简洁、具备更强的表达能力。在无限状态系统验证过程中使用基于SMT的验证方法，大大提升验证的效率，特别是在验证不满足性时，可以高效的求得不满足的反例。nuXmv不仅可以构建同步系统模型，而且可以构建异步系统模型，满足一些系统建模的需求。由于nuXmv 支持多种建模验证方式，用户可以按照自己的需求进行选择。
+\section{nuXmv基本数据类型}
+本小节为nuXmv支持的数据类型的全部概述，在nuXmv中包含布尔类型(Boolean)、枚举类型(Enumeration)、字(Word)、 整数(Integer)、 实数(Reals)、数组(Array)和集合(Set)集中数据类型。
 
-\section{}
+\paragraph{布尔类型}
+布尔类型包含符号值真(TRUE)和假(FALSE)。
 
+\paragraph{枚举类型}
+布尔类型是一个类型的所有值。举例说明，枚举类型的值类似于$\left\{stopped,running,waiting,finished\right\}$，
+$\left\{2, 4, -2, 0\right\}$，$\left\{FAIL, 1, 3, 7, OK\right\}$等等。枚举类型的值不能有相同的，但枚举的值可以是混合类型的，例如一个枚举同时包含整型数和标识符常量。
+
+\paragraph{字}
+nuXmv的字(Word)分为无符号字(unsigned word)和有符号字(signed word),对无符号字和有符号字可以使用按位逻辑和算数操作。字的位宽可以区分，例如$\left(unsigned \quad word[3]\right)$ 代表无符号3 位(bit) 字，$\left(signed \quad word[7]\right)$ 代表有符号7位(bit) 字。通用无符号表达式为$\left(unsigned \quad word[N]\right)$和有符号表达式为$\left(signed \quad word[N]\right)$，其中$N$代表该字的位宽(bit)。
+
+\paragraph{整数}
+整数有正整数和负整数。首先应该注意的是在某些模型检查引擎和算法中不允许使用整数，其次整型的取值范围$-2^{32}+1$ 到$2^{32}-1$。
+
+\paragraph{实数}
+实数类型的域是有理数。
+
+\paragraph{数组}
+数组使用索引的上界和下界声明。举例说明，数组$1..8$代表数组中有从1到8的8个整型元素。数组类型与集合类型不兼容，即数组元素不能是集合类型。
+
+\paragraph{集合}
+集合类型是用于标识一组值的表达式，对于集合只能使用范围常数(range constant)和联合运算符(union)。
+
+\section{nuXmv有限状态机}
+有限状态机(FSM)包含状态变量、输入变量和固定变量，在不同状态下这些变量有不同的值。状态迁移(transition relation)描绘了某种输入导致系统状态进行转换。公平性条件(Fairness conditions) 描述了有向状态机的有效路径约束。下面介绍可以被nuXmv 定义和声明的一些概念。
+
+\subsection{变量声明}
+在nuXmv中变量分为三种类型：输入(input)变量、固定(frozen)变量和状态(state)变量。变量的声明中需指定变量的的类型。
+
+\subsubsection{变量类型定义}
+变量类型定义的语法如下：
+
+\begin{lstlisting}
+type_specifier ::
+        simple_type_specifier
+     | module_type_specifier
+
+simple_type_specifier ::
+         boolean
+     | word [ basic_expr ]
+     | unsigned word [ basic_expr ]
+     | signed word [ basic_expr ]
+     | real
+     | integer
+     | { enumeration_type_body }
+     | basic_expr .. basic_expr
+     | array basic_expr .. basic_expr
+     of simple_type_specifier
+
+enumeration_type_body ::
+       enumeration_type_value
+     | enumeration_type_body , enumeration_type_value
+
+enumeration_type_value ::
+       symbolic_constant
+     | integer_number
+\end{lstlisting}
+
+变量类型定义分为两种：简单类型定义(simple type specifier)和模块类型定义(module type specifier), 模块类型定义在后续的模块实例中进行介绍。简单类型定义包括布尔类型、整数类型、枚举类型、无符号字、有符号类型和数组类型。
+
+\subsubsection{状态变量}
+模型状态就是由一系列状态变量和固定变量的组合，状态变量也称为模块实例(instances of modules), 用符号表示为：
+
+\begin{lstlisting}
+var_declaration :: VAR var_list
+
+var_list :: identifier : type_specifier ;
+          | var_list identifier : type_specifier ;
+\end{lstlisting}
+
+变量声明指定变量的标识符及其类型。变量取值范围是类型取值域。特别是，一个枚举类型的变量只能从其已经定义的枚举值中取值。
+
+\subsubsection{输入变量}
+输入变量(input variables)用于标识有限状态机的状态转换。其语法如下：
+
+模型状态就是由一系列状态变量和固定变量的组合，状态变量也称为模块实例(instances of modules), 用符号表示为：
+
+\begin{lstlisting}
+ivar_declaration :: IVAR simple_var_list
+
+simple_var_list ::
+        identifier : simple_type_specifier ;
+      | simple_var_list identifier : simple_type_specifier ;
+\end{lstlisting}
+
+输入变量同状态变脸的不仅声明关键词不同，而且输入变量约定性更强，输入变量不能使模块实例，且比状态变量的使用范围更小。
+
+\subsubsection{固定变量}
+固定变量(frozen)是整个状态机中演化过程中保留初始值的变量，固定变量初始值与状态变量以相同的方式进行约束。固定变量的语法同输入变量和状态变量相比只是声明关键词不同:
+
+\begin{lstlisting}
+frozenvar_declaration :: FROZENVAR simple_var_list
+\end{lstlisting}
+
+对于一个固定变量fv的语义是伴随着赋值并保持其值不变的状态变量，具体含义如下：
+
+\begin{lstlisting}
+ASSIGN next(fv) := fv;
+\end{lstlisting}
+
+\subsubsection{变量使用举例}
+下面给出了状态变量、固定变量和输入变量声明的基础用法的例子：
+
+\begin{lstlisting}
+        VAR a : boolean;
+        FROZENVAR b : 0..1;
+        IVAR c : {TRUE, FALSE};
+\end{lstlisting}
+
+变量\verb|a|是状态变量，\verb|b|是固定变量，\verb|c|是输入变量。在下述的例子中：
+
+\begin{lstlisting}
+        VAR d : {stopped, running, waiting, finished};
+        VAR e : {2, 4, -2, 0};
+        VAR f : {1, a, 3, d, q, 4};
+\end{lstlisting}
+
+变量\verb|d|，\verb|e|和\verb|f|都是枚举类型。其他的可能的值在其声明中使用类型说明符指定类型。
+
+\begin{lstlisting}
+        VAR g : unsigned word[3];
+        VAR h : word[3];
+        VAR i : signed word[4];
+\end{lstlisting}
+
+变量\verb|g|和\verb|h|是三个位(bit)宽的无符号字，\verb|i|是4个位宽的有符号字。
+
+\begin{lstlisting}
+        VAR j : array -1..1 of boolean;
+\end{lstlisting}
+
+变量\verb|g|表示带有索引的布尔元素数组，索引是-1,0和1。
+
+\subsection{约束定义}
+\paragraph{INIT约束}
+模型的初始状态使用\verb|INIT|关键字进行定义，初始状态语法如下：
+
+\verb|init_constrain| \ $::$ \ \verb|INIT| \ \verb|simple_expression| \ \verb|[;]|
+
+\verb|INIT|约束中，表达式\verb|simple_expression|中不能包含\verb|next()|操作。若是模型中定义多个\verb|INIT|约束，则可将多个verb|INIT| 约束表达式并列组合。
+
+\paragraph{INVAR约束}
+不变状态可以使用\verb|INVAR|关键字定义，\verb|INVAR|后面是一个布尔表达式描述数量关系，不变状态语法如下：
+
+\verb|invar_constraint| \ $::$ \ \verb|INVAR| \ \verb|simple_expression| \ \verb|[;]|
+
+类似于\verb|INIT|约束，\verb|INVAR|约束中，表达式\verb|simple_expression|中不能包含\verb|next()| 操作。
+
+\paragraph{TRANS约束}
+模型的转换关系是系统当前状态和系统下一时刻状态的之间的状态迁移关系，使用关键词\verb|TRANS| 进行定义，当前状态和下一时刻状态之间迁移关系使用布尔表达式来描述。\verb|TRANS|的语法如下：
+
+\verb|trans_constraint| \ $::$ \ \verb|TRANS| \ \verb|next_expression| \ \verb|[;]|
+
+语法中表达式\verb|next_expression|必须是布尔表达式。若是有多个转换关系，可以将它们并列组合。
+
+\paragraph{ASSIGN约束}
+分配(assignment)约束的表达形式如下：
+\begin{lstlisting}
+assign_constraint :: ASSIGN assign_list
+
+assign_list :: assign ;
+             | assign_list assign ;
+
+assign ::
+    complex_identifier := simple_expr
+    | init ( complex_identifier ) := simple_expr
+    | next ( complex_identifier ) := next_expr
+\end{lstlisting}
+
+在分配定义的左侧，标识符\verb|identifier|表示变量的当前值，初始化定义\verb|init(identifier)| 表示其初始值，状态迁移\verb|next(identifier)| 表示下一个状态是标识符的值。如果表达式右边是一个非集合表达式，例如整数或者符号常量，意味着左边和右边的相等。另一方面，表达式右边是一个集合表达式，那么意味着左边的取值是在集合元素值范围之内，若是取值不在该范围，模型在验证是，会抛出异常。
+
+语义赋值可以用其他类型的约束表示：
+\begin{lstlisting}
+    ASSIGN a := exp;         is equivalent to INVAR a in exp;
+    ASSIGN init(a) := exp;   is equivalent to INIT a in exp;
+    ASSIGN next(a) := exp;   is equivalent to TRANS next(a) in exp;
+\end{lstlisting}
+
+\paragraph{FAIRNESS约束}
+公平性约束仅限于公平执行路径。在nuXmv校验模型规范时，模型检测器会使用适用于公平路径的量词。nuXmv 支持两种类型的公平性约束：正义约束(justice constraints)和同情约束(compassion constraints)。正义性约束可以通过关键字\verb|JUSTICE|或向后兼容性关键词\verb|FAIRNESS|进行定义。同情约束则是由一对程式组合而成\verb|(p,q)|，若程式\verb|p|在无限状态路径中公平取值为真，那么程式\verb|q| 也会在无限状态路径中取值为真，在nuXmv中同情约束使用关键词\verb|COMPASSION|进行定义。
+
+公平性的语法定义如下：
+\begin{lstlisting}
+    fairness_constraint ::
+        FAIRNESS simple_expr [;]
+        | JUSTICE simple_expr [;]
+        | COMPASSION ( simple_expr , simple_expr ) [;]
+\end{lstlisting}
+
+当且仅当状态路径满足上述定义的所有公平性的约束才称为公平状态路径。
+
+
+\subsection{模块声明}
+nuXmv模块声明是一个封装声明，是包含声明、约束和规范的集合。模块声明是一个新的标识符范畴。模块一旦被定义，就可以在有必要时被重复使用。模块定义中可以包含其他的模块实例。nuXmv 中模块的语法如下：
+
+\begin{lstlisting}
+module :: MODULE identifier [( module_parameters )] [module_body]
+
+module_parameters ::
+        | module_parameters , identifier
+
+module_body ::
+          module_element
+        | module_body module_element
+
+module_body ::
+          module_element
+        | module_body module_element
+module_element ::
+          var_declaration
+        | ivar_declaration
+        | frozenvar_declaration
+        | define_declaration
+        | constants_declaration
+        | assign_constraint
+        | trans_constraint
+        | init_constraint
+        | invar_constraint
+        | fairness_constraint
+        | ctl_specification
+        | invar_specification
+        | ltl_specification
+        | pslspec_specification
+        | compute_specification
+        | isa_declaration
+        | pred_declaration
+        | mirror_declaration
+\end{lstlisting}
+
+模块定义中紧跟在关键词\verb|MODULE|后的标识符，是该模块的名称。模块名称在nuXmv程序中拥有一个单独的命名空间，因此可能与变量或者定义的名称发生冲突。
+
+\subsection{模块实例}
+nuXmv可以描述有限状态机，包括完全同步和完全异步状态机。可以描述一个同步的Mealy机，也可以描述一个不确定性过程的异步网络模型。nuXmv的输入型语言提供模块化层次描述、可重用组件的定义。因为其设计目的是描述有限状态机，其数据类型都是有限的，例如布尔类型、标量和固定数组。也可以构建静态数据类型。
+
+nuXmv输入数据类型主要是用来描述有限状态机中的状态迁移。状态迁移描述了有限状态机的状态演变。通常，命题表达式都可以被用来描述状态迁移。这虽然提供了很大的灵活性，同时也隐含某种危险，例如，逻辑矛盾可能导致状态死锁( deadlock)。 虽然可以使用模型检查过程的方式来检测状态死锁问题，但是最好是通过限制描述的方式来避免这个问题。nuXmv通过并行分配的语法(parallel-assignment syntax)支持这点。
+
+\paragraph{同步系统-单进程实例}
+下面给出一个同步系统的单进程实例：
+\begin{lstlisting}
+MODULE main
+VAR
+    request : boolean;
+    state : {ready, busy};
+ASSIGN
+    init(state) := ready;
+    next(state) := case
+                        state = ready & request = TRUE : busy;
+                        TRUE                  : {ready, busy};
+                   esac;
+\end{lstlisting}
+
+有限状态机的状态空间是由状态变量的声明决定的，在上述例子中的\verb|request|和\verb|state|。 变量\verb|request| 是布尔类型，变量\verb|state| 是一个标量变量，可以接受符号值\verb|ready| 或者\verb|busy|。接下来使用分配约束给\verb|state|初始化值为\verb|ready|。而变量\verb|request| 初始值是完全未指定的，即其初始值可能是\verb|TRUE|或者\verb|FALSE|。状态机的状态迁移使用下一个状态(next)来进行定义，给出当前状态和下一个状态之间的关系，\verb|case|类似C 语言中的条件判断语句$if..else if..else $ 一样，当满足条件$state = ready$和$request = TRUE$ 时，下一个状态\verb|state| 变量的取值为\verb|busy|，其他情况下则取值为\verb|ready|或者\verb|busy|。
+
+\paragraph{异步系统-反相门环}
+nuXmv也允许异步系统建模。在模型内部定义并行的进程集合，进程的操作是交错的。异步系统模型常常用来描述通讯协议、异步电路以及其他异步系统。下面是反相门环(Inverter Ring)异步系统建模的例子：
+
+\begin{lstlisting}
+MODULE inverter(input)
+    VAR
+        output : boolean;
+    ASSIGN
+        init(output) := FALSE;
+        next(output) := !input;
+
+MODULE main
+    VAR
+        gate1 : process inverter(gate3.output);
+        gate2 : process inverter(gate1.output);
+        gate3 : process inverter(gate2.output);
+\end{lstlisting}
+
+在上述程序中定义了由三个反相门构建的环，反相门模块使用关键字\verb|process|实例化。每个反相门实例类似计算机系统中的进程(process), 给每个反相门模块实例随机分配时间片，当反相门获取时间片时，执行其中的赋值语句。由于是随机分配时间片给每个反相门，可能会出现某个或者几个方向门实例难以分配到执行时间片。为了保证每个进程公平的获得执行时间片，可以在每个模块定义中添加公平性约束：
+
+\begin{lstlisting}
+FAIRNESS
+  running
+\end{lstlisting}
+
+\section{LTL模型检测}
+nuXmv中可以通过时序逻辑对有限状态机进行建模与验证，如计算树逻辑(CTL，Computation Tree Logic)、线性时态逻辑(LTL，Linear Temporal Logic)、 属性说明语言PSL(Property Specification Language)。还可以使用实时计算树逻辑( real-time CTL)来分析有限状态机的数量特征。使用时序逻辑CTL或LTL描述预验证性质，可以验证有限状态机对预验证性质的满足性。若有限状态机不满足预验证性质，nuXmv则返回false并构建和打印出一个不满足预验证性质的反例。反例内容是有限状态机不满足预验证性质的反例状态路径。使用时序逻辑描述预验证性质，不仅简化了建模代码，而且可移植性强。由于本文实验中主要使用的是LTL描述机器人永恒探索算法的性质，所以在本章节中只介绍LTL的定义和LTL 模型检测命令。
+
+\subsection{LTL规范说明}
+有限状态机的建模与验证，其描述规格说明可以两个部分：一个是系统模型构建规范，另一个是验证性质规范。系统模型构建规范是通过模块定义和状态迁移实现，而验证性质规范是通过时序逻辑进行描述。nuXmv的线性时序逻辑(LTL)验证器基于状态机初始状态和LTL公式状态性质描述之间的逻辑关系，给出模型验证的结果。
+
+nuXmv在模块定义中使用关键词\verb|LTLSPEC|声明LTL规范，用于对预验证性质的原子命题的描述。LTL规范的语法如下：
+
+\begin{lstlisting}
+ltl_specification :: LTLSPEC ltl_expr [;]
+                     LTLSPEC NAME name := ltl_expr [;]
+\end{lstlisting}
+
+从上述语法中LTL表达式有两种声明方式，\verb|LTLSPEC|关键词声明匿名表达式，而\verb|LTLSPEC NAME|关键词声明是名称为name 的LTL表达式。通过一个例子对nuXmv中LTL表达式进行详细的介绍，下面代码定义了一个异步信号系统，包含一个主模块\verb|main|和用户模块\verb|user|。
+
+\begin{lstlisting}
+MODULE main
+    VAR
+        semaphore : boolean;
+        proc1 : process user(semaphore);
+        proc2 : process user(semaphore);
+    ASSIGN
+        init(semaphore) := FALSE;
+    LTLSPEC G ! (proc1.state = critical & proc2.state = critical)
+    LTLSPEC G (proc1.state = entering -> F proc1.state = critical)
+
+MODULE user(semaphore)
+    VAR
+        state : {idle, entering, critical, exiting};
+    ASSIGN
+        init(state) := idle;
+        next(state) :=
+            case
+                state = idle : {idle, entering};
+                state = entering & !semaphore : critical;
+                state = critical : {critical, exiting};
+                state = exiting : idle;
+                TRUE : state;
+            esac;
+        next(semaphore) :=
+            case
+                state = entering : TRUE;
+                state = exiting : FALSE;
+                TRUE : semaphore;
+            esac;
+    FAIRNESS
+        running
+\end{lstlisting}
+
+用户模块带有一个外部传入参数semaphore，在模块内部声明了一个枚举类型的状态变量\verb|state|，并给变量分配初始值\verb|idle|。\verb|next(state)|表示下一个状态中state的值：当前状态下state等于idle时，下一个状态中state的取值是idle或者entering；当前状态下满足state等于entering且semaphore为FALSE时，下一个状态中state的取值是critical；当前状态下满足state等于critical时，下一个状态中state的取值是critical或者exiting；当前状态下满足state等于exiting时，下一个状态中state的取值是idle；TURE表示不满足上述几种情况下，下一个状态中state等于当前状态下state的值。同样，\verb|next(semaphore)|表示下一个状态下\verb|semaphore|的值：当前状态下state等于entering 时，下一个状态中state 的取值是TRUE；当前状态下state等于exiting时，下一个状态中state的取值是FALSE；TURE表示在不满足上述情况下，下一个状态中semaphore等于当前状态的semaphore。并且给用户模块设定了公平性约束FAIRNESS。在主模块中，声明了布尔类型的变量semaphore，并给其初始值FALSE。在主模块中实例化两个用户模块proc1和proc2，并分别使用关键词process修饰，表明两个用户实例化模块为异步。还声明了两个LTL表达式，LTL表达式\verb|LTLSPEC G ! (proc1.state = critical & proc2.state = critical)| 中G表示将来所有时刻都满足，而整个LTL表达式含义是当用户模块proc1 的state 变量取值为critical时，用户模块proc2 的变量state不能同时取值为critical。 同样LTL表达式\verb|LTLSPEC G (proc1.state = entering -> F proc1.state = critical)| 说明若只要用户模块proc1的state变量取值为entering时，在此之后的某个状态下必定取值为critical。
+
+\subsection{LTL规范验证命令}
+nuXmv在其诞生的过程中，不仅融合很多优秀的验证算法，而且还集成了SMT解析器MathSAT5和最新的SAT解析器。所以，nuXmv对于不同的时序逻辑都设计了丰富的验证执行命令。基于BDD的验证方法在有限状态机满足预验证性质时，验证效率较高，而基于SMT验证方法在有限状态机不满足预验证性质时，很容易找出不满足的反例。不同验证方式适用于不同的验证场景，在此主要介绍一下基于BDD的增量COI算法验证命令和基于SMT的增量COI算法验证命令。
+
+\paragraph{基于BDD的增量COI算法验证命令}
+
+
+\begin{lstlisting}
+check_ltlspec_inc_coi_bdd [-h] | [-n number | -p "ltl-expr [IN context]"| -P "name"] [-I]
+\end{lstlisting}
+
+
+\paragraph{基于SMT的增量COI算法验证命令}
+
+\begin{lstlisting}
+msat_check_ltlspec_inc_coi [-h] | [-n number | -p "ltl-expr [IN context]" | -P "name"] [-I] [-u] [-i] [-k bound]
+\end{lstlisting}
 
 
 \section{本章小结}
+本章介绍了符号模型验证器nuXmv的基础数据类型，通过基础数据类型和模块定义可以实现有限状态机的建模。nuXmv支持多种时序逻辑语言，本章节主要是讲解通过其中的LTL定义有限状态机中预验证性质的可满足性验证。并以异步信号系统为例，详细的介绍了模型的构建以及模块中状态迁移，重点说明LTL在模块中声明。此外，还阐述了nuXmv支持的各种LTL的验证方法，对于验证性质的正确性,BDD方法的效率相对较高,而对于不被满足的性质,基于SMT验证方法可以更快的找到不满足的反例。

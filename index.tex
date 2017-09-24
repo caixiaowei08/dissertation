@@ -175,10 +175,16 @@
 \include{member/A4-MEMBERLIST.tex}
 \include{abstract/B1-ABSTRACT.tex}
 \include{abstract/B2-ABSTRACT-E.tex}
-
 \include{chapter/C1-CHAP-1.tex}
 \include{chapter/C2-CHAP-1.tex}
 \include{chapter/C3-CHAP-1.tex}
+\include{chapter/C4-CHAP-1.tex}
+\include{chapter/C5-CHAP-1.tex}
+\include{chapter/C6-CHAP-1.tex}
+
+\include{suffix/D1-REFERENCE.tex}
+\include{suffix/D2-ACHNOWLEDGEMENT.tex}
+\include{suffix/D3-MYACHIEVEMENTS.tex}
 
 \begin{document}
 \input cover/A1-COVER-C.tex
@@ -203,16 +209,37 @@
 \CTEXsetup[format+={\zihao{4}\heiti}]{section}
 \CTEXsetup[format+={\zihao{-4}\heiti}]{subsection}
 
-
 \setlength{\baselineskip}{25pt}  %%正文设为25磅行间距
 
 \input chapter/C1-CHAP-1.tex
+\cleardoublepage
 \input chapter/C2-CHAP-1.tex
+\cleardoublepage
 \input chapter/C3-CHAP-1.tex
 \cleardoublepage
+\input chapter/C4-CHAP-1.tex
+\cleardoublepage
+\input chapter/C5-CHAP-1.tex
+\cleardoublepage
+\input chapter/C6-CHAP-1.tex
 
+\cleardoublepage
+\addcontentsline{toc}{chapter}{参考文献}
+%\input suffix/D1-REFERENCE.tex
+\bibliographystyle{GBT7714-2005}
+\bibliography{bib/tex}
 
+\pagestyle{plain}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{致谢}
+\input suffix/D2-ACHNOWLEDGEMENT.tex
+\pagestyle{plain}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{发表论文和科研情况}
+\input suffix/D3-MYACHIEVEMENTS.tex
 
-
+\printindex
 \end{document}
 

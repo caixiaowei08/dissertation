@@ -1,3 +1,11 @@
-﻿\chapter{机器人探索算法和调度策略}
+﻿\chapter{机器人空间永恒探索算法建模}
 
-\section{机器人和探索空间}
+\section{基础模型的构建}
+
+\subsection{机器人建模}
+\subsection{移动算法建模}
+\subsection{任意初始位置的定义}
+
+\section{调度模型的建模}
+
+\section{本章小结}
