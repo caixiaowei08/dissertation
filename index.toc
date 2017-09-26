@@ -30,50 +30,39 @@
 \contentsline {paragraph}{同步系统-单进程实例}{13}{section*.21}
 \contentsline {paragraph}{异步系统-反相门环}{14}{section*.22}
 \contentsline {section}{\numberline {2.3}LTL模型检测}{15}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}LTL的定义}{15}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}LTL模型验证命令}{17}{subsection.2.3.2}
-\contentsline {paragraph}{基于BDD的增量COI算法验证命令}{17}{section*.23}
-\contentsline {paragraph}{基于SMT的增量COI算法验证命令}{17}{lstlisting.2.-20}
+\contentsline {subsection}{\numberline {2.3.1}LTL规范说明}{15}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}LTL验证方式}{17}{subsection.2.3.2}
 \contentsline {section}{\numberline {2.4}本章小结}{17}{section.2.4}
-\contentsline {chapter}{\numberline {第三章\hspace {0.3em}}机器人探索算法和调度策略}{19}{chapter.3}
-\contentsline {section}{\numberline {3.1}机器人和探索空间}{19}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}探索空间定义}{19}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}机器人移动三个阶段}{20}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}机器人移动调度模型}{20}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}环形空间探索算法}{23}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}机器人视觉快照}{23}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}机器人移动算法}{25}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}探索终止和永恒探索}{28}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}探索终止}{28}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}永恒探索}{29}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}本章小结}{29}{section.3.4}
+\contentsline {chapter}{\numberline {第三章\hspace {0.3em}}永恒探索算法}{19}{chapter.3}
+\contentsline {section}{\numberline {3.1}机器人移动三个阶段}{20}{section.3.1}
+\contentsline {section}{\numberline {3.2}机器人移动调度策略}{20}{section.3.2}
+\contentsline {section}{\numberline {3.3}环形空间探索算法}{23}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}机器人视觉快照}{23}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}机器人移动算法}{25}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}探索终止和永恒探索}{28}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}探索终止}{28}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}永恒探索}{29}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}本章小结}{29}{section.3.5}
 \contentsline {chapter}{\numberline {第四章\hspace {0.3em}}永恒探索算法建模}{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}基础模型的构建}{31}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}机器人建模}{31}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}移动算法建模}{31}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}任意初始位置的定义}{31}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}调度模型的建模}{31}{section.4.2}
-\contentsline {section}{\numberline {4.3}本章小结}{31}{section.4.3}
-\contentsline {chapter}{\numberline {第五章\hspace {0.3em}}永恒探索算法符号模型验证}{32}{chapter.5}
-\contentsline {section}{\numberline {5.1}机器人初始位置定义}{32}{section.5.1}
-\contentsline {section}{\numberline {5.2}完全同步调度模型}{32}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}非碰撞性}{32}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}非碰撞性}{32}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}非互换性}{32}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}半同步调度模型}{32}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}非碰撞性}{32}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}非碰撞性}{32}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}非互换性}{32}{subsection.5.3.3}
-\contentsline {section}{\numberline {5.4}完全异步调度模型}{32}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}非碰撞性}{32}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}非碰撞性}{32}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}非互换性}{32}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}实验结果分析}{32}{section.5.5}
-\contentsline {section}{\numberline {5.6}本章小结}{32}{section.5.6}
-\contentsline {chapter}{\numberline {第六章\hspace {0.3em}}总结和展望}{33}{chapter.6}
-\contentsline {section}{\numberline {6.1}论文总结}{33}{section.6.1}
-\contentsline {section}{\numberline {6.2}工作展望}{33}{section.6.2}
-\contentsline {chapter}{参考文献}{34}{section.6.2}
-\contentsline {chapter}{致谢}{34}{section*.32}
-\contentsline {chapter}{发表论文和科研情况}{35}{section*.34}
+\contentsline {section}{\numberline {4.1}机器人建模}{31}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}移动算法匹配}{32}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}机器人移动}{35}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}调度策略建模}{36}{section.4.2}
+\contentsline {paragraph}{半同步调度策略建模}{36}{section*.31}
+\contentsline {paragraph}{完全同步调度策略建模}{37}{section*.32}
+\contentsline {paragraph}{完全异步调度策略建模}{37}{section*.33}
+\contentsline {section}{\numberline {4.3}永恒探索性质}{37}{section.4.3}
+\contentsline {paragraph}{非冲撞性}{38}{section*.34}
+\contentsline {paragraph}{非互换性}{38}{section*.35}
+\contentsline {paragraph}{非终止性}{39}{section*.36}
+\contentsline {section}{\numberline {4.4}本章小结}{39}{section.4.4}
+\contentsline {chapter}{\numberline {第五章\hspace {0.3em}}自主移动机器人永恒探索算法验证}{40}{chapter.5}
+\contentsline {section}{\numberline {5.1}验证结果与分析}{40}{section.5.1}
+\contentsline {section}{\numberline {5.2}本章小结}{42}{section.5.2}
+\contentsline {chapter}{\numberline {第六章\hspace {0.3em}}总结和展望}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}总结}{43}{section.6.1}
+\contentsline {section}{\numberline {6.2}展望}{43}{section.6.2}
+\contentsline {chapter}{参考文献}{45}{section.6.2}
+\contentsline {chapter}{致谢}{48}{section*.40}
+\contentsline {chapter}{发表论文和科研情况}{49}{section*.42}
 \contentsfinish 
