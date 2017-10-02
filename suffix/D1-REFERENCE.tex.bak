@@ -1,6 +1,44 @@
 \begin{thebibliography}{0}
-
-   \bibitem{MDA}
-
-		
+   \bibitem{r1}Flocchini P, Prencipe G, Santoro N. Distributed Computing by Oblivious Mobile Robots[J]. 2012, 3(2):1-185.
+   \bibitem{r2}Almeida A, Ramalho G, Santana H, et al. Recent Advances on Multi-agent Patrolling[C]// Advances in Artificial Intelligence - Sbia 2004, Brazilian Symposium on Artificial Intelligence, São Luis, Maranhão, Brazil, September 29 - October 1, 2004, Proceedings. DBLP, 2004:474-483.
+   \bibitem{r3}Suzuki I, Yamashita M. Distributed Anonymous Mobile Robots: Formation of Geometric Patterns. Sirocco'96, the, International Colloquium on Structural Information & Communication Complexity, 1999:313-330.
+   \bibitem{r4}Suzuki I, Yamashita M. Erratum: Distributed anonymous mobile robots: formation of geometric patterns. Siam Journal on Computing, 1999, 28(4):1347-1363.
+   \bibitem{r5}Blin L, Milani A, Potop-Butucaru M, et al. Exclusive Perpetual Ring Exploration without Chirality. Lecture Notes in Computer Science, 2010, 6343:312--327.
+   \bibitem{r6}Devismes S, Petit F, Tixeuil S. Optimal Probabilistic Ring Exploration by Asynchronous Oblivious Robots[C]// International Conference on Structural Information and Communication Complexity. Springer-Verlag, 2009:195-208.
+   \bibitem{r7}Flocchini P, Ilcinkas D, Pelc A, et al. Computing Without Communicating: Ring Exploration by Asynchronous Oblivious Robots[M]// Principles of Distributed Systems. Springer Berlin Heidelberg, 2007:105-118.
+   \bibitem{r8}Flocchini P, Ilcinkas D, Pelc A, et al. Remembering without memory: Tree exploration by asynchronous oblivious robots[C]// International Colloquium on Structural Information and Communication Complexity. Springer Berlin Heidelberg, 2008:33-47.
+   \bibitem{r9}Baldoni R, Bonnet F, Milani A, et al. Brief Announcement: On the Solvability of Anonymous Partial Grids Exploration by Mobile Robots[C]// International Symposium on Distributed Computing. Springer-Verlag, 2008:496-497.
+   \bibitem{r10}Baldoni R, Bonnet F, Milani A, et al. On the Solvability of Anonymous Partial Grids Exploration by Mobile Robots. Principles of Distributed Systems. Springer Berlin Heidelberg, 2008:428-445.
+   \bibitem{r11}Devismes S, Lamani A, Petit F, et al. Optimal Grid Exploration by Asynchronous Oblivious Robots. Symposium on Self-Stabilizing Systems. Springer Berlin Heidelberg, 2012:64-76.
+   \bibitem{r12}Suzuki I, Yamashita M. Erratum: "Distributed anonymous mobile robots: formation of geometric patterns'' [SIAM J. Comput. 28 (1999), no. 4, 1347–1363 (electronic); MR1681010].[J]. Siam Journal on Computing, 2006, 36(4):279-280.
+   \bibitem{r13}Devismes S, Lamani A, Petit F, et al. Optimal grid exploration by asynchronous oblivious robots[J]. Lecture Notes in Computer Science, 2011, 7596:64-76.
+   \bibitem{r14}Potop-Butucaru M G, Potop-Butucaru M G. Brief announcement : discovering and assessing fine-grained metrics in robot networks protocols[C]// International Conference on Stabilization, Safety, and Security of Distributed Systems. Springer-Verlag, 2012:282-284.
+   \bibitem{r15}Halbwachs N, Caspi P, Raymond P, et al. The synchronous data flow programming language LUSTRE[J]. Proceedings of the IEEE, 2002, 79(9):1305-1320.
+   \bibitem{r16}Bérard B, Lafourcade P, Millet L, et al. Formal verification of mobile robot protocols[J]. Distributed Computing, 2016:1-29.
+   \bibitem{r17}Barnat J, Brim L, Havel V, et al. DiVinE 3.0 – An Explicit-State Model Checker for Multithreaded C & C++ Programs[C]// International Conference on Computer Aided Verification. Springer-Verlag, 2013:863-868.
+   \bibitem{r18}Colange M, Baarir S, Kordon F, et al. Towards Distributed Software Model-Checking Using Decision Diagrams[M]// Computer Aided Verification. Springer Berlin Heidelberg, 2013:830-845.
+   \bibitem{r19}Doan H T T, Bonnet F, Ogata K. Model Checking of a Mobile Robots Perpetual Exploration Algorithm[C]// International Workshop on Structured Object-Oriented Formal Language and Method. Springer-Verlag New York, Inc. 2016:201-219.
+   \bibitem{r20}Eker S, Meseguer J, Sridharanarayanan A. The Maude LTL Model Checker[J]. Electronic Notes in Theoretical Computer Science, 2004, 71(05):162-187.
+   \bibitem{r21}Clavel M, Durán F, Eker S, et al. All About Maude - A High-Performance Logical Framework[J]. 2007, 4350.
+   \bibitem{r22}Goranko V. Logic in Computer Science : Modelling and Reasoning About Systems[J]. Journal of Logic Language & Information, 2007, 16(1):117-120.
+   \bibitem{r23}Hagiya M, Mitchell J C. Proceedings of the International Conference on Theoretical Aspects of Computer Software[C]// International Conference on Theoretical Aspects of Computer Software. Springer-Verlag, 1994:257-271.
+   \bibitem{r24}Apt K R, Kozen D C. Limits for Automatic Verification of Finite-State Concurrent Systems.[J]. Information Processing Letters, 1986, 22(6):307-309.
+   \bibitem{r25}Clarke E M, Grumberg O, Jha S. Veryfying Parameterized Networks using Abstraction and Regular Languages[C]// International Conference on Concurrency Theory. Springer-Verlag, 1995:395-407.
+   \bibitem{r26}Hagiya M, Mitchell J C. Proceedings of the International Conference on Theoretical Aspects of Computer Software[C]// International Conference on Theoretical Aspects of Computer Software. Springer-Verlag, 1994:257-271.
+   \bibitem{r27}Cavada R, Cimatti A, Dorigatti M, et al. The nuXmv Symbolic Model Checker[C]// International Conference on Computer Aided Verification. Springer-Verlag New York, Inc. 2014:334-342.
+   \bibitem{r28}Clarke, E., Grumberg, O., Peled, D.: Model Checking. MIT Press, Cambridge, 2001.
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   \bibitem{r29}
+   
+   		
 \end{thebibliography}

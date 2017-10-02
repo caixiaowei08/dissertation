@@ -234,7 +234,7 @@
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{致谢}
-\input suffix/D2-ACHNOWLEDGEMENT.tex
+%\input suffix/D2-ACHNOWLEDGEMENT.tex
 \pagestyle{plain}
 \cleardoublepage
 \phantomsection
