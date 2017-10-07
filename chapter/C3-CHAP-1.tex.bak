@@ -1,6 +1,5 @@
-\chapter{永恒探索算法}
-
-离散模型中，探索空间一般抽象为一个无向连通图，图的每个结点代表空间上机器人可达的位置，边代表机器人可以通过的路径，机器人沿着该路径到达相邻的空间位置。空间中每个位置结点在同一个时间至多只有一个机器人。
+\chapter{机器人永恒探索算法}
+未知空间永恒探索的研究中，空间模型是离散空间模型，离散空间可以将空间划分为有限的空间位置结点和有限的移动路径。空间模型离散空间模型使用无向连通图来表示，图的结点表示离散空间的位置，图的边表示机器人可以通过的路径。在离散空间模型中，在同一时刻每个空间位置结点至多只能有一个机器人。
 
 \begin{figure}[!hbt]
 	\centering
@@ -9,37 +8,55 @@
 	\label{fig:normalspace}
 \end{figure}
 
-如图\ref{fig:normalspace}给出了一个简单的离散探索空间的无向连通图表示，黑色结点表示该空间位置在此刻有一个机器人，白色结点说明该空间位置上没有机器人，图中有三个机器人，分别位于三个黑色的空间结点上。类似于计算机网络拓扑结构，探索空间结构也有总线拓扑结构、星型拓扑结构、环形拓扑结构、树形拓扑结构等。
+如图\ref{fig:normalspace}是一个简单的离散空间模型，黑色结点表示该空间位置在此刻有一个机器人，白色结点说明该空间位置上没有机器人，空间中有三个机器人，分别位于三个黑色的空间位置结点上。离散空间的结构有很多，比如总线拓扑结构、星型拓扑结构、环形拓扑结构、树形拓扑结构等等。
 
-\subsection{机器人移动三个阶段}
-离散空间上每个机器人的移动分为三个阶段，分别是观察(look)、计算(compute)和移动(move).在观察阶段，机器人通过自身的视觉传感器，获取空间环境中其他机器人的位置快照信息。然后进入计算阶段，计算阶段根据观察阶段获取的位置快照信息，匹配自身预先设置的移动算法，计算得出下一步的移动策略。移动策略包括机器人是否移动，若是移动，则是沿着那条路径进行。移动阶段，机器人的动力装置按照计算阶段的所得移动决策作出对应的移动。
+\section{机器人移动}
+在离散空间模型中，机器人可以沿着某条边从一个位置结点到达相邻的位置结点，如图\ref{fig:robotmove} 所示：
 
 \begin{figure}[!hbt]
 	\centering
-	\includegraphics[width=3 in]{fig/robotthreephase.png}
+	\includegraphics[width=5 in]{fig/robotmove.png}
+	\caption{机器人在离散空间模型中的移动}
+	\label{fig:robotmove}
+\end{figure}
+
+在位置结点Position1上的机器人Robot1沿着边移动，到达相邻的位置结点Position2上。相邻位置结点的定义是，两个位置结点通过一条边相连接，它们互为相邻位置结点，例如图中的位置结点Position1 和位置结点Position2 就是互为相邻位置结点。离散空间模型中的机器人移动两个基本特点：第一，有通往其他位置结点的边；第二，机器人每次移动之后，只能通过一条边，到达另外一个相邻位置结点之后，一个移动动作就完成，到达相邻位置结点之后，会重新开始一个移动动作。
+
+自主移动机器人需要根据环境信息，匹配自身的移动算法做出移动决策，完成移动。如图\ref{fig:robotthreephase}机器人的移动动作可以分为三个阶段：观察(look)、计算(compute)和移动(move)。机器人在观察阶段，通过装备的视觉传感器，获取未知空间中其他机器人的位置快照。在计算阶段，通过匹配移动算法，获取机移动决策。在移动阶段，机器人的动力装置按照计算阶段获取移动决策完成移动。
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=2 in]{fig/robotthreephase.png}
 	\caption{机器人移动三阶段}
 	\label{fig:robotthreephase}
 \end{figure}
 
-如图\ref{fig:robotthreephase}描述了机器人移动的三个阶段，这三个阶段按照观察阶段、计算阶段、移动阶段，完成移动阶段之后又进入观察阶段，这样不断重复三个移动阶段。
+机器人的观察、计算和移动是周期性重复进行的，当机器人完成移动之后，会进入观察阶段，获取周围的环境快照，快照匹配移动算法获取移动决策，在移动阶段完成移动，然后又进入观察阶段。
 
-\subsection{机器人移动调度模型}
-原有模式中，Suzuki假设空间中机器人个数大于0，机器人的移动三个阶段具有原子性，且机器人之间的运动过程是同步的，提出了移动调度策略的两种变体，分别是完全同步调度模型FSYNC(fully-synchronous model)和半同步调度模型SSYNC(semi-synchronous model)。 后来由Flocchini等人提出了异步调度模型ASYNC (asynchronous model),该异步调度模型中，机器人观察,计算,移动三个移动阶段不再具备原子性，这样可能会出现机器人使用过时的快照信息做出移动决策。
+\section{调度策略}
+在多自主移动机器人协作完成空间探索任务中，机器人调度是指机器人移动的三个阶段是否同步执行。假若有两个机器人A 和B，机器人A 在观察阶段时，机器人B也在观察阶段；机器人A在计算阶段时，机器人B 也在计算阶段；机器人A 在移动阶段时，机器人B 也在移动阶段，那么称机器人A和B是同步的，即机器人A和B的移动动作具备原子性。机器人的调度策略有三种：半同步调度策略\verb|(semi-synchronous model，SSYNC)|、完全同步调度策略\verb|(fully-synchronous model，FSYNC)|和完全异步调度策略\verb| (asynchronous model)|
 
-下面使用数学和算法知识来描述完全同步调度模型、半同步调度模型、异步调度模型具体的内容。
+为了方便描述调度策略，首先介绍以下几个概念。使用集合$Rob =\left\{k \in N^+ |r_1,r_2,r_3,...,r_k\right\}$ 表示未知空间中所有机器人，$k$是机器人个数，$r_k$表示机器人。使用集合$Pos =\left\{n \in N^+ |1,2,...,n\right\}$ 表示空间所有空间位置结点，$n$ 是空间位置结点个数，使用数字给空间中位置结点都进行了编号$1,2,...,n$。映射关系$c:\left\{Rob \rightarrow Pos\right\}$ 表示机器人所在的空间位置。机器人r 的空间位置定义为$c\left(r\right)$。 对于集合Rob 中的任意两个机器人$r_i,r_j\left(i \neq j \right)$, 在同一时刻满足$c\left(r_i\right) \neq c\left(r_j\right)$，即同一时刻，空间中任意一个位置结点上至多只有一个机器人。
 
-假设在一个离散空间中存在$k\left(k \in N^+ \right)$个机器人，使用集合$Rob =\left\{r_1,r_2,r_3,...,r_k\right\}$ 表示。空间位置结点可以按照一定顺序，对其进行编号，编号是空间位置结点的唯一标识，使用集合$Pos =\left\{n \in N^+ |0,1,2,...,n-1\right\}$ 表示空间所有空间位置结点，每个元素对应唯一一个空间位置结点。机器人是在空间位置结点上的，所以机器人与空间位置结点的映射关系使用$p:\left\{Rob \rightarrow Pos\right\}$表示，机器人r 在某个时间所在图中的位置结点编号就为$p\left(r \in Pos \right)$。对于Rob 中的任意两个机器人$r_i,r_j\left(i \neq j \right)$, 在任意一个时刻满足位置结点不相同$p\left(r_i\right) \neq p\left(r_j\right)$, 即空间中任意时刻一个位子结点上至多只有一个机器人。
 
-前面使用数学中的集合和映射定义了探索的离散空间、机器人已经机器人在空间结点上的函数关系，在此基础上，下面将介绍机器人移动的三种调度模型。完全同步调度模型是半同步调度模型的一种特殊情况，所以先介绍半同步调度模型，在介绍完全同步调度模型。完全异步调度模型完全与前面两种调度模型由较大区别，所以放在最后介绍。
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=2 in]{fig/robcollection.png}
+	\caption{空间位置结点和机器人符号描述}
+	\label{fig:robcollection}
+\end{figure}
 
-将机器人移动的一个完整的观察、计算、移动称为完整移动阶段，在半同步调度模型中，Rob集合中只有选中的机器人才进行完整移动阶段。而半同步调度模型所有机器人都是同步而且观察、计算、移动都是具备原子性，所以可以每次选中的机器人是一个非空集合$Sched  \subseteq Rob $,在一个完整移动阶段开始之前，只有选入集合Sched的机器人才会执行完整移动阶段，即$\forall r \in Sched$执行观察、计算、移动，而$\forall r \notin Sched  $不执行。等到下一个完整移动阶段之前，又会从Rob 随机选择一个机器人$Sched  \subseteq Rob $，重复上述过程。这就是半同步调度模型机器人调度的性质。下面使用简易算法过程，详细描述一下半同步调度模型中机器人执行完整移动阶段的过程。
+图\ref{fig:robcollection}中描述的离散空间中有三个机器人$r_1,r_2,r_3$,使用集合表示为$Rob =\left\{r_1,r_2,r_3\right\}$。 空间位置结点的集合为$Pos =\left\{n \in N^+ |1,2,3,4,5,6,7,8,9,10\right\}$。机器人$r_1$的位置表示为$c\left(r_1\right) = 1$，机器人$r_2$的位置表示为$c\left(r_2\right) = 4$，机器人$r_3$ 的位置表示为$c\right(r_3\right) = 10$。
+
+\paragraph{半同步调度策略}
+半同步调度策略中，只有被调度器选中的机器人，才会执行移动过程。为了方便描述，这里定义调度集合$Sched$，使用伪算法描述半同步调度策略：
 
 \begin{lstlisting}
 SSYNC-SCHEDULE(Rob)
   while
     choose Sched from Rob
-    synchronous {
-       foreach r in Sched{
+    foreach r in Sched{
+       synchronous {
           r.look
           r.compute
           r.move
@@ -47,30 +64,32 @@ SSYNC-SCHEDULE(Rob)
     }
 \end{lstlisting}
 
-半同步调度模型SSYNC-SCHEDULE的传入参数是机器人集合Rob,首先从Rob集合中选择子集合Sched且$Sched \neq \emptyset$。关键字\verb|synchronous| 表示同步块中所有机器人同步完成移动阶段。在Sched 集合中的每个机器人开始同步执行观察、计算、移动。完成之后，又重新开始随机选择子集合Sched，重复不断执行上述过程。
+伪算法的名称为\verb|SSYNC-SCHEDULE|表示半同步调度策略，空间中所有的机器人组成的集合$Sched$作为伪算法的参数参数。$choose \ Sched \ from \ Rob$表示从机器人集合$Rob$中选取一个子集$Sched$，并且子集$Sched$ 非空。\verb|foreach r in Sched|表示对于集合$Sched$中的每个机器人都同步执行观察、计算和移动过程。等移动完成之后，又进入下一个移动动作。在下一个移动动作开始之前，又重新选择调度子集$Sched$，\verb|while|表示重复上述机器人移动执行过程。这就是多机器人半同步调度策略的过程。
 
-完全同步调度模型是半同步调度模型中一种很特殊的情况，每次随机选择的集合$Sched = Rob $,即每次完整移动阶段之前在集合Rob 中所有的机器人都被选中。使用算法过程描述如下：
+\paragraph{完全同步调度策略}
+完全同步调度模型是半同步调度模型中一种很特殊的情况，每次移动动作之前选取调度子集$Sched$等于$Rob$，即每次调度的时候，集合$Rob$中的所有机器人都被选中。完全同步调度策略的伪算法描述如下：
 
 \begin{lstlisting}
 FSYNC-SCHEDULE(Rob)
-  while
-    synchronous {
-       foreach r in Sched{
-          r.look
-          r.compute
-          r.move
-       }
-    }
+   while
+     foreach r in Rob{
+        synchronous {
+           r.look
+           r.compute
+           r.move
+        }
+     }
 \end{lstlisting}
 
-同半同步调度模型相对较而言，完全同步调度模型只是在每次选择集合$Sched$有所不同，其他过成完全相同。
+伪算法的名称为\verb|FSYNC-SCHEDULE|表示完全同步调度策略，除了$foreach \ r \ in \ Rob$这部分与半同步调度策略的伪算法不一样，其他部分都相同。由于每次选取的调度子集$Sched$等于$Rob$，所以这部分伪算法简化了调度过程，直接使用集合$Rob$作为调度集合。
 
-而完全异步调度模型中，所有的机器人观察、计算、移动都是异步，没有原子性。类似于计算机系统的多线程，每个机器人的移动都是并行且互相之间没有同步约束，当一个机器人在观察时，其他机器人可能在执行计算或者移动。每个机器人执行移动的快慢完全是随机的，所以肯能会出现机器人在观察阶段通过视觉传感器获得快照是过时的。
+\paragraph{完全异步调度策略}
+完全异步调度策略中，所有的机器人观察、计算、移动都是异步，没有原子性。类似于计算机系统的多线程，每个机器人的移动都是并行且互相之间没有同步约束，当一个机器人处于观察阶段时，其他机器人可能处于计算阶段或者移动阶段。完全异步调度策略的伪算法如下：
 
 \begin{lstlisting}
 ASYNC-SCHEDULE(Rob)
-    asynchronous {
-       foreach r in Rob{
+    foreach r in Rob{
+       asynchronous {
            while{
               r.look
               r.compute
@@ -80,75 +99,88 @@ ASYNC-SCHEDULE(Rob)
     }
 \end{lstlisting}
 
-上述完全异步调度模型算法中，关键字\verb|synchronous|表示Rob中所有的机器人都异步执行移动，对于每个机器人而言，都是在按照顺序不断重复执行观察、计算和移动过程，即整个过程中机器人都是并行执行完整移动阶段。
+伪算法的名称为\verb|ASYNC-SCHEDULE|，表示完全异步调度策略，关键字异步\verb|asynchronous|表示$Rob$中机器人是独立执行移动动作，执行观察、计算和移动的快慢，完全是自己执行速度所决定的。可能出现一种情况当某个机器人已经获取了空间环境快照，还未能执行计算或者移动时，其他机器人却完成了移动，改变了空间环境，这就会出现某些机器人使用过时环境信息，做出移动决策。\verb|while|表示在完全异步调度策略中，所有机器人都是不断循环的执行观察、计算和移动。
 
 \section{环形空间探索算法}
-探索空间结构有总线拓扑结构、星型拓扑结构、环形拓扑结构、树形拓扑结构,不同的探索空间结构有各自的特点，本文以环形拓扑结构空间为例.首先介绍环形拓扑结构环上的机器人视觉快照、匹配移动算法获取移动决策、移动决策的执行.在此基础上,将介绍永恒探索移动算法的相关概念.
+未知空间结构有总线结构、星型结构、环形结构、树形结构等等。通常的研究是根据某种空间结构的特点，对空间进行建模与分析。本文使用环形空间为研究对象，详细介绍在环形空间中机器人的视觉快照和移动算法表示方法，以及移动算法匹配过程。最后，介绍一下环形空间最小移动算法。
 
-\subsection{机器人视觉快照}
-图\ref{fig:ring}给出一个简单的环形拓扑结构探索空间的例子。根据环形空间的自身特点，沿着环的顺时针方向，从\verb|0| 开始递增进行编号。所有位置编号组成的集合为Pos，图中黑色结点表示该位置结点上有机器人，白色结点表示该位置结点上没有机器人。下面给出某个时刻某个结点上机器人的数量的定义。
-
-\vspace{0.5cm}
+\subsection{环形空间}
+如图\ref{fig:ring1}是一个典型的环形空间模型，空间位置结点按照顺时针方向依次进行编号$1,2,3...,n$，图中有$n$个空间位置结点。
 
 \begin{figure}[!hbt]
 	\centering
-	\includegraphics[width=2 in]{fig/ring.png}
-	\caption{环形拓扑结构探索空间}
-	\label{fig:ring}
+	\includegraphics[width=2 in]{fig/ring1.png}
+	\caption{环形空间}
+	\label{fig:ring1}
 \end{figure}
 
-\vspace{0.5cm}
+环形空间中位置结点的集合表示为$Pos =\left\{1,2,...,n\right\}$，环形空间有自身的一些特点:1、每个空间位置结点都有左右两个相邻的位置结点，例如位置结点$1$的左边(逆时针)是位置结点$n$,右边(顺时针)是位置结点$2$。2、每个空间位置与左右相邻的位置结点，都有各自有条边(路径)连通。3、机器人每次移动，只能顺时针或者逆时针进行移动。例如图中机器人$r_1$可以顺时针移动到位置结点$2$, 也可以逆时针移动到位置结点$n$。环形空间中的位置结点上，也必须是在同一时刻至多只能有一个机器人。
 
-\begin{bfseries} 定义1\quad(机器人所在位置编号)\end{bfseries}对于机器人\verb|r|，其所在探索空间中位置的编号使用符号$c_{\left(r\right)}$,$c_{\left(r\right)} \in Pos$。
+\subsection{环境快照}
+机器人可以通过视觉传感器获取环境快照，在环形空间中，可以沿着顺时针或者逆时针方向，获取环境快照。对于机器人而言，只能判断某个空间位置结点上是否有机器人。
 
-\vspace{0.5cm}
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=3.5 in]{fig/snapshot1.png}
+	\caption{结点机器人的描述}
+	\label{fig:snapshot1}
+\end{figure}
 
-\begin{bfseries} 定义2\quad(结点机器人个数)\end{bfseries}结点机器人数$d_j$，\verb|j|表示结点的编号$j \in Pos $，当结点\verb|j|上有$k \left(k > 0\right)$机器人表示为$d_j = k$, 本文中同一时刻每个结点至多有一个机器人，在结点上存在机器人时$d_j = 1$， 当结点\verb|j| 没有机器人时，表示为$d_j = 0$。
+如图\ref{fig:snapshot1}使用符号$d_j$表示空间位置结点$j$上是否有机器人，其中$j \in Pos $。当空间位置结点$j$上，有机器人时，那么$d_j = 1$，表示该空间位置结点上有$1$个机器人。当空间位置结点上没有机器人时，那么$d_j = 0$，表示该空间位置结点上有$0$个机器人。
 
-\vspace{0.5cm}
+假设在空间位置$j$上有一个机器人$r$，即$ d_j = 1 \land c\left(r\right) = j$。使用符号$\delta_{c\left(r\right)}^F$ 表示机器人$r$的环境快照，其中\verb|F|表示机器人获取环境快照的方向，$F \in \left\{+,-\right\}$，\verb|+|表示顺时针，\verb|-| 表示逆时针。
 
-在环形拓扑结构的离散空间中，空间中的每个机器人可以顺时针观察，也可以逆时针观察。那么机器人每次观察的位置信息快照就有顺时针位置信息快照和逆时针位置信息快照两种，为了方便描述，给出某个位置上机器人获取位置信息快照的定义，如下：
+在有\verb|n|个位置结点的环形空间上，空间位置结点\verb|j|上机器人r的顺时针和逆时针环境快照如下：
 
-\vspace{0.5cm}
+\verb|顺时针环境快照：| $\delta_{c\left(r\right)}^+ = \left\langle d_j,d_{j+1},...,d_{j+n-1}  \right\rangle.$
 
-\begin{bfseries} 定义3\quad(机器人快照)\end{bfseries}离散空间上位置结点$p \in Pos$，\verb|j|上的机器人通过视觉传感器获取的位置快照为$\delta_p^F$，其中$F \in \left\{+,-\right\} $,\verb|+|表示顺时针，\verb|-|表示逆时针。
+\verb|逆时针环境快照：| $\delta_{c\left(r\right)}^- = \left\langle d_j,d_{j-1},...,d_{j-n+1}  \right\rangle.$
 
-\vspace{0.5cm}
+具体看一个实例，在图\ref{fig:snapshot1}中空间位置结点\verb|1|上的机器人顺时针和逆时针环境快照如下：
 
-在拥有\verb|n|个位置结点的环形拓扑结构的探索空间上，任意位置结点\verb|j|上机器人的顺时针和逆时针快照如下：
+\verb|顺时针环境快照：| $\delta_1^+ = \left\langle 1,0,0,1,0,0,0,0,1,0,... \right\rangle.$
 
-\verb|顺时针序列定义：| $\delta_p^+ = \left\langle d_j,d_{j+1},...,d_{j+n-1}  \right\rangle.$
+\verb|逆时针环境快照：| $\delta_1^- = \left\langle 1,0,...,0,1,0,0,0,0,1,0,0 \right\rangle.$
 
-\verb|逆时针序列定义：| $\delta_p^- = \left\langle d_j,d_{j-1},...,d_{j-n+1}  \right\rangle.$
+使用上述环境快照表达方式，比较直接、简洁。但是当环形空间中位置结点数较多或者未知时，这种表达式就十分长，不容易书写或者存储。\verb|F-R|表达式\cite{r5}描述环境快照就可以很好的避免这些问题，\verb|F-R| 表达方式中使用$F_m$ 表示连续m个没有机器人空间位置结点数，$R_n$表示连续\verb|n|个有机器人空间位置结点数。
 
-如图\ref{fig:ring}中以位置编号为0的结点为例，其结点上机器人的顺时针和逆时针位置信息快照如下：
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=3.5 in]{fig/frsnapshot.png}
+	\caption{环形空间F-R快照表达式}
+	\label{fig:frsnapshot}
+\end{figure}
 
-\verb|顺时针序列1：| $\delta_0^+ = \left\langle 1,0,0,1,0,0,0,0  \right\rangle.$
+图\ref{fig:frsnapshot}中有\verb|n|个机器人，机器人$r_1$顺时针方向，有连续4个空间位置上有机器人，可以使用$R_4$ 表示。紧跟顺时针方向又有连续的三个无机器人的空间位置结使用$F_3$表示。那么在空间位置结点$1$的上的机器人$r_1$的顺时针\verb|F-R| 快照表达式为$\delta_{c\left(r_1\right)}^+ = \left\langle R_4,F_3,R_2,F_{n-9}\right\rangle$。 可以看出在\verb|F-R| 快照表达式中，使用具体整数或者未知参数表示连续的空间位置，这样的描述不仅缩短了表达式的长度，而且描述能力更强。当在未知环形空间位置结点数量，\verb|F-R|快照表达式也可以很方便的进行描述。
 
-\verb|逆时针序列1：| $\delta_0^- = \left\langle 1,0,0,0,0,1,0,0  \right\rangle.$
+\subsection{环境快照}
+环形空间中，机器人的位置关系可能会出现对称性的情况。若是出现对称，可能导致某个机器人的顺时针和逆时针环境快照完全相同，或者两个对称的机器人环境快照相同。
 
-虽然上述位置快照信息描述比较简洁和直观，但是当空间结点数n较大时，位置快照信息就过长，不利于描述。后来由lelia.blin在其文献[Ring]中提出了一种新的位置快照\verb|F-R|表达方式，\verb|F-R|表达方式中使用$F_m$ 表示连续的\verb|m|个空间位置结点上没有机器人，$R_n$表示连续的\verb|n|个空间位置结点上有机器人。那么顺时针序列1 和逆时针序列1转化为F-R的表达方式为：
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=3.5 in]{fig/symmetric.png}
+	\caption{环形空间对称}
+	\label{fig:symmetric}
+\end{figure}
 
-\verb|顺时针F-R序列1：| $\delta_0^+ = \left\langle R_1,F_2,R_1,F_4  \right\rangle.$
+如图\ref{fig:frsnapshot}，有四组对称环形空间模型，A中机器人$r_1$的顺时针和逆时针F-R快照表达式为：
 
-\verb|逆时针F-R序列1：| $\delta_0^- = \left\langle R_1,F_4,R_1,F_2   \right\rangle.$
+ $\delta_{c\left(r_1\right)}^+ = \left\langle R_1,F_2,R_1,F_1,R_1,F_2 \right\rangle.$
 
-\vspace{0.5cm}
+ $\delta_{c\left(r_1\right)}^- = \left\langle R_1,F_2,R_1,F_1,R_1,F_2 \right\rangle.$
 
-\begin{bfseries} 定义4\quad(机器人快照F-R表达式)\end{bfseries}\verb|k|$\left(k \in N^+  \right)$个机器人在\verb|n| $\left(n \in N^+  \right)$个位置结点环形空间中，且$k < n$,使用符号\verb|R|和\verb|F|所组成的符号序列表示机器人快照。带下标的$R_i$表示连续\verb|i|个空间位置结点，每个位置结点被一个机器人占据。带下标的$F_j$表示连续\verb|j|个空间位置结点，每个位置结点上都没有机器人。
+ 可以看出$\delta_{c\left(r_1\right)}^+$和$\delta_{c\left(r_1\right)}^-$完全相同。B中机器人$r_4$和$r_5$，B中机器人$r_6$和$r_7$是对称的。A中位置结点个数是偶数，D中位置结点个数是奇数，表明环形空间位置结点数，无论是奇数还是偶数，都可能会出现对称的情况。
 
-\vspace{0.5cm}
+\subsection{移动算法}
+在环形空间中，机器人有三种可能的移动策略：不移动，顺时针移动、逆时针移动。而对于无方向识别能力的机器人而言，其移动策略只能依据当前环境快照做出前进或者后退的移动策略。而环形空间具有对称性，所以机器人的移动策略有四种：$\left(Idle\right)$、 前进$\left(Front\right)$、 后退$\left(Back\right)$、 未确定$\left(Doubt\right)$。移动策略集合$MOVE = \left\{Idle,Front,Back,Doubt\right\}$。其中\verb|Doubt|表示机器人可以前进或者后退。
 
-机器人快照\verb|F-R|表达式不仅可以解决环形空间结点数n较大，不易描述的问题，而且可以通过下角标使用未知变量，表达连续没有机器人位置结点数和有机器人位置结点数，增强了表达式的灵活性、可读性和表达能力。
+移动算法是一组移动规则，移动规则使用符号\verb|L|表示，其结构如下：
 
-\subsection{机器人移动算法}
-机器人移动算法是保证自主机器人协同完成设的任务的核心，在同一个探索空间中的机器人都预先设置完全相同的移动算法。机器人的可能的移动策略取决于其所在探索图形状，本小节主要介绍环形探索图中的机器人移动算法。
+ $ L ：\delta_{c\left(r\right)}^F  \rightarrow  r.MOVE $
 
-环形探索图中，对于某个位置结点\verb|g|上的机器人来说，若其视觉快照$\delta_g^+ = \delta_g^-$，称为对称(symmetry)。由于对称情况的存在，所以机器人的移动存在四种方式：不移动$\left(Idle\right)$、 前进$\left(Front\right)$、后退$\left(Back\right)$、 未确定$\left(Doubt\right)$。未确定的情况是位置结点上的机器人顺时针视觉快照和逆时针视觉快照相同，那么该结点上机器人可能前进或者后退。未确定表示此时机器人随机选择前进或者后退。
+机器人\verb|r|的环境快照与\verb|L|的$\delta_{c\left(r\right)}^F$匹配时，机器人\verb|r|就执行移动规则\verb|L|中的移动决策$MOVE$。
 
-本文中的机器人移动算法，是机器人快照F-R表达式和对应四种移动方式组合而成。下面使用机器人最小移动算法为例，详细介绍机器人移动算法。最移动算法是指环形探索空间中，空间位置结点数$n \geq 10$,图上的机器人$k = 3$，且\verb|n|和\verb|k|数量关系上互质。最移动算法分为两个阶段：稳定阶段$\left(Legitimate\quad phase\right)$和收敛阶段$\left(Convergence\quad phase\right)$。
-
-\vspace{0.5cm}
+下面通过最小移动算法\cite{r5}的介绍，可以更详细的了解移动算法。最小移动算法是环形空间中使用最少的机器人完成未知空间永恒探索\cite{r5}。具体最小移动算法的条件是空间位置结点数$n \geq 10$,机器人数$k = 3$，且\verb|n|与\verb|k|互质。最小移动算法分为两个阶段：稳定阶段$\left(Legitimate\quad phase\right)$ 和收敛阶段$\left(Convergence\quad phase\right)$。
 
 \begin{table}[hbt]
     \centering
@@ -174,9 +206,9 @@ ASYNC-SCHEDULE(Rob)
 	\label{fig:perpetualexploration}
 \end{figure}
 
-\vspace{0.5cm}
+在图\ref{fig:perpetualexploration}中，所有机器人是依据最小移动算法执行移动。C1 中机器人A 的顺时针环境快照$\delta_{c\left( A\right)}^+$ 匹配移动算法$RL1$ 做出后退的移动决策，机器人A 从位置结点$n-1$移动到$n-2$, 其他机器人$B$ 和$C$此时没有匹配任何移动算法，保持静止。C2 中机器人B 的逆时针环境快照${delta_{c\left( B\right)}^-}$ 匹配移动算法$RL2$，做出前进的移动决策，机器人A从位置结点$0$ 移动到$n-1$。 同样机器人C 的逆时针环境快照，匹配移动$RL3$ 做出前进的移动决策，从位置结点$3$ 移动到$2$。此时，\verb|C4|相对于\verb|C1|是所有的机器人向顺时针方向移动了一个位置。\verb|C4|和\verb|C1|所有机器人的环境快照完全相同。意味着所有机器人会按照上述C1到C4过程重复执行移动过程。
 
-在图\ref{fig:perpetualexploration}中，给出了三个机器人按照预设的稳定阶段算法运动过程的例子，C1 中机器人A 的顺时针位置信息快照${delta_{c\left( A\right)}^+}$匹配移动算法$RL1$做出后退的移动决策，机器人A从位置结点$n-1$移动到$n-2$,其他机器人$B$和$C$此时没有匹配任何移动算法，保持静止。C2 中机器人B 的逆时针位置快照${delta_{c\left( B\right)}^-}$匹配移动算法$RL2$，做出前进的移动决策，机器人A从位置结点$0$移动到$n-1$。 同样机器人C 的逆时针位置快照信息，匹配移动$RL3$做出前进的移动决策。图中C1和C4进行对比，图中三个机器人的位置都向顺时针移动了一位，C4中A获取的位置信息F-R 表达式同C1 中的A 获取的位置信息F-R表达式相同。意味着整个系统会按照上述C1到C4过程重复执行，而且每次执行之后，所有机器人都会向逆时针方向移动一位。这说明系统进入了稳定阶段，稳定阶段的系统状态称为稳定状态。系统进入稳定状态之后，就会一直停留在稳定阶段中。介绍了最小移动算法的稳定阶段之后，下面介绍其收敛阶段。
+像这样所有机器人在某一个状态开始，循环执行一组移动规则，而且在移动规则下，所有机器人都向某一个固定的方向移动，称为稳定阶段。相对于稳定阶段的是收敛阶段：
 
 \begin{table}[hbt]
     \centering
@@ -197,70 +229,63 @@ ASYNC-SCHEDULE(Rob)
     \label{table:minalgotithmconvergence}
 \end{table}
 
-在表\ref{fig:minalgotithmconvergence}中，是最小算法的收敛算法，系统状态除了稳定状态之外的都称为收敛状态，系统任意收敛状态都可以通过收敛算法到达稳定状态。下面将以最小移动算法为例，具体介绍系统如何从任意的一个状态到达稳定状态。
-
-\vspace{0.5cm}
+在表\ref{fig:minalgotithmconvergence}中是最小算法的收敛阶段。在未知空间中，机器人的初始位置可以是任意的，机器人通过收敛阶段可以到达稳定阶段。
 
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[width=6 in]{fig/cp_lp.png}
-	\caption{最小机器人移动算法状态转移}
+	\caption{稳定阶段和收敛阶段}
 	\label{fig:cp_lp}
 \end{figure}
 
-\vspace{0.5cm}
+通过图\ref{fig:cp_lp}来解释最小移动算法的收敛阶段和稳定阶段。图中每个长方形块表示整个环形空间可能出现的环境状态。收敛阶段使用集合\verb|LC|表示，集合$LC$包含$\left\{A,B,C,D,G,H\right\}$环境状态。稳定阶段环境使用集合\verb|RL|表示，集合$RL$包含$\left\{E,F,I\right\}$环境状态。图中包含了所有最小移动算法中，机器人所有可能初始的位置。
 
-图\ref{fig:cp_lp}，描绘了完全同步调度模型和半同步调度模型中，最小移动算法中的稳定阶段和收敛阶段的所有状态，移动机器人所在空间位置结点上的视觉快照，匹配移动算法中状态，满足则按照对应的移动策略做出移动动作。每当机器人做出移动之后，空间中位置信息就会发生变化，系统的状态发生改变。虚线方框中的表示稳定阶段的三种状态，构成了有向强连通图。进入稳定阶段的状态，就会在三种状态之间按照箭头指向顺序，不断重复转换，再也不能进入除此三种状态以外的状态了。对于虚线以外的状态称为收敛状态，收敛状态可以通过收敛算法逐渐到达稳定状态。
+下面详细介绍一下\verb|E|到\verb|I|的状态变化过程，状态变化过程也基本相同，可以参照理解。
 
-\section{探索终止和永恒探索}
-由Flocchini在文献[1]提出了探索终止(exploration with stop)问题，所谓探索终止是指空间中每个位置结点都会被至少一个机器人访问一次，在空间上每个结点都被访问之后，所有机器人都停止不动。Flocchini证明了环形空间，位置结点数n 和机器人数k ，若n对k取模为0，那么没有移动算法满足探索终止性质。同时，文献中给出一组确定性的移动算法,在机器人数$k \geq 17$,机器人数k与结点n互质时，满足探索终止性。永恒探索(perpetual exclusive exploration) 是指空间中每个机器人对空间中的每个结点重复的访问，并且该过程是不停止的。
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=5 in]{fig/stateexchange.png}
+	\caption{环境快照状态变化}
+	\label{fig:stateexchange}
+\end{figure}
 
-探索终止和永恒探索是都是自主机器人对空间位置结点的巡查模式，这两种巡查模式都是确保机器人协作完成预设探索空间任务的方式。探索终止和永恒探索只有微小区别，在本质上是所有空间位置结点都被机器人访问。本小节介绍探索终止和永恒探索具体内容。
+环境状态$R2,F2,R1,Fz$变化$R1,F1,R1,F2,R1,Fz-1$的过程中，是由于机器人$r_1$匹配移动规则$RL_1$之后，做出向后移动决策。由此可知图\ref{fig:cp_lp}中是由于机器人的移动，导致环境状态的变化。
 
-\subsection{探索终止}
-对于环形探索空间来讲，无论空间中所有机器人在什么初始位置，给出一个移动算法使得机器人组在有限时间内满足探索终止。这可以归纳为两条性质，如下：
+由图\ref{fig:cp_lp}可知，最小移动机器人算法中所有的非稳定状态，都可以通过收敛阶段到达稳定状态。进入稳定状态之后，就不会回到收敛状态。稳定状态是一个闭环图，进入稳定状态之后，所有机器人都循环执行稳定阶段的移动算法。
 
-\vspace{0.2cm}
+\section{永恒探索}
+永恒探索是空间中所有机器人满足对空间中所有位置结点进行重复访问的性质。永恒探索只是移动算法满足非冲撞性(No collision)，非互换性(No switch)，非终止性(Live)。
 
-\begin{bfseries}探索性(Exploration):\end{bfseries}环上每个结点至少被一个机器人访问。
+\subsection{非冲撞性}
+冲撞是指在环形空间中，某个空间位置结点上，同一时刻有2个或者更多的机器人。
 
-\begin{bfseries}终止性(Termination):\end{bfseries}在满足探索性前提下，最终到达某一状态使得所有的机器人都保持静止，不再移动！
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=5 in]{fig/collision.png}
+	\caption{冲撞}
+	\label{fig:collision}
+\end{figure}
 
-\vspace{0.2cm}
+如图\ref{fig:collision}所示，当机器人$r_2$移动到机器人$r_1$所在空间位置结点或者机器人$r_1$和$r_2$同时移动到同一个空间位置结点时，就会发生碰撞，所谓非冲撞性，则是指所有机器人移动过程中，永远不会发生冲撞。
 
-对于第二条性质而言，要求机器人"记住"环形探索图中有多少位置结点已经被访问了，即这些没有记忆存储的机器人通过它们当前获取的视觉快照，区分探索过程中不同阶段。这两种属性也可以使用LTL公式来表示，如下：
+\subsection{非互换性}
+互换是指相邻的两个机器人，下一个状态时，它们所在的空间位置发生的互换。
 
-\vspace{0.2cm}
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=5 in]{fig/switch.png}
+	\caption{互换}
+	\label{fig:switch}
+\end{figure}
 
-\begin{bfseries}探索性(Exploration):\end{bfseries}$\bigwedge_{j=0}^{n-1} \Diamond \left(d_j>0\right) $。
+如图\ref{fig:switch}所示，机器人$r_1$和$r_2$同时相对移动，导致下一个状态时，机器人的位置发生的互换。非互换性是指这种机器人互换空间位置的情况在机器人移动过程中，永远不会发生。
 
-\begin{bfseries}终止性(Termination):\end{bfseries}$\bigwedge_{j=0}^{n-1} \Diamond \left(d_j>0\right)  $。
-
-\vspace{0.2cm}
+\subsection{非终止性}
 
 
 
-\subsection{永恒探索}
-对于一个环形探索空间中，机器人任意初始状态，每个机器人在预设的移动算法下，都可以对环形探索空间中的任意一个位置结点无限反复的进行访问。对于同于的位置结点而言，在同一时刻至多只能有一个机器人占据，称为非冲撞性(No collision)。对于相邻的两个机器人，不能同时通过相邻边互换空间位置，即相邻的两个机器人不能在相邻的边上发生碰撞，该性质称为非互换性(No switch)。 环形图中每个机器人都必须对探索空间中任何一个位置结点进行反复的访问，且永不停止，称为非终止性(Live)。上述三条性质就是永恒探索内在意义，满足上述三条性质的算法称为永恒探索算法。下面使用LTL公式分别描述这三条性质：
 
-\vspace{0.2cm}
 
-\begin{bfseries}非冲撞性(No collision):\end{bfseries}$\bigwedge_{i=1}^{k} \bigwedge_{j=1}^{k} \Box \left(i \neq j \rightarrow c_{r_i} \neq c_{r_j}\right) $。
-
-\begin{bfseries}非互换性(No switch):\end{bfseries}$\bigwedge_{h=0}^{n-1}\bigwedge_{i=1}^{k}\bigwedge_{j=1}^{k}  \Box \left(c\left(r_i\right)=h \land  c \left(r_j \right) = \left(h + 1 \right) mod \ n $
-$ \rightarrow \Chi \left( \urcorner  \left(c\left(r_i\right)  = \left(h+1\right) mod \ n    \right)   \land c\left(r_j\right) =h \right)   \right)$。
-
-\begin{bfseries}非终止性(Live):\end{bfseries}$\bigwedge_{h=0}^{n-1} \bigwedge_{i=1}^{k} \Box \Diamond \left(c\left(r_i\right)=h\right)$。
-
-\vspace{0.2cm}
-
-上述三条LTL公式描述性质中，n表示探索空间的位置结点数，k表示探索空间中的机器人数。在异步调度模型中，上述三条性质都必须在公平性为前提，即任何一个机器人都可以被无限次的调度，才能满足永恒探索。公平性的LTL 公式描述如下：
-
-\vspace{0.2cm}
-
-\begin{bfseries}公平性(Fairness):\end{bfseries}$\bigwedge_{i=1}^{k} \Box \Diamond \left(r_i.running = true\right)$。
-
-\vspace{0.2cm}
 
 \section{本章小结}
 本章首先使用数学定义方式，分别描述了空间位置结点，机器人移动的三个阶段观察、计算和移动。将机器人移动的三个阶段是否有原子性，以及机器人是否同步移动为调度模型的划分依据，介绍了三种调度模型完全同步调度模型、半同步调度模型和异步调度模型。介绍了机器人视觉快照表达式，F-R视觉快照表达式更加灵活，且表达能力更强。移动机器人算法是以视觉快照为依据，所以移动机器人算法是以视觉快照和对应的预设移动组合的式子，后续由以最小移动算法为例，讲解了稳定阶段和收敛阶段。自主移动机器人的核心是机器人协作完成预设任务，所以介绍了探索终止和永恒探索两种任务问题，并使用LTL公式具体描述了其满足的性质。

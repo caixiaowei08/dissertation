@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.9.4)  27 SEP 2017 21:27
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.9.4)  6 OCT 2017 22:18
 entering extended mode
 **index.tex
 (E:\paper\index.tex
@@ -2119,14 +2119,10 @@ Requested font "SimHei/ICU:mapping=tex-text;embolden=4;" at 14.05pt
 
 
 LaTeX Font Warning: Font shape `EU1/SimSun(0)/m/sl' undefined
-(Font)              using `EU1/SimSun(0)/m/n' instead on input line 13.
+(Font)              using `EU1/SimSun(0)/m/n' instead on input line 15.
 
 [2] [3] [4] [5]) [6] (E:\paper\chapter/C2-CHAP-1.tex
 第二章
-[7
-
-
-]
 .................................................
 . fontspec info: "no-scripts"
 . 
@@ -2140,7 +2136,57 @@ LaTeX Font Warning: Font shape `EU1/SimSun(0)/m/sl' undefined
 . 
 . This font family consists of the following shapes:
 .................................................
- [8]
+[7
+
+
+]
+LaTeX Font Info:    Try loading font information for EU1+pcr on input line 15.
+LaTeX Font Info:    No file EU1pcr.fd. on input line 15.
+
+
+LaTeX Font Warning: Font shape `EU1/pcr/m/n' undefined
+(Font)              using `EU1/lmr/m/n' instead on input line 15.
+
+Requested font "[lmroman8-regular]:mapping=tex-text" at 8.0pt
+ -> D:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf
+Requested font "[SIMFANG.TTF]" at 8.0pt
+ -> C:/Windows/Fonts/SIMFANG.TTF
+Requested font "[SIMFANG.TTF]/ICU" at 8.0pt
+ -> C:/Windows/Fonts/SIMFANG.TTF
+.................................................
+. fontspec info: "no-scripts"
+. 
+. Font [SIMFANG.TTF] does not contain any OpenType `Script' information.
+.................................................
+\g_fontspec_family_[SIMFANG.TTF]_int=\count314
+Requested font "[SIMFANG.TTF]/I/ICU" at 8.0pt
+ -> C:/Windows/Fonts/SIMFANG.TTF
+Requested font "[SIMFANG.TTF]/I/I/ICU" at 8.0pt
+ -> C:/Windows/Fonts/SIMFANG.TTF
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family '[SIMFANG.TTF](0)' created for font '[SIMFANG.TTF]' with options
+. [Ligatures=TeX,BoldFont={[SIMFANG.TTF]},BoldFeatures={RawFeature={embolden=4}
+}].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"[SIMFANG.TTF]/ICU:mapping=tex-text;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"[SIMFANG.TTF]/ICU:mapping=tex-text;embolden=4;"
+. 
+. * 'italic' with NFSS spec.:
+. <->"[SIMFANG.TTF]/I/ICU:mapping=tex-text;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->"[SIMFANG.TTF]/I/ICU:mapping=tex-text;"
+.................................................
+Requested font "[SIMFANG.TTF]/ICU:mapping=tex-text;" at 8.0pt
+ -> C:/Windows/Fonts/SIMFANG.TTF
+[8]
 Requested font "Times New Roman/B/ICU:script=latn;language=DFLT;mapping=tex-tex
 t;" at 14.4pt
  -> C:/Windows/Fonts/timesbd.ttf
@@ -2166,143 +2212,15 @@ Requested font "SimHei/ICU" at 12.05pt
 .................................................
 Requested font "SimHei/ICU:mapping=tex-text;embolden=4;" at 12.05pt
  -> C:/Windows/Fonts/simhei.ttf
-LaTeX Font Info:    Try loading font information for EU1+pcr on input line 43.
-LaTeX Font Info:    No file EU1pcr.fd. on input line 43.
-
-
-LaTeX Font Warning: Font shape `EU1/pcr/m/n' undefined
-(Font)              using `EU1/lmr/m/n' instead on input line 43.
-
-Requested font "[lmroman8-regular]:mapping=tex-text" at 8.0pt
- -> D:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman8-regular.otf
-[9] [10]
 Requested font "[lmroman12-regular]:mapping=tex-text" at 12.0pt
  -> D:/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-regular.otf
- [11]
-Overfull \hbox (26.32446pt too wide) in paragraph at lines 180--181
-[]\xeCJK@rm/m/sl/12 在 分 配 定 义 的 左 侧，| 标 识 符[]\EU1/pcr/m
-/n/12 identifier \xeCJK@rm/m/sl/12 表 示 变 量 的 当 前 值，| 初 始 
-化 定 义[]\EU1/pcr/m/n/12 init(identifier)
+ [9]
+Overfull \hbox (21.5588pt too wide) in paragraph at lines 78--79
+\xeCJK@rm/m/sl/12 用 表 达 式 可 以 写 作[]\EU1/pcr/m/n/12 left_express
+ion_[k]\xeCJK@rm/m/sl/12 ，| $\OML/cmm/m/it/12 kin[]$\xeCJK@rm/m/sl/12 。| �
+� 于 所 有 的[]\EU1/pcr/m/n/12 left_expression_[k]
  []
 
-[12]
-
-LaTeX Font Warning: Font shape `EU1/pcr/bx/n' undefined
-(Font)              using `EU1/pcr/m/n' instead on input line 184.
-
-[13] [14] [15] [16] [17]) [18] [19] (E:\paper\chapter/C3-CHAP-1.tex
-第三章
-File: fig/normalspace.png Graphic file (type QTm)
-<use  "fig/normalspace.png" > [20
-
-
-]
-File: fig/robotthreephase.png Graphic file (type QTm)
- <use  "fig/robotthreephase.png" > [21]
-[22] [23]
-File: fig/ring.png Graphic file (type QTm)
- <use  "fig/ring.png" > [24]
-Requested font "[SIMFANG.TTF]" at 12.0pt
- -> C:/Windows/Fonts/SIMFANG.TTF
-Requested font "[SIMFANG.TTF]/ICU" at 12.0pt
- -> C:/Windows/Fonts/SIMFANG.TTF
-.................................................
-. fontspec info: "no-scripts"
-. 
-. Font [SIMFANG.TTF] does not contain any OpenType `Script' information.
-.................................................
-\g_fontspec_family_[SIMFANG.TTF]_int=\count314
-Requested font "[SIMFANG.TTF]/I/ICU" at 12.0pt
- -> C:/Windows/Fonts/SIMFANG.TTF
-Requested font "[SIMFANG.TTF]/I/I/ICU" at 12.0pt
- -> C:/Windows/Fonts/SIMFANG.TTF
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family '[SIMFANG.TTF](0)' created for font '[SIMFANG.TTF]' with options
-. [Ligatures=TeX,BoldFont={[SIMFANG.TTF]},BoldFeatures={RawFeature={embolden=4}
-}].
-. 
-. This font family consists of the following shapes:
-. 
-. * 'normal' with NFSS spec.:
-. <->"[SIMFANG.TTF]/ICU:mapping=tex-text;"
-. 
-. * 'bold' with NFSS spec.:
-. <->"[SIMFANG.TTF]/ICU:mapping=tex-text;embolden=4;"
-. 
-. * 'italic' with NFSS spec.:
-. <->"[SIMFANG.TTF]/I/ICU:mapping=tex-text;"
-. 
-. * 'bold italic' with NFSS spec.:
-. <->"[SIMFANG.TTF]/I/ICU:mapping=tex-text;"
-.................................................
-Requested font "[SIMFANG.TTF]/ICU:mapping=tex-text;" at 12.0pt
- -> C:/Windows/Fonts/SIMFANG.TTF
- [25] [26]
-Overfull \hbox (21.54718pt too wide) in paragraph at lines 156--166
- [][] 
- []
-
-File: fig/perpetualexploration.png Graphic file (type QTm)
-<use  "fig/perpetualexploration.png" >
-Overfull \hbox (42.96365pt too wide) in paragraph at lines 172--173
- [][] 
- []
-
-[27]
-
-LaTeX Warning: Reference `fig:minalgotithmconvergence' on page 28 undefined on 
-input line 200.
-
-File: fig/cp_lp.png Graphic file (type QTm)
-<use  "fig/cp_lp.png" >
-Overfull \hbox (6.82866pt too wide) in paragraph at lines 206--207
- [][] 
- []
-
-[28] [29]
-! Missing \right. inserted.
-<inserted text> 
-                \right .
-l.248 ...j \right) = \left(h + 1 \right) mod \ n $
-                                                  
-? 
-! Undefined control sequence.
-l.249 $ \rightarrow \Chi
-                         \left( \urcorner  \left(c\left(r_i\right)  = \left(...
-
-? 
-! Extra \right.
-l.249 ...nd c\left(r_j\right) =h \right)   \right)
-                                                  $。
-? 
-) [30] [31] (E:\paper\chapter/C4-CHAP-1.tex
-第四章
-! Misplaced alignment tab character &.
-<recently read> &
-                 
-l.5 ...��作观察计算，符号定义为lc(Look&
-                                                  Compute)，因为这两个...
-
-? 
-[32
-
-
-]
-File: fig/gap.png Graphic file (type QTm)
- <use  "fig/gap.png" >
-Overfull \hbox (6.82866pt too wide) in paragraph at lines 28--29
- [][] 
- []
-
-[33]
-! Extra }, or forgotten $.
-l.45 ...lta_{c\left(r\right)}^+ = c\left(r\right)}
-                                                  ^-$，也就是说机器�...
-
-? 
-[34]
 
 ! LaTeX Error: Undefined color `dark-gray'.
 
@@ -2310,22 +2228,12 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.50      next(move) :=          --
-                                   变量 move 在下一步的值
+l.86         TRUE : exprN; --
+                              otherwise
 ? 
 Requested font "Times New Roman/I/ICU:script=latn;language=DFLT;mapping=tex-tex
 t;" at 10.0pt
  -> C:/Windows/Fonts/timesi.ttf
-
-! LaTeX Error: Undefined color `dark-gray'.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.50      next(move) :=          --
-                                   变量 move 在下一步的值
-? 
 Requested font "Times New Roman/ICU:script=latn;language=DFLT;mapping=tex-text;
 " at 5.0pt
  -> C:/Windows/Fonts/times.ttf
@@ -2340,7 +2248,7 @@ Requested font "cmmib5" at 5.0pt
 Requested font "cmbsy5" at 5.0pt
  -> cmbsy5
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 50.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 86.
 Requested font "msam5" at 5.0pt
  -> msam5
 Requested font "msbm5" at 5.0pt
@@ -2348,9 +2256,135 @@ Requested font "msbm5" at 5.0pt
 Requested font "rsfs5" at 5.0pt
  -> D:/CTEX/MiKTeX/fonts/type1/hoekwater/rsfs/rsfs5.pfb
 Missing character: There is no   in font rsfs5 Regular!
-Requested font "[SIMFANG.TTF]" at 8.0pt
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86         TRUE : exprN; -- 
+                              otherwise
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86         TRUE : exprN; -- otherwise
+                                       
+? 
+
+LaTeX Font Warning: Font shape `EU1/pcr/bx/n' undefined
+(Font)              using `EU1/pcr/m/n' instead on input line 103.
+
+[10] [11] [12]
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.214         init(a) := d; --
+                               合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.214         init(a) := d; -- 
+                               合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.215         next(b) := d; --
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.215         next(b) := d; -- 
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.216         c := d;       --
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.216         c := d;       --
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.216         c := d;       -- 
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.217         e := a;       --
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.217         e := a;       --
+                               不合法
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.217         e := a;       -- 
+                               不合法
+? 
+[13] [14] [15] [16] [17]
+Requested font "[SIMFANG.TTF]" at 12.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
-Requested font "[SIMFANG.TTF]/ICU" at 8.0pt
+Requested font "[SIMFANG.TTF]/ICU" at 12.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
 .................................................
 . fontspec info: "no-scripts"
@@ -2366,8 +2400,1731 @@ Requested font "[SIMFANG.TTF]/ICU" at 8.0pt
 . 
 . This font family consists of the following shapes:
 .................................................
-Requested font "[SIMFANG.TTF]/ICU:mapping=tex-text;" at 8.0pt
+Requested font "[SIMFANG.TTF]/ICU:mapping=tex-text;" at 12.0pt
  -> C:/Windows/Fonts/SIMFANG.TTF
+ [18]
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!--
+               ################### Trace number: 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- 
+               ################### Trace number: 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### 
+                                   Trace number: 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### 
+                                   Trace number: 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### Trace 
+                                         number: 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### Trace 
+                                         number: 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### Trace number:
+                                                 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### Trace number: 
+                                                 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395     <!-- ################### Trace number: 
+                                                 1 ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395 ...<!-- ################### Trace number: 1 
+                                                  ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395 ...<!-- ################### Trace number: 1 
+                                                  ##################
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.395 ...###### Trace number: 1 ##################
+                                                  
+? 
+[19]
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    --
+                                          a next boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    --
+                                          a next boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    -- 
+                                          a next boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    -- a 
+                                            next boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    -- a 
+                                            next boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    -- a next 
+                                                 boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427     next_expr                    -- a next 
+                                                 boolean expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 ...xpr                    -- a next boolean 
+                                                  expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 ...xpr                    -- a next boolean 
+                                                  expression
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.427 ...             -- a next boolean expression
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429     | ! ltl_expr                 --
+                                          logical not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429     | ! ltl_expr                 --
+                                          logical not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429     | ! ltl_expr                 -- 
+                                          logical not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429     | ! ltl_expr                 -- logical 
+                                                  not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429     | ! ltl_expr                 -- logical 
+                                                  not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.429 ...! ltl_expr                 -- logical not
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.430     | ltl_expr & ltl_expr        --
+                                          logical and
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.430     | ltl_expr & ltl_expr        --
+                                          logical and
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.430     | ltl_expr & ltl_expr        -- 
+                                          logical and
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.430     | ltl_expr & ltl_expr        -- logical 
+                                                  and
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.430     | ltl_expr & ltl_expr        -- logical 
+                                                  and
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.430 ...ltl_expr & ltl_expr        -- logical and
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431     | ltl_expr | ltl_expr        --
+                                          logical or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431     | ltl_expr | ltl_expr        --
+                                          logical or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431     | ltl_expr | ltl_expr        -- 
+                                          logical or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431     | ltl_expr | ltl_expr        -- logical 
+                                                  or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431     | ltl_expr | ltl_expr        -- logical 
+                                                  or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.431 ... ltl_expr | ltl_expr        -- logical or
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432     | ltl_expr xor ltl_expr      --
+                                          logical exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432     | ltl_expr xor ltl_expr      --
+                                          logical exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432     | ltl_expr xor ltl_expr      -- 
+                                          logical exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432     | ltl_expr xor ltl_expr      -- logical 
+                                                  exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432     | ltl_expr xor ltl_expr      -- logical 
+                                                  exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432 ...r xor ltl_expr      -- logical exclusive 
+                                                  or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432 ...r xor ltl_expr      -- logical exclusive 
+                                                  or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.432 ...xor ltl_expr      -- logical exclusive or
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433     | ltl_expr xnor ltl_expr     --
+                                          logical NOT exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433     | ltl_expr xnor ltl_expr     --
+                                          logical NOT exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433     | ltl_expr xnor ltl_expr     -- 
+                                          logical NOT exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433     | ltl_expr xnor ltl_expr     -- logical 
+                                                  NOT exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433     | ltl_expr xnor ltl_expr     -- logical 
+                                                  NOT exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 ...tl_expr xnor ltl_expr     -- logical NOT 
+                                                  exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 ...tl_expr xnor ltl_expr     -- logical NOT 
+                                                  exclusive or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 ...or ltl_expr     -- logical NOT exclusive 
+                                                  or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 ...or ltl_expr     -- logical NOT exclusive 
+                                                  or
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.433 ... ltl_expr     -- logical NOT exclusive or
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434     | ltl_expr -> ltl_expr       --
+                                          logical implies
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434     | ltl_expr -> ltl_expr       --
+                                          logical implies
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434     | ltl_expr -> ltl_expr       -- 
+                                          logical implies
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434     | ltl_expr -> ltl_expr       -- logical 
+                                                  implies
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434     | ltl_expr -> ltl_expr       -- logical 
+                                                  implies
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.434 ...expr -> ltl_expr       -- logical implies
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435     | ltl_expr <-> ltl_expr      --
+                                          logical equivalence
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435     | ltl_expr <-> ltl_expr      --
+                                          logical equivalence
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435     | ltl_expr <-> ltl_expr      -- 
+                                          logical equivalence
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435     | ltl_expr <-> ltl_expr      -- logical 
+                                                  equivalence
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435     | ltl_expr <-> ltl_expr      -- logical 
+                                                  equivalence
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.435 ... <-> ltl_expr      -- logical equivalence
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.436     --
+             FUTURE
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.436     --
+             FUTURE
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.436     -- 
+             FUTURE
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.436     -- FUTURE
+                   
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437     | X ltl_expr                 --
+                                          next state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437     | X ltl_expr                 --
+                                          next state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437     | X ltl_expr                 -- 
+                                          next state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437     | X ltl_expr                 -- next 
+                                               state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437     | X ltl_expr                 -- next 
+                                               state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.437 ... X ltl_expr                 -- next state
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.438     | G ltl_expr                 --
+                                          globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.438     | G ltl_expr                 --
+                                          globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.438     | G ltl_expr                 -- 
+                                          globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.438     | G ltl_expr                 -- globally
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439     | G bound ltl_expr           --
+                                          bounded globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439     | G bound ltl_expr           --
+                                          bounded globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439     | G bound ltl_expr           -- 
+                                          bounded globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439     | G bound ltl_expr           -- bounded 
+                                                  globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439     | G bound ltl_expr           -- bounded 
+                                                  globally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.439 ...nd ltl_expr           -- bounded globally
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.440     | F ltl_expr                 --
+                                          finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.440     | F ltl_expr                 --
+                                          finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.440     | F ltl_expr                 -- 
+                                          finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.440     | F ltl_expr                 -- finally
+                                                 
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.441     | F bound ltl_expr           --
+                                          bounded finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.441     | F bound ltl_expr           --
+                                          bounded finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.441     | F bound ltl_expr           -- 
+                                          bounded finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.441     | F bound ltl_expr           -- bounded 
+                                                  finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.441     | F bound ltl_expr           -- bounded 
+                                                  finally
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.441 ...und ltl_expr           -- bounded finally
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.442     | ltl_expr U ltl_expr        --
+                                          until
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.442     | ltl_expr U ltl_expr        --
+                                          until
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.442     | ltl_expr U ltl_expr        -- 
+                                          until
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.442     | ltl_expr U ltl_expr        -- until
+                                               
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.443     | ltl_expr V ltl_expr        --
+                                          releases
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.443     | ltl_expr V ltl_expr        --
+                                          releases
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.443     | ltl_expr V ltl_expr        -- 
+                                          releases
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.443     | ltl_expr V ltl_expr        -- releases
+                                                  
+? 
+[20]
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.444     --
+             PAST
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.444     --
+             PAST
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.444     -- 
+             PAST
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.444     -- PAST
+                 
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445     | Y ltl_expr                 --
+                                          previous state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445     | Y ltl_expr                 --
+                                          previous state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445     | Y ltl_expr                 -- 
+                                          previous state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445 ...| Y ltl_expr                 -- previous 
+                                                  state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445 ...| Y ltl_expr                 -- previous 
+                                                  state
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.445 ...tl_expr                 -- previous state
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446     | Z ltl_expr                 --
+                                          not previous state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446     | Z ltl_expr                 --
+                                          not previous state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446     | Z ltl_expr                 -- 
+                                          not previous state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446     | Z ltl_expr                 -- not 
+                                              previous state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446     | Z ltl_expr                 -- not 
+                                              previous state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446 ...ltl_expr                 -- not previous 
+                                                  state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446 ...ltl_expr                 -- not previous 
+                                                  state not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446 ...pr                 -- not previous state 
+                                                  not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446 ...pr                 -- not previous state 
+                                                  not
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.446 ...                -- not previous state not
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.447     | H ltl_expr                 --
+                                          historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.447     | H ltl_expr                 --
+                                          historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.447     | H ltl_expr                 -- 
+                                          historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.447 ... ltl_expr                 -- historically
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.448     | H bound ltl_expr           --
+                                          bounded historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.448     | H bound ltl_expr           --
+                                          bounded historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.448     | H bound ltl_expr           -- 
+                                          bounded historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.448     | H bound ltl_expr           -- bounded 
+                                                  historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.448     | H bound ltl_expr           -- bounded 
+                                                  historically
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.448 ...tl_expr           -- bounded historically
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.449     | O ltl_expr                 --
+                                          once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.449     | O ltl_expr                 --
+                                          once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.449     | O ltl_expr                 -- 
+                                          once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.449     | O ltl_expr                 -- once
+                                              
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450     | O bound ltl_expr           --
+                                          bounded once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450     | O bound ltl_expr           --
+                                          bounded once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450     | O bound ltl_expr           -- 
+                                          bounded once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450     | O bound ltl_expr           -- bounded 
+                                                  once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450     | O bound ltl_expr           -- bounded 
+                                                  once
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.450 ... bound ltl_expr           -- bounded once
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.451     | ltl_expr S ltl_expr        --
+                                          since
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.451     | ltl_expr S ltl_expr        --
+                                          since
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.451     | ltl_expr S ltl_expr        -- 
+                                          since
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.451     | ltl_expr S ltl_expr        -- since
+                                               
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.452     | ltl_expr T ltl_expr        --
+                                          triggered
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.452     | ltl_expr T ltl_expr        --
+                                          triggered
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.452     | ltl_expr T ltl_expr        -- 
+                                          triggered
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.452 ...| ltl_expr T ltl_expr        -- triggered
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.469 ...= critical & proc2.state = critical);  --
+                                                  规格1
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.469 ...cal & proc2.state = critical);  --规格1
+                                                  
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.470 ...entering -> F proc1.state = critical); --
+                                                  规格2
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.470 ...g -> F proc1.state = critical); --规格2
+                                                  
+? 
+[21]
+File: fig/bddcommod.png Graphic file (type QTm)
+ <use  "fig/bddcommod.png" > [22]
+File: fig/smtcommod.png Graphic file (type QTm)
+ <use  "fig/smtcommod.png" >) [23]
+[24] (E:\paper\chapter/C3-CHAP-1.tex
+第三章
+File: fig/normalspace.png Graphic file (type QTm)
+<use  "fig/normalspace.png" >
+File: fig/robotmove.png Graphic file (type QTm)
+ <use  "fig/robotmove.png" > [25
+
+
+]
+File: fig/robotthreephase.png Graphic file (type QTm)
+
+<use  "fig/robotthreephase.png" > [26]
+File: fig/robcollection.png Graphic file (type QTm)
+ <use  "fig/robcollection.png" >
+! Extra \right.
+l.49 ...机器人$r_3$ 的位置表示为$c\right(
+                                                  r_3\right) = 10$。
+? 
+! Extra \right.
+l.49 ...r_3$ 的位置表示为$c\right(r_3\right)
+                                                   = 10$。
+? 
+[27] [28]
+Overfull \hbox (33.2562pt too wide) in paragraph at lines 84--85
+[]\xeCJK@rm/m/sl/12 伪 算 法 的 名 称 为[]\EU1/pcr/m/n/12 FSYNC-SCHEDULE
+ \xeCJK@rm/m/sl/12 表 示 完 全 同 步 调 度 策 略，| 除 了 $\OML/cm
+m/m/it/12 foreach r in Rob$
+ []
+
+[29]
+File: fig/ring1.png Graphic file (type QTm)
+ <use  "fig/ring1.png" > [30]
+File: fig/snapshot1.png Graphic file (type QTm)
+ <use  "fig/snapshot1.png" > [31]
+File: fig/frsnapshot.png Graphic file (type QTm)
+
+<use  "fig/frsnapshot.png" > [32]
+File: fig/symmetric.png Graphic file (type QTm)
+ <use  "fig/symmetric.png" >
+Missing character: There is no ： in font Times New Roman/ICU:script=latn;lang
+uage=DFLT;mapping=tex-text;!
+ [33]
+Overfull \hbox (21.54718pt too wide) in paragraph at lines 188--198
+ [][] 
+ []
+
+File: fig/perpetualexploration.png Graphic file (type QTm)
+<use  "fig/perpetualexploration.png" >
+Overfull \hbox (42.96365pt too wide) in paragraph at lines 204--205
+ [][] 
+ []
+
+[34]
+
+LaTeX Warning: Reference `fig:minalgotithmconvergence' on page 35 undefined on 
+input line 232.
+
+File: fig/cp_lp.png Graphic file (type QTm)
+<use  "fig/cp_lp.png" >
+Overfull \hbox (6.82866pt too wide) in paragraph at lines 236--237
+ [][] 
+ []
+
+File: fig/stateexchange.png Graphic file (type QTm)
+<use  "fig/stateexchange.png" > [35]
+File: fig/collision.png Graphic file (type QTm)
+ <use  "fig/collision.png" > [36]
+File: fig/switch.png Graphic file (type QTm)
+
+<use  "fig/switch.png" > [37]) [38] (E:\paper\chapter/C4-CHAP-1.tex
+第四章
+! Misplaced alignment tab character &.
+<recently read> &
+                 
+l.5 ...��作观察计算，符号定义为lc(Look&
+                                                  Compute)，因为这两个...
+
+? 
+[39
+
+
+]
+File: fig/gap.png Graphic file (type QTm)
+ <use  "fig/gap.png" >
+Overfull \hbox (6.82866pt too wide) in paragraph at lines 28--29
+ [][] 
+ []
+
+[40]
+! Extra }, or forgotten $.
+l.45 ...lta_{c\left(r\right)}^+ = c\left(r\right)}
+                                                  ^-$，也就是说机器�...
+
+? 
+[41]
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50      next(move) :=          --
+                                   变量 move 在下一步的值
+? 
+
+! LaTeX Error: Undefined color `dark-gray'.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50      next(move) :=          --
+                                   变量 move 在下一步的值
+? 
 
 ! LaTeX Error: Undefined color `dark-gray'.
 
@@ -2548,7 +4305,7 @@ Type  H <return>  for immediate help.
 l.66             --other
                         
 ? 
-[35] [36]
+[42] [43]
 
 ! LaTeX Error: Undefined color `dark-gray'.
 
@@ -2659,7 +4416,7 @@ Type  H <return>  for immediate help.
 l.137             --RC1逆时针
                                 
 ? 
-[37] [38]
+[44] [45]
 Overfull \hbox (32.75096pt too wide) in paragraph at lines 197--198
 []\xeCJK@rm/m/sl/12 按 照 顺 时 针 方 向，| \EU1/TimesNewRoman(0)/m/sl/
 12 pos1\xeCJK@rm/m/sl/12 、| \EU1/TimesNewRoman(0)/m/sl/12 pos2\xeCJK@rm/m/sl/
@@ -2668,9 +4425,9 @@ Overfull \hbox (32.75096pt too wide) in paragraph at lines 197--198
  \EU1/TimesNewRoman(0)/m/sl/12 pos1<pos2<pos3;2\xeCJK@rm/m/sl/12 、|
  []
 
-[39]) [40] (E:\paper\chapter/C5-CHAP-1.tex
+[46]) [47] (E:\paper\chapter/C5-CHAP-1.tex
 第五章
-[41
+[48
 
 
 ]
@@ -2680,12 +4437,12 @@ Overfull \hbox (6.82866pt too wide) in paragraph at lines 28--29
  [][] 
  []
 
-[42]) [43] (E:\paper\chapter/C6-CHAP-1.tex
+[49]) [50] (E:\paper\chapter/C6-CHAP-1.tex
 第六章
-[44
+[51
 
 
-]) [45]
+]) [52]
 ! I can't find file `suffix/CC-APPENDIX.tex'.
 l.225 \input suffix/CC-APPENDIX.tex
                                    
@@ -2693,57 +4450,57 @@ Please type another input file name:
 (D:\CTEX\MiKTeX\tex\latex\tools\.tex File ignored)
 (E:\paper\suffix/D1-REFERENCE.tex
 ! Misplaced alignment tab character &.
-l.4 ...onal Colloquium on Structural Information &
+l.8 ...onal Colloquium on Structural Information &
                                                    Communication Complexity,...
 
 ? 
-[46
+[53
 
 
 
-] [47]
+] [54]
 ! Misplaced alignment tab character &.
-l.18 ...-State Model Checker for Multithreaded C &
+l.22 ...-State Model Checker for Multithreaded C &
                                                    C++ Programs[C]// Interna...
 
 ? 
 ! Misplaced alignment tab character &.
-l.23 ...ut Systems[J]. Journal of Logic Language &
+l.27 ...ut Systems[J]. Journal of Logic Language &
                                                    Information, 2007, 16(1):...
 
 ? 
-[48]
+[55] [56]
 ! Misplaced alignment tab character &.
-l.34 ...nal Colloquium on Structural Information &
+l.38 ...nal Colloquium on Structural Information &
                                                    Communication Complexity,...
 
 ? 
-[49]
 Missing character: There is no ☆ in font Times New Roman/ICU:script=latn;lang
 uage=DFLT;mapping=tex-text;!
 
-Underfull \hbox (badness 5417) in paragraph at lines 41--42
+Underfull \hbox (badness 5417) in paragraph at lines 45--46
 []\EU1/TimesNewRoman(0)/m/sl/12 D\xeCJK@rm/m/sl/12 ’| \EU1/TimesNewRoman(0)/m
 /sl/12 Angelo G, Stefano G D, Navarra A. Gathering on rings under the
  []
 
+[57]
 Missing character: There is no ☆ in font Times New Roman/ICU:script=latn;lang
 uage=DFLT;mapping=tex-text;!
 Missing character: There is no ☆ in font Times New Roman/ICU:script=latn;lang
 uage=DFLT;mapping=tex-text;!
 Missing character: There is no ☆ in font Times New Roman/ICU:script=latn;lang
 uage=DFLT;mapping=tex-text;!
-[50]
+
 ! Misplaced alignment tab character &.
-l.45 ...ndamentals of Electronics Communications &
+l.49 ...ndamentals of Electronics Communications &
                                                    Computer Sciences, 2013, ...
 
 ? 
 Missing character: There is no ☆ in font Times New Roman/ICU:script=latn;lang
 uage=DFLT;mapping=tex-text;!
-)
+[58])
 No file index.bbl.
-[51] (E:\paper\suffix/D3-MYACHIEVEMENTS.tex
+[59] (E:\paper\suffix/D3-MYACHIEVEMENTS.tex
 .................................................
 . fontspec info: "no-scripts"
 . 
@@ -2785,7 +4542,7 @@ No file index.ind.
 Package natbib Warning: There were multiply defined citations.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 245.
-[52
+[60
 
 
 ]
@@ -2809,14 +4566,17 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 25560 strings out of 430478
- 467902 string characters out of 3191503
- 615177 words of memory out of 3000000
- 28144 multiletter control sequences out of 15000+200000
+ 25658 strings out of 430478
+ 469268 string characters out of 3191503
+ 616063 words of memory out of 3000000
+ 28232 multiletter control sequences out of 15000+200000
  43906 words of font info for 283 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,14n,92p,1070b,2030s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,14n,92p,1168b,1994s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on index.pdf (62 pages).
+Output written on index.pdf (70 pages).

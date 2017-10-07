@@ -1,0 +1,15 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2017.10.4)  4 OCT 2017 20:49
+entering extended mode
+**E:/paper/chapter/C2-CHAP-1.tex
+(E:/paper/chapter/C2-CHAP-1.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for loaded.
+! Undefined control sequence.
+l.1 \chapter
+            {nuXmv介绍}
+? 
+! Emergency stop.
+l.1 \chapter
+            {nuXmv介绍}
+End of file on the terminal!
+
