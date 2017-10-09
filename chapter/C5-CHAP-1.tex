@@ -1,44 +1,324 @@
 \chapter{永恒探索算法验证}
-本文通过nuXmv符号模型检测工具对自主移动机器人永恒探索算法进行建模。通过参数化模块定义了机器人模块，包括移动算法、移动算法匹配和移动决策的执行。目前存在三种机器人调度策略，所以针对三种调度策略对机器人模块分别进行了对应的模型调整。为了验证永恒探索探索算法的完备性、准确性和满足性，通过LTL 公式对机器人的任意初始位置和永恒探索算法的性质进行了定义。
+上一章节主要介绍了机器人移动算法相关的模型构建，具体以最小移动算法为研究对象，给出了半同步调度策略、完全同步调度策略和完全异步调度策略下的最小移动算法的模型实例。本章节中，在最小移动算法模型构建的基础上，对非冲撞性、非交换性和非终止性分别进行验证，并对实验结果进行分析。实验运行的系统环境为Windows 7 旗舰版，硬件环境为 \verb|CPU Intel Xeon(R) 3.40GHz,16G| 内存。符号验证工具nuXmv的版本号为\verb|1.1.1|。对非冲撞性、非交换性和非终止性三条性质，实验设定环形空间位置结点个数分别为10，11，13，14，16和17的情况分别进行验证。同时验证了半同步调度策略、完全同步调度策略和完全异步调度策略下非冲撞性、非交换性和非终止性的验证结果和消耗时间。由于最小移动算法要求机器人个数\verb|k|与空间位置结点个数\verb|n|是互质关系，即$n \; mod \; k \neq \; 0 $   空间位置结点数为12和15的情况在实验中略去。
 
-以最小移动算法为验证对象，在完全同步调度策略、半同步调度策略和完全异步调度策略三种调度策略下进行形式化建模，并分别验证移动算法是否满足非冲撞性、非互换性和非终止性。验证内容如表5.1所示。
+
+\section{非碰撞性验证}
+\subsection{实验操作实例}
+验证最小移动算法的在机器人任意初始位置时是否满足非碰撞性。下面是环形空间结点数为10时，最小移动算法的非碰撞性验证过程。
+
+\paragraph{半同步调度策略}
+半同步调度策略下，使用基于BDD的模型验证方式验证非碰撞性时，nuXmv模型验证器返回的验证结果为真。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int ssync10.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > encode_variables
+    nuXmv > check_ltlspec_inc_coi_bdd -I
+    Using COI(0) variables
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) -> ((( G ( F (r1.dispatcher = choose & r1.phase = lc)) &  G ( F (r2.dispatcher = choose & r2.phase = lc))) &  G ( F (r3.dispatcher = choose & r3.phase = lc))) ->  G ((pos1 != pos2 & pos2 != pos3) & pos1 != pos3)))  is true
+\end{lstlisting}
+
+\paragraph{完全同步调度策略}
+完全同步调度策略下，选择使用基于BDD的模型验证方式验证非碰撞性，nuXmv模型验证器返回的验证结果为真。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int fsync10.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > encode_variables
+    nuXmv > check_ltlspec_inc_coi_bdd -I
+    Using COI(0) variables
+    Trace could not be completed.
+    Counterexample is SPURIOUS at bound 0
+    Using COI(1) variables
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) ->  G ((pos1 != pos2 & pos2 != pos3) & pos1 != pos3))  is true
+\end{lstlisting}
+
+\paragraph{完全异步调度策略}
+完全异步调度策略，选择使用基于SMT的模型验证方式验证非碰撞性，nuXmv模型验证器返回的验证结果为假。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int async10.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > go_msat
+    nuXmv > msat_check_ltlspec_inc_coi
+    Using COI(0) variables
+    ...
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) ->  G ((pos1 != pos2 & pos2 != pos3) & pos1 != pos3))  is false
+    as demonstrated by the following execution sequence
+    Trace Description: Incremental COI counter-example
+    Trace Type: Counterexample
+      -> State: 3.1 <-
+        pos1 = 1
+        pos2 = 9
+        pos3 = 10
+        r1.phase = lc
+        r1.move = 0
+        r2.phase = lc
+        r2.move = 0
+        r3.phase = lc
+        r3.move = 0
+      -> Input: 3.2 <-
+        _process_selector_ = r3
+        running = FALSE
+        r3.running = TRUE
+        r2.running = FALSE
+        r1.running = FALSE
+      -> State: 3.2 <-
+        r3.phase = m
+        r3.move = -1
+      -> Input: 3.3 <-
+      Loop starts here
+      -> State: 3.3 <-
+        pos3 = 9
+        r3.phase = lc
+        r3.move = 0
+      -> Input: 3.4 <-
+        _process_selector_ = r2
+        r3.running = FALSE
+        r2.running = TRUE
+     ...
+\end{lstlisting}
+
+完全异步调度策略下，当环形空间位置结点数为10时，最小移动算法不满足非碰撞性。从nuXmv输出结果中给出一个不满足非碰撞性的反例，状态3.1给出了机器人的初始位置为$pos1=1,pos2=9,pos3=10$ 。状态3.2时，在空间位置pos3上的机器人r3做出逆时针移动的决策，状态3.3时，机器人r3移动到了空间位置结点9，而机器人r2已经在空间位置$pos2=9$的位置上，所以机器人r3和r2发生碰撞。
+
+\subsection{实验结果与分析}
+
+表5.1中是最小移动算法非碰撞性的验证结果，符号$\circ$表示满足非碰撞性，$\times$表示不满足非碰撞性。从表中可以看出最小移动算法在半同步调度策略和完全同步调度策略下都满足非碰撞性，而在完全异步调度策略下都不满足非碰撞性。$\ast$表示采用SMT方法验证所需要的时间，而没有标注的时间表示采用BDD方法所需要的时间。
+
+非碰撞性验证都可以在较短时间内完成，随着空间结点数的增加大部分验证所需时间也会有所增长。但是在某些情况下，随着空间结点数的增加相反验证所需时间也有所减少，例如空间位置结点数为16时，整体验证所需时间都减少了。
 
 \begin{table}[hbt]
 	\centering
-	\caption{最小移动算法验证概览}
-	\begin{tabular}{|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
+	\caption{最小移动算法非碰撞性验证结果}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		\bf{调度策略}&\bf{非碰撞性}&\bf{非互换性}&\bfseries{非终止性} \\
+        \multirow{结点数}&\multicolumn{2}{c|}{半同步调度策略}&\multicolumn{2}{c|}{完全同步调度策略}&\multicolumn{2}{c|}{完全异步调度策略}\\
+        \cline{2-7}
+        &结果&耗时&结果&耗时&结果&耗时 \\
+        \hline
+          $10$&$\circ$&$0.7s$&$\circ$&$1.4s$&$\times$&$1.2s^\ast$ \\
+        \hline
+          $11$&$\circ$&$1.1s$&$\circ$&$5.4s$&$\times$&$9.3s^\ast$ \\
+        \hline
+          $13$&$\circ$&$1.1s$&$\circ$&$8.3s$&$\times$&$10.7s^\ast$ \\
+        \hline
+          $14$&$\circ$&$1.1s$&$\circ$&$8.9s$&$\times$&$9.7s^\ast$ \\
+        \hline
+          $16$&$\circ$&$0.6s&$\circ$&$1.2s$&$\times$&$4.9s^\ast$ \\
+        \hline
+          $17$&$\circ$&$2.0s$&$\circ$&$13.0s$&$\times$&$27.5s^\ast$\\
+        \hline
+	\end{tabular}
+	\label{table:tablemincollision}
+\end{table}
+
+
+\section{非互换性验证}
+
+\subsection{实验描述}
+验证最小移动算法的在机器人任意初始位置时是否满足非互换性。下面是环形空间结点数为10时，最小移动算法的非碰撞性验证过程。
+
+\paragraph{半同步调度策略}
+半同步调度策略下，使用基于BDD的模型验证方式验证非碰撞性时，nuXmv模型验证器返回的验证结果为真。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int ssync10.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > encode_variables
+    nuXmv > check_ltlspec_inc_coi_bdd -I
+    Using COI(0) variables
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) -> ((( G ( F (r1.dispatcher = choose & r1.phase = lc)) &  G ( F (r2.dispatcher = choose & r2.phase = lc))) &  G ( F (r3.dispatcher = choose & r3.phase = lc))) ->  G ((pos1 + 1) mod 10 = pos2 -> (( X (pos2 + 1) mod 10 != pos1 & (pos2 + 1) mod 10 = pos3) -> (( X (pos3 + 1) mod 10 != pos2 & (pos3 + 1) mod 10 = pos1) ->  X (pos1 + 1) mod 10 != pos3)))))  is true
+\end{lstlisting}
+
+\paragraph{完全同步调度策略}
+完全同步调度策略下，选择使用基于BDD的模型验证方式验证非碰撞性，nuXmv模型验证器返回的验证结果为真。详细验证指令和输出结果如下：
+
+
+\begin{lstlisting}
+    syscmd>nuxmv -int fsyncfull10_init.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > encode_variables
+    nuXmv > check_ltlspec_inc_coi_bdd -I
+    Using COI(0) variables
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) ->  G ((pos1 + 1) mod 10 = pos2 -> (( X (pos2 + 1) mod 10 != pos1 & (pos2 + 1) mod 10 = pos3) -> (( X (pos3 + 1) mod 10 != pos2 & (pos3 + 1) mod 10 = pos1) ->  X (pos1 + 1) mod 10 != pos3))))  is true
+\end{lstlisting}
+
+\paragraph{完全异步调度策略}
+完全异步调度策略，选择使用基于SMT的模型验证方式验证非碰撞性，nuXmv模型验证器返回的验证结果为假。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int async10.smv
+    nuXmv > build_flat_model
+    nuXmv > encode_variables
+    nuXmv > check_ltlspec_inc_coi_bdd -I
+    Using COI(0) variables
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) ->  G ((pos1 + 1) mod 10 = pos2 -> (( X (pos2 + 1) mod 10 != pos1 & (pos2 + 1) mod 10 = pos3) -> (( X (pos3 + 1) mod 10 != pos2 & (pos3 + 1) mod 10 = pos1) ->  X (pos1 + 1) mod 10 != pos3))))  is true
+\end{lstlisting}
+
+
+\subsection{实验结果与分析}
+
+表5.1中是最小移动算法非碰撞性的验证结果，符号$\circ$表示满足非碰撞性，$\times$表示不满足非碰撞性。从表中可以看出最小移动算法在半同步调度策略和完全同步调度策略下都满足非碰撞性，而在完全异步调度策略下都不满足非碰撞性。$\ast$表示采用SMT方法验证所需要的时间，而没有标注的时间表示采用BDD方法所需要的时间。
+
+非碰撞性验证都可以在较短时间内完成，随着空间结点数的增加大部分验证所需时间也会有所增长。但是在某些情况下，随着空间结点数的增加相反验证所需时间也有所减少，例如空间位置结点数为16时，整体验证所需时间都减少了。
+
+\begin{table}[hbt]
+	\centering
+	\caption{最小移动算法非互换性验证结果}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		完全同步调度策略&验证&验证&验证 \\
-		\hline
-		半同步调度策略&验证&验证&验证 \\
-		\hline
-		完全异步调度策略&验证&验证&验证 \\
-		\hline
+        \multirow{结点数}&\multicolumn{2}{c|}{半同步调度策略}&\multicolumn{2}{c|}{完全同步调度策略}&\multicolumn{2}{c|}{完全异步调度策略}\\
+        \cline{2-7}
+        &结果&耗时&结果&耗时&结果&耗时 \\
+        \hline
+          $10$&$\circ$&$1.7s$&$\circ$&$1.9s$&$\circ$&$0.9s$ \\
+        \hline
+          $11$&$\circ$&$4.3s$&$\circ$&$4.3s$&$\circ$&$0.7s$ \\
+        \hline
+          $13$&$\circ$&$6.7s$&$\circ$&$6.8s$&$\circ$&$0.6s$ \\
+        \hline
+          $14$&$\circ$&$8.8s$&$\circ$&$8.4s$&$\circ$&$0.6s$ \\
+        \hline
+          $16$&$\circ$&$2.4s&$\circ$&$2.3s$&$\circ$&$0.7s$ \\
+        \hline
+          $17$&$\circ$&$12.2s$&$\circ$&$11.4s$&$\circ$&$0.6s$\\
+        \hline
 	\end{tabular}
 	\label{table:tableminChecker}
 \end{table}
 
-\section{验证结果与分析}
-根据上一章节中定义的自主移动机器人空间永恒探索算法模型，利用nuXmv符号模型检测工具对最小移动算法非冲撞性、非互换性和非终止性在不同的调度策略下进行模型检测。实验运行的系统环境为Windows 7 旗舰版，硬件环境为 CPU Intel Xeon(R) 3.40GHz,16G 内存。图\ref{fig:check_result}给出了非碰撞性、非碰撞性和非互换性三个性质在不同机器人调度策略下的验证结果和验证所需时间。实验中考虑了节点个数分别为10到17的情况，其中由于算法要求机器人个数与节点个数互质,节点为12与15的情况在实验中略去。
 
-\begin{figure}[!hbt]
+
+\section{非终止性验证}
+
+\subsection{实验描述}
+验证最小移动算法的在机器人任意初始位置时是否满足非碰撞性。下面是环形空间结点数为10时，最小移动算法的非碰撞性验证过程。
+
+\paragraph{半同步调度策略}
+半同步调度策略下，使用基于BDD的模型验证方式验证非碰撞性时，nuXmv模型验证器返回的验证结果为真。详细验证指令和输出结果如下：
+
+
+\begin{lstlisting}
+   syscmd>nuxmv -int ssyncfull10.smv
+   nuXmv > read_model
+   nuXmv > flatten_hierarchy
+   nuXmv > build_flat_model
+   nuXmv > encode_variables
+   nuXmv > check_ltlspec_inc_coi_bdd -I
+   Using COI(0) variables
+   Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) -> ((( G ( F (r1.dispatcher = choose & r1.phase = lc)) &  G ( F (r2.dispatcher = choose & r2.phase = lc))) &  G ( F (r3.dispatcher = choose & r3.phase = lc))) -> ((((((((( G ( F pos1 = 1) &  G ( F pos1 = 2)) &  G ( F pos1 = 3)) &  G ( F pos1 = 4)) &  G ( F pos1 = 5)) &  G ( F pos1 = 6)) &  G ( F pos1 = 7)) &  G ( F pos1 = 8)) &  G ( F pos1 = 9)) &  G ( F pos1 = 10)))) ...  is true
+\end{lstlisting}
+
+
+\paragraph{完全同步调度策略}
+完全同步调度策略下，选择使用基于BDD的模型验证方式验证非碰撞性，nuXmv模型验证器返回的验证结果为真。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int fsync10.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > encode_variables
+    nuXmv > check_ltlspec_inc_coi_bdd -I
+    Using COI(0) variables
+    Trace could not be completed.
+    Counterexample is SPURIOUS at bound 0
+    Using COI(1) variables
+    Property  G ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) -> ((((((((( G ( F pos1 = 1) &  G ( F pos1 = 2)) &  G ( F pos1 = 3)) &  G ( F pos1 = 4)) &  G ( F pos1 = 5)) &  G ( F pos1 = 6)) &  G ( F pos1 = 7)) &  G ( F pos1 = 8)) &  G ( F pos1 = 9)) &  G ( F pos1 = 10)))...  is true
+\end{lstlisting}
+
+\paragraph{完全异步调度策略}
+完全异步调度策略，选择使用基于SMT的模型验证方式验证非碰撞性，nuXmv模型验证器返回的验证结果为假。详细验证指令和输出结果如下：
+
+\begin{lstlisting}
+    syscmd>nuxmv -int async10.smv
+    nuXmv > read_model
+    nuXmv > flatten_hierarchy
+    nuXmv > build_flat_model
+    nuXmv > go_msat
+    nuXmv > msat_check_ltlspec_inc_coi -k 200
+    Property ((((pos3 > pos2 & pos2 > pos1) | (pos1 > pos3 & pos3 > pos2)) | (pos2 > pos1 & pos1 > pos3)) -> ((( G ( F r1.running = TRUE) &  G ( F r2.running = TRUE)) &  G ( F r3.running = TRUE)) -> ((((((((( G ( F pos1 = 1) &  G ( F pos1 = 2)) &  G ( F pos1 = 3)) &  G ( F pos1 = 4)) &  G ( F pos1 = 5)) &  G ( F pos1 = 6)) &  G ( F pos1 = 7)) &  G ( F pos1 = 8)) &  G ( F pos1 = 9)) &  G ( F pos1 = 10)))) ... is false
+    as demonstrated by the following execution sequence
+    Trace Description: Incremental COI counter-example
+    Trace Type: Counterexample
+       ...
+       -> State: 3.1 <-
+        pos1 = 8
+        pos2 = 9
+        pos3 = 7
+        r1.phase = lc
+        r1.move = 0
+        r2.phase = lc
+        r2.move = 0
+        r3.phase = lc
+        r3.move = 0
+      -> Input: 3.2 <-
+        _process_selector_ = r1
+        running = FALSE
+        r3.running = FALSE
+        r2.running = FALSE
+        r1.running = TRUE
+      -> State: 3.2 <-
+        r1.phase = m
+        r1.move = 1
+      -> Input: 3.3 <-
+      -- Loop starts here
+      -> State: 3.3 <-
+        pos1 = 9
+        r1.phase = lc
+        r1.move = 0
+      -> Input: 3.4 <-
+      -> State: 3.4 <-
+        r1.phase = m
+      -> Input: 3.5 <-
+        _process_selector_ = r3
+        r3.running = TRUE
+        r1.running = FALSE
+        ...
+\end{lstlisting}
+
+\subsection{实验结果与分析}
+
+表5.1中是最小移动算法非碰撞性的验证结果，符号$\circ$表示满足非碰撞性，$\times$表示不满足非碰撞性。从表中可以看出最小移动算法在半同步调度策略和完全同步调度策略下都满足非碰撞性，而在完全异步调度策略下都不满足非碰撞性。$\ast$表示采用SMT方法验证所需要的时间，而没有标注的时间表示采用BDD方法所需要的时间。
+
+非碰撞性验证都可以在较短时间内完成，随着空间结点数的增加大部分验证所需时间也会有所增长。但是在某些情况下，随着空间结点数的增加相反验证所需时间也有所减少，例如空间位置结点数为16时，整体验证所需时间都减少了。
+
+\begin{table}[hbt]
 	\centering
-	\includegraphics[width=6 in]{fig/check_result.png}
-	\caption{最小移动算法实验结果}
-	\label{fig:check_result}
-\end{figure}
+	\caption{最小移动算法非终止性验证结果}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+        \multirow{结点数}&\multicolumn{2}{c|}{半同步调度策略}&\multicolumn{2}{c|}{完全同步调度策略}&\multicolumn{2}{c|}{完全异步调度策略}\\
+        \cline{2-7}
+        &结果&耗时&结果&耗时&结果&耗时 \\
+        \hline
+          $10$&$\circ$&$83.1s$&$\circ$&$484.0s$&$\times$&$14.7s^\ast$ \\
+        \hline
+          $11$&$\circ$&$723.1s$&$\circ$&$3181.1s$&$\times$&$18.1s^\ast$ \\
+        \hline
+          $13$&$\circ$&$63.9s^\star$&$\circ$&$42.4s^\star$&$\times$&$2.1s^\ast$ \\
+        \hline
+          $14$&$\circ$&$129.2s^\star$&$\circ$&$90.4s^\star $&$\times$&$48.8s^\ast$ \\
+        \hline
+          $16$&$\circ$&$389.2s^\star&$\circ$&$168.4s^\star$&$\times$&$19.6s^\ast$ \\
+        \hline
+          $17$&$\circ$&$562.3s^\star$&$\circ$&$315.7s^\star$&$\times$&$102.2s^\ast$\\
+        \hline
+	\end{tabular}
+	\label{table:tableminChecker}
+\end{table}
 
-实验结果表明最小移动算法在完全同步调度策略和半同步调度策略下，满足对环形空间永恒探索性质，即移动算法同时满足非冲撞性、非互换性和非终止性。而在异步调度模型下，验证的结果为移动算法不满足非碰撞性与非终止性，验证过程中nuXmv返回相应的反例。根据反例分析，永恒探索性质不能被满足的原因是异步过程中机器人使用过时的快照信息做出的移动决策会导致相邻的机器人发生碰撞，此时同一个位置结点上有两个机器人，后续所有机器人都没有与移动算法相匹配，导致所有的机器人都不能移动。由此可见,非终止性不被满足的原因是非碰撞性没有被满足。这一结果与Ha等人利用Maude模型检测得出的反例相同。在其反例中，用于出现了两个机器人碰撞的情况而导致所有机器人无法移动，Ha等人将此情况称为死锁状态。与Ha等人的验证不同的是其方法需要给出具体的初始状态才发现了反例，而如何发现导致反例的初始状态文章并没有交待.本文提出的方法可以在不给出初始状态的前提下依然找到对应的反例。
 
-nuXmv支持基于BDD和SMT方法的验证。对于验证性质的正确性，BDD方法的效率相对较高，而对于不被满足的性质，SMT方法可以更快的找到反例。在实验中采用两种方法对三个性质进行验证。结果表明大部分验证都可以在相对较短的时间内完成。虽然随着空间节点数的增长验证所需的时间也会有所增加，但依然可以在较合理的时间如一小时内完成。同Béatrice与Ha等人的工作相比，nuXmv找到反例的时间更短。然而在验证被算法满足的性质时，nuXmv所需的时间相对较长，这是因为nuXmv 不需要设定具体的初始状态，因此其搜索的状态空间比固定初始状态时更大，所需的时间则较长。实验数据中有部分实验是设定机器人初始状态的情况下进行的，验证所需的时间明显缩短。
 
 \section{本章小结}
 本章详细列出了最小移动算法的永恒探索性质的实验结果，从实验结果中可以得出符号模型对移动机器人空间永恒探索算法验证的高效性。
-
-
-
-
-
-

@@ -189,7 +189,7 @@
 \begin{document}
 \input cover/A1-COVER-C.tex
 \input cover/A2-COVER-E.tex
-%\input copyright/A3-COPYRIGHT.tex
+\input copyright/A3-COPYRIGHT.tex
 \input member/A4-MEMBERLIST.tex
 
 \newpage
@@ -214,7 +214,7 @@
 \cleardoublepage
 \input chapter/C2-CHAP-1.tex
 \cleardoublepage
-#\input chapter/C3-CHAP-1.tex
+\input chapter/C3-CHAP-1.tex
 \cleardoublepage
 \input chapter/C4-CHAP-1.tex
 \cleardoublepage
@@ -234,7 +234,7 @@
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{致谢}
-%\input suffix/D2-ACHNOWLEDGEMENT.tex
+\input suffix/D2-ACHNOWLEDGEMENT.tex
 \pagestyle{plain}
 \cleardoublepage
 \phantomsection

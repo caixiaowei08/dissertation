@@ -1,29 +1,103 @@
 ﻿\chapter{机器人移动算法建模}
-本文中主要以环形空间中最小移动算法为研究对象。本章节主要介绍使用nuXmv对机器人、最小移动算法进行建模。详细描述了在半同步调度策略、完全同步调度策略和完全异步调度策略下，最小移动算法模型之间的差别。使用LTL规格描述最小移动算法的非冲撞性、非互换性和非终止性。
-
+本文中主要以环形空间中最小移动算法为研究对象。本章节主要介绍使用nuXmv对机器人、最小移动算法进行建模。详细描述了在半同步调度策略、完全同步调度策略和完全异步调度策略下，最小移动算法模型之间的差别。使用LTL 规格描述最小移动算法的非冲撞性、非互换性和非终止性。
 
 \section{机器人建模}
+利用nuXmv提供的参数化模块(parameterized module)对机器人进行建模。在机器人模型中使用状态变量分别定义空间位置、移动阶段、移动策略和调度策略。上述这些都是机器人模型的基本属性。
 
+\subsection{空间位置变量}
+环形空间探索是多自主机器人协作任务，机器人只能通过空间环境快照，匹配移动算法，完成移动决策。在机器人模型中，可以将每个机器人的所在的空间位置设置成公共变量。这样在实例化机器人时，传入空间中所有机器人的位置变量，这样机器人可以通过传入的机器人位置计算出空间环境快照。
 
+\vspace{0.5cm}
+
+\begin{bfseries} 定义1 \quad 空间位置变量 \quad \end{bfseries} 机器人$r_i$，在模型中使用$pos\left(i\right)$ 变量表示其当前所在空间位置，即$pos\left(i\right) = c\left(r_i\right)$，$r_i \in Rob \land c\left(r_i\right) \in Pos $。
+
+\vspace{0.5cm}
+
+对于机器人集合$Rob$中的每个机器人，都需要声明一个位置变量。假设空间环境中有\verb|k|个机器人，机器人空间位置建模代码如下：
 
 \begin{lstlisting}
-MODULE robot(p1,p2,...)
-     VAR
-         phase : {lc,m};
-         move : -1..1;
+   VAR
+     pos1 : 1..n;
+     pos2 : 1..n;
+     pos3 : 1..n;
      ...
+     pos(k) : 1..n;
 \end{lstlisting}
 
-上述声明的是机器人模块，模块名称为robot，并且模块带有位置环形空间所有机器人位置传入参数p1,p2,...。 在机器人模块实例化时，参数列表第一个位置值\verb|p1|赋值为当前实例机器人在环形空间中的位置值，以当前机器人位置为起点，沿着环形空间顺时针方向依次是p2、p3...，即参数列表是以当前实例机器人的位置为起点，沿着环形空间顺时针方向上的机器人依次传入。
+其中，n表示环形空间中位置结点个数，\verb|1..n|表示空间位置变量的值域范围是从\verb|1|到\verb|n|的整数。nuXmv中必须限制变量的值域范围。在每次验证的时候，位置结点个数\verb|n|必须设置成具体的数值，才能进行验证。
 
-\section{移动算法建模}
-机器人的移动算法是机器人在计算操作时，作为移动决策的判断依据。在nuXmv建模过程采用顺时针或者逆时针相邻两个机器人的之间的没有机器人空间位置结点的个数作为匹配依据。相邻机器人A到机器人B之间没有机器人空间位置结点个数使用$gap_{A \rightarrow B}^F$表示，其中$F \in \left\{+,-\right\}$表示\verb|gap|的计算取值方向，\verb|+| 表示顺时针，\verb|-| 表示逆时针。
+使用参数化模块\verb|(parameterized module)|对机器人进行建模时，空间位置变量就是机器人模块的传入参数。
 
-$gap_{A \rightarrow B}^F$的计算公式如下:
+\begin{lstlisting}
+VAR
+    r1 : robot(pos1,pos2,pos3,...,pos(k));
 
-$$gap_{A \rightarrow B}^+ = \left(c \left( B \right) - c \left( A \right) + n\right) \;  mod \; n $$
+MODULE robot(p1,p2,p3...,pk)
+\end{lstlisting}
 
-$$gap_{A \rightarrow B}^- = \left(n - \left( \left( c \left( B \right) -  c \left( A \right) +n\right) \; mod \; n \right) \right) \; mod \; n $$
+上述建模代码中，使用\verb|MODULE|关键字声明了一个名为\verb|robot|的模块，模块的传入参数为$p1,p2,p3,...,pk$。\verb|r1|是一个机器人模块\verb|robot| 的实例。实例化时，传入所有机器人位置变量$pos1,pos2,pos3,...,pos\left(k\right)$。按照传入参数的顺序给模块中的参数进行赋值。在环形空间中，机器人实例化时，机器人位置变量参数排列是按照顺时针方向依次传入。
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=4 in]{fig/params4.png}
+	\caption{}
+	\label{fig:params4}
+\end{figure}
+
+如图\ref{fig:params4}，实例化三个机器人$r_1,r_2,_r_3$，每个实例化对象的参数列表中第一个变量是当前实例化机器人的位置变量，例如机器人实例$r_1$的第一个参数是$pos1$，机器人实例$r_2$的第一个参数是$pos2$等等。后续参数是按照顺时针传入，例如机器人实例$r_1$中的参数依次是$pos1,pos2,pos3$，机器人实例$r_2$中的参数依次是$pos2,pos3,pos1$，机器人实例$r_3$中的参数依次是$pos3,pos1,pos2$。
+
+\subsection{移动阶段变量}
+机器人有三个移动阶段：观察、计算和移动。在模型模型中将观察和计算阶段合并称为观察-计算阶段\verb|(Look-Compute)|，在机器人模型中使用符号\verb|lc|表示，移动阶段使用符号\verb|m|表示。机器人模型中声明机器人移动阶段状态变量为\verb|phase|，\verb|phase|的值域为$\left\{lc,m\right\}$。在nuXmv中\verb|phase|的具体定义如下：
+
+\begin{lstlisting}
+VAR
+   phase : {lc,m};
+
+ASSIGN
+   init(phase) := lc;
+   next(phase) :=
+         case
+            phase = lc     :  m;
+            phase = m      :  lc;
+            TRUE           :  phase;
+         esac;
+\end{lstlisting}
+
+在代码中声明移动阶段变量\verb|phase|，并描述其值域范围为$\left\{lc,m\right\}$。使用$init\left(phase\right)$对变量\verb|phase|进行初始化为\verb|lc|。使用$next\left(phase\right)$定义移动阶段变量的状态变化：当机器人处于观察-计算阶段\verb|(lc)|时，它的下一个状态为移动阶段\verb|(m)|；当机器人处于移动阶段\verb|(m)|时，下一个状态为观察-计算阶段\verb|(lc)|；\verb|TRUE : phase|表示机器人不是观察-计算阶段和移动阶段时，下一个状态时移动阶段变量的值和当前状态的值一样，保持不变。
+
+\subsection{移动变量}
+在机器人模型中声明移动变量，表示机器人在观察-计算阶段获取的移动量。在模型中声明整型变量\verb|move|，表示机器人移动量。在环形空间中，机器人的移动有三种情况：顺时针移动，逆时针移动和不移动。模型中移动量使用整数表示，\verb|1|表示机器人顺时针移动，\verb|-1|表示机器人逆时针移动，\verb|0|表示机器人不移动。所以移动变量\verb|move|的值域范围是$\left\{-1,0,1\right\}$。\verb|move|的取值是机器人通过获取的快照与移动算法匹配进行判定的，具体的判定过程在移动算法建模的时候，进行具体描述。\verb|move|在模型的声明如下：
+
+\begin{lstlisting}
+VAR
+   move  : -1..1;
+
+ASSIGN
+   init(move) := 0;
+   next(move) :=
+   ...
+\end{lstlisting}
+
+建模代码中声明了移动变量\verb|move|，\verb|-1..1|表示其值域范围为$\left\{-1,0,1\right\}$。$next\left(move\right)$表示机器人的下一个状态时的移动量，这里移动量是由机器人移动算法决定的，后续介绍机器人移动算法时，会详细介绍。
+
+\subsection{调度策略变量}
+半同步调度策略中只有被调度的机器人才做进行移动操作，模型中使用调度策略变量模拟机器人的调度。在模型中声明一个状态变量名为\verb|dispatcher|，表示调度策略变量。符号\verb|choose|表示机器人被调度，符号\verb|steady| 表示机器人未被调度。所以调度策略变量的值域为$\left\{choose,steady\right\}$。在nuXmv中\verb|dispatcher|的具体定义如下：
+
+\begin{lstlisting}
+VAR
+   dispatcher : {choose,steady};
+
+ASSIGN
+    next(dispatcher) :=
+         case
+            TRUE     :  {choose,steady};
+         esac;
+\end{lstlisting}
+
+建模代码中首先声明了调度策略变量\verb|dispatcher|，并指出了\verb|dispatcher|的值域为$\left\{choose,steady\right\}$。代码中未定义\verb|dispatcher| 初始化的值，表明机器人的取值是值域$\left\{choose,steady\right\}$ 当中随机一个，这样可以模拟机器人第一次移动时，是随机调度的。$next\left(dispatcher\right)$表示\verb|dispatcher|的下一个状态时的值，条件分支中只有一个分支$TRUE : \left\{choose,steady\right\}$，\verb|TRUE|表示条件分支永远满足。条件分支的值为$\left\{choose,steady\right\}$，表示下一个状态时，机器人的调度是$\left\{choose,steady\right\}$当中随机一个。这样每次机器人移动动作之前，都是随机被调度的。
+
+\section{环境快照建模}
+前面介绍了模型中空间位置变量，空间位置变量在机器人实例化时，是按照顺时针方向依次传入。这样很容易从位置参数的排列顺序知道机器人在空间中位置相邻关系。通过计算空间中两个相邻机器人之间的间隔空间位置个数，来模拟机器人的环境快照。机器人环境快照分顺时针和逆时针快照，所以计算相邻机器人的间隔空间位置个数也分顺时针和逆时针。假设有两个相邻机器人A和B，从A到B的间隔空间位置个数使用$gap_{A \rightarrow B}^F$表示，其中$F \in \left\{+,-\right\}$ 表示\verb|gap|的计算取值方向，\verb|+| 表示顺时针，\verb|-| 表示逆时针。
 
 \begin{figure}[!hbt]
 	\centering
@@ -32,9 +106,62 @@ $$gap_{A \rightarrow B}^- = \left(n - \left( \left( c \left( B \right) -  c \lef
 	\label{fig:gap}
 \end{figure}
 
-计算公式中n表示环形空间位置结点个数。机器人在环形空间中任意一个时刻都有占据一个空间位置。如图\ref{fig:gap}中所示，环形空间结点的位置是从数字0开始验证环形空间顺时针方向依次递增编号，最后一个编号为n-1，其中n是表示环形空间中位置结点的个数。图中顺时针1和顺时针2、逆时针1和逆时针2 可以看出，当顺时针和逆时针计算机器人A到机器人B的$gap_{A \rightarrow B}^F$ 时，机器人A和机器人B 之间包含位置结点为0 的情况。机器人B与机器人A之间的顺时针间隔为两者节点位置的差加n再以n为基数取模。逆时针的间隔则为n减去顺时针的间隔得到的结果再以n为基数取模.之所以继续取模是考虑A与B 位置重叠的情况，此时，顺时针与逆时针方向的间隔均为0。
+如图\ref{fig:gap}所示，当计算机器人A和B之间的时候，不仅需要考虑顺时针和逆时针方向问题，而且还必须考虑环形空间位置结点编号对空白位置结点个数计算的问题。图中顺时针1求A到B顺时针方向间隔空间位置个数可以使用\verb|b-a| 计算得出。图中顺时针2 从A 到B顺时针方向间隔空间位置个数，不能简单的使用\verb|b-a|计算，因为从A到B之间经过了位置结点\verb|n|和\verb|1|。对于逆时针求间隔空间位置个数也有两种情况，图中逆时针1 求A到B顺时针方向间隔空间位置个数可以使用\verb|a-b|计算得出。图中逆时针2 求A 到B顺时针方向间隔空间位置个数也需要考虑位置结点\verb|n|和\verb|1|的问题。通过归纳总结得出计算从A 到B之间间隔空间位置个数的计算公式，如下：
 
-假设机器人r的快照F-R视觉快照$\delta_{c\left( r \right)}^F$满足移动算法中的某条规则L，记为$match\left(\delta_{c\left( r \right)}^F,L\right)$。其中规则L可确定的移动方向使用符号$\beta_{\left(L\right)}$ 表示。机器人在每次计算阶段之后，会获取一个移动决策前进(Front)，后退(Back) 或者保持不动(Idle)，那么分别对应的移动量为1，-1，0。所以机器人r的移动决策可以使用其移动量$M_{\left(r\right)}$表示，具体计算公式如下：
+$$gap_{A \rightarrow B}^+ = \left(c \left( B \right) - c \left( A \right) + n\right) \;  mod \; n $$
+
+$$gap_{A \rightarrow B}^- = \left(n - \left( \left( c \left( B \right) -  c \left( A \right) +n\right) \; mod \; n \right) \right) \; mod \; n $$
+
+公式中\verb|n|表示空间环境中空间位置结点的个数。\verb|mod|表示取模运算。下面给出一个具体例子说明机器人的环境快照模型：
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=3 in]{fig/gapexpress.png}
+	\caption{顺时针和逆时针gap环境快照}
+	\label{fig:gapexpress}
+\end{figure}
+
+如图\ref{fig:gapexpress}所示，位置结点数为16的环形空间，空间中有三个机器人A、B、C。对于机器人A顺时针方向，使用相邻机器人之间间隔空间位置个数表示环境快照为$\left\(4,6,6\right)$,具体计算过程如下：
+
+$$gap_{A \rightarrow B}^+ = \left(8 - 4 + 16\right) \;  mod \; 10 = 4$$
+
+$$gap_{B \rightarrow C}^+ = \left(14 - 8 + 16\right) \;  mod \; 10 = 6$$
+
+$$gap_{C \rightarrow A}^+ = \left(4 - 14 + 16\right) \;  mod \; 10 = 6$$
+
+
+对于机器人A逆时针方向，使用相邻机器人之间间隔空间位置个数表示环境快照为$\left\(6,6,4\right)$,具体计算过程如下：
+
+$$gap_{A \rightarrow C}^- = \left(16 - \left( \left( 14 -  4 + 16\right) \; mod \; 16 \right) \right) \; mod \; 16 = 6 $$
+
+$$gap_{C \rightarrow B}^- = \left(16 - \left( \left( 8 -  14 + 16\right) \; mod \; 16 \right) \right) \; mod \; 16 = 6 $$
+
+$$gap_{B \rightarrow A}^- = \left(16 - \left( \left( 4 -  8  + 16  \right) \; mod \; 16 \right) \right) \; mod \; 16 = 4$$
+
+\section{移动算法建模}
+之前介绍了机器人移动算法是由一组一组移动规则组合而成的，而移动规则是环境快照和对应的移动策略构成。在建模过程使用相邻机器人之间间隔空间位置个数表示机器人的环境快照，所以移动算法在建模的时候，也是用同样的建模方式。下面使用最小移动算法中的移动规则RL1作为例子，介绍一下机器人移动算法建模。
+
+$$RL1：\delta_{c\left(r\right)}^F = \left\langle R_2,F_2,R_1,F_{n-5} \right\rangle \rightarrow r.Back$$
+
+移动规则\verb|RL1|中n表示空间中位置个数，将移动规则\verb|RL1|转换成相邻机器人之间间隔空间位置个数的方法表示为：
+
+$$RL1：\delta_{c\left(r\right)}^F = \left(1,3,n-4\right) \rightarrow r.Back$$
+
+假设n=10，那么移动规则RL1的建模如下：
+
+\begin{lstlisting}
+  ASSIGN
+   next(move) :=
+         case
+            phase = lc & ((p2 - p1 + 10) mod 10 = 1) & ((p3 - p2 + 10) mod 10 = 3) :  -1;                                           (rule1)
+            phase = lc & ((10 - ((p3 - p1 + 10) mod 10)) mod 10 = 1) & ((10 - (p2 - p3 + 10) mod 10) mod 10 = 3) : 1;               (rule2)
+            TRUE  :   0;
+         esac;
+\end{lstlisting}
+
+建模代码中的\verb|move|是前面讲述移动变量，\verb|phase|是移动阶段变量。\verb|next(move)|表示机器人下一个状态时，机器人的移动量。在建模过程移动规则\verb|RL1|拆分为顺时针规则和逆时针规则。\verb|phase = lc|说明只有当机器人处于观察-计算阶段时，才会做机器人的移动量计算。\verb|rule1|表示移动规则\verb|RL1| 的顺时针匹配，\verb|rule2|表示移动规则\verb|RL1|的逆时针匹配。$\left(\left(p2 - p1 + 10\right) mod 10 = 1\right)$机器人的第一个间隙位置个数与移动规则\verb|RL1|中的第一个位置间隙相匹配，即间隙位置个数都是1。\verb|&|在nuXmv中表示与，即所有的间隙位置个数对应相等时，\verb|next(move)|就等于对应的移动量。匹配\verb|rule1|时，移动量为-1，匹配\verb|rule2|时，移动量为1,当不满足上述两种情况时，移动量为0。
+
+假设机器人r的环境快照$\delta_{c\left( r \right)}^F$匹配移动算法中的某条移动规则L，记为$match\left(\delta_{c\left( r \right)}^F,L\right)$。其中规则L可确定的移动方向使用符号$\beta_{\left(L\right)}$ 表示。nuXmv中移动算法建模思想公式如下：
 
 $$ M_{\left(r\right)} = \left\{
 \begin{array}{lcl}
@@ -44,187 +171,211 @@ $$ M_{\left(r\right)} = \left\{
 \end{array}
 \right. $$
 
-对于环形空间，若机器人\verb|r|在空间位置$c\left(r\right)$的顺时针和逆时针快照相同$\delta_{c\left(r\right)}^+ = c\left(r\right)}^-$，也就是说机器人\verb|r|的快照是对称的。若此时机器人r的快照匹配移动算法中某条规则L,根据规则L 得出的移动方向$\beta\left(L\right)$无论是前进或者后退，即机器人的移动量可以是1或者-1，此时机器人会随机选择其中一个作为最终的移动决策。若\verb|r|的为快照不匹配算法当中的任意一个移动规则时移动量就为$M_{\left(r\right)}=0$。
+公式中$M_{\left(r\right)}$就是移动变量move的值。若机器人\verb|r|在空间位置$c\left(r\right)$的顺时针和逆时针快照对称时$\delta_{c\left(r\right)}^+ = delta_{c\left(r\right)}^-$，若此时机器人r的快照匹配移动算法中某条移动规则L，此时机器人移动量可以是1或者-1。
 
-下面代码描述环形空间的节点数为n=10，机器人个数为k=3时的最小移动算法。$next\left(move\right)$ 是机器人\verb|r|的移动量$M_{\left(r\right)}$。$ phase = lc$ 是移动规则匹配的前置条件，当机器人处于观察计算阶段时，才会匹配移动算法。
-
-\begin{lstlisting}
-     next(move) :=          --变量 move 在下一步的值
-         case
-            phase = lc & ((p2 - p1 + 10) mod 10 = 1) & ((p3 - p2 + 10) mod 10 = 3) :  -1;
-            --RC1顺时针
-            phase = lc & ((10 - ((p3 - p1 + 10) mod 10)) mod 10 = 1) & ((10 - (p2 - p3 + 10) mod 10) mod 10 = 3) : 1;
-            --RC1逆时针
-            ...
-
-            phase = lc & ((p2 - p1 + 10) mod 10 >= 1) & (((p2 - p1 + 10) mod 10) = ((p1 - p3 + 10) mod 10)) & ((p3 - p2 + 10) mod 10 != (p2 - p1 + 10) mod 10) :  {1,-1};
-            --RC2顺时针
-            phase = lc & ((10 - ((p3 - p1 + 10) mod 10)) mod 10 >= 1) & ((10 - ((p3 - p1 + 10) mod 10)) mod 10 = (10 - ((p1 - p2 + 10) mod 10)) mod 10) & ((10 - (p2 - p3 + 10) mod 10) mod 10 != (10 - ((p3 - p1 + 10) mod 10)) mod 10) :  {1,-1};
-            --RC2顺时针
-
-            ...
-
-            TRUE  :   0;
-            --other
-         esac;
-\end{lstlisting}
-
-代码3-4行描述规则RC1的顺时针方向的匹配，p1表示当前机器人实例的自身位置，在 p1 位置上的机器人 r 从自身开始,按照顺时针方向,依次计算 p1 到 p2、p2 到 p3 之间的间隔个数.对应匹配RL1中机器人的之间的间隔个数,以此作为机器人 r 顺时针匹配移动算法的依据，当满足匹配时\verb|next(move)|的取值为-1。代码5-6行描述RC1的逆时针方向的匹配，逆时针方向的匹配则是计算 p1 到 p3、p3 到 p2 之间的间隔个数作为匹配依据,当满足匹配时\verb|next(move)| 的取值为1。代码9-12行描述规则RC2的顺时针和逆时针匹配，由于RC2规则描述的是对称情况下的移动规则，对于匹配该规则机器人的移动量可能是-1或者1。
-
-\subsection{机器人移动}
-机器人经过观察计算阶段之后，会进入移动阶段。机器人在观察计算和移动两种阶段之间切换。
-
-\begin{lstlisting}
- next(phase) :=
-         case
-            phase = lc     :  m;
-            phase = m      :  lc;
-            TRUE           :  phase;
-         esac;
-\end{lstlisting}
-
-在nuXmv建模过程中，机器人移动阶段状态分为两个：观察计算，符号lc表示;移动，符号m表示。下一个移动阶段状态\verb|next(phase)|取决于当前移动阶段状态phase：当当前阶段状态phase为lc下一个移动阶段状态\verb|next(phase)| 的值为m; 当当前阶段状态phase为m，下一个移动阶段状态\verb|next(phase)|的值为观察计算阶段lc;
-
-当机器人移动阶段状态为移动m时，其下一个位置结点编号为$next\left(c\left(r\right)\right)=c\left(r\right)$。机器人移动至新的空间位置上，改变了整个空间中位置快照，所有机器人会根据新的位置快照，做出对应的移动决策。
-
-\begin{lstlisting}
-next(p1) :=
-         case
-            phase = m & (move + p1) < 0                       : 10 + (move + p1);
-            phase = m & (move + p1) >= 0 & (move + p1) < 10   : (move + p1);
-            phase = m & (move + p1) >= 10                      : (move + p1) - 10;
-            TRUE                                              : p1;
-         esac;
-\end{lstlisting}
-
-\verb|next(p1)|表示当前模块实例化的机器人下一个位置，这个过程只在机器人当前移动阶段状态phase 为m时才会进行。考虑到空间位置范围问题，当机器人顺时针和逆时针通过位置为0的结点时，都会对新的空间位置值进行对应的调整。将机器人的新的位置计算过程归纳如下：
+\section{机器人移动建模}
+上面介绍了机器人过程环境快照与移动规则进行匹配，计算获得机器人的移动量move。当机器人处于移动阶段时，机器人会根据移动量move改变自身的位置。机器人建模中，传入参数\verb|p1|中是当前机器人实例化对象自身的位置。每个机器人移动时，会对应改变\verb|p1|的位置值。具体计算公式如下：
 
 $$ next\left(p1\right) = \left\{
 \begin{array}{lcl}
-\left(move + p1\right) + n \quad \quad  if \left(move + p1\right) < 0  \\
-\left(move + p1\right)     \quad \quad \quad  if \left(move + p1\right) >= 0 \land \left(move + p1\right) < n \\
-\left(move + p1\right) - n \quad \quad  if \left(move + p1\right) >= n
+\left(move + p1\right) + n \quad \quad  if \left(move + p1\right) <= 0  \\
+\left(move + p1\right)     \quad \quad \quad  if \left(move + p1\right) > 0 \land \left(move + p1\right) <= n \\
+\left(move + p1\right) - n \quad \quad  if \left(move + p1\right) > n
 \end{array}
 \right. $$
 
+其中n表示空间中位置结点个数，计算公式中移动人移动分为三种情况：1、机器人从空间位置1移动到空间位置n，此时移动量move为-1，那么移动之后的机器人所在空间位置为$\left(move + p1\right) + n$。2、机器人不在空间位置1和n 上，此时不需要考虑边界值的问题。1、机器人从空间位置n移动到空间位置1，此时移动量move为1，那么移动之后的机器人所在空间位置为$\left(move + p1\right) - n$。
 
 
-\section{调度策略建模}
-nuXmv模块化建模的优点是代码可移植性强，在完全同步调度策略、半同步调度策略和完全异步调度策略进行建模时，主模块和机器人模块的建模代码可以复用。三种不同的调度策略情况下，只需根据不同的调度特有性质进行建模调整。
+\section{永恒探索建模}
+永恒探索中包含了三条性质：非冲撞性、非互换性和非终止性。在nuXmv中可以使用LTL规格描述三条性质，然后直接在模型中进行验证。下面是使用LTL直接描述三条性质：
 
-\paragraph{半同步调度策略建模}
-对于半同步调度策略,每个机器人在调度过程中只有选中和非选中两种情况。在机器人模型中定义调度变量\verb|dispatcher|，变量声明如下：
+\vspace{0.2cm}
 
-\begin{lstlisting}
- VAR dispatcher : {choose,steady};
-\end{lstlisting}
+\begin{bfseries}非冲撞性(No collision):\end{bfseries}$\bigwedge_{i=1}^{k} \bigwedge_{j=1}^{k} \Box \left(i \neq j \rightarrow c_{r_i} \neq c_{r_j}\right) $。
 
-使用关键字\verb|VAR|定义符号枚举类型变量\verb|dispatcher|，表示机器人的调度标识。其枚举元素有\verb|choose|和\verb|steady|，分别表示机器人被选中和没被选中。在半同步调度模型中，机器人的每个移动过程中，是随机调度的。机器人随机调度建模如下：
+\begin{bfseries}非互换性(No switch):\end{bfseries}$\bigwedge_{h=0}^{n-1}\bigwedge_{i=1}^{k}\bigwedge_{j=1}^{k}  \Box \left(c\left(r_i\right)=h \land  c \left(r_j \right) = \left(h + 1 \right) mod \ n $
+$ \rightarrow \Chi \left( \urcorner  \left(c\left(r_i\right)  = \left(h+1\right) mod \ n    \right)   \land c\left(r_j\right) =h \right)   \right)$。
 
-\begin{lstlisting}
-next(dispatcher) :=
-         case
-            TRUE           :  {choose,steady};
-         esac;
-\end{lstlisting}
+\begin{bfseries}非终止性(Live):\end{bfseries}$\bigwedge_{h=0}^{n-1} \bigwedge_{i=1}^{k} \Box \Diamond \left(c\left(r_i\right)=h\right)$。
 
-建模代码中机器人下一个调度标识只有一个永真的条件分支，并且取值是\verb|{choose,steady}|，即机器人每次移动过程中下一个调度标识是\verb|choose|和\verb|steady|当中随机取值。机器人在匹配移动算法时，若dispatcher为choose，才进行移动算法的匹配。
+\vspace{0.2cm}
 
-\begin{lstlisting}
-     next(move) :=          --变量 move 在下一步的值
-         case
-             dispatcher = choose & phase = lc & ((p2 - p1 + 10) mod 10 = 1) & ((p3 - p2 + 10) mod 10 = 3) :  -1;
-            --RC1顺时针
-             dispatcher = choose & phase = lc & ((10 - ((p3 - p1 + 10) mod 10)) mod 10 = 1) & ((10 - (p2 - p3 + 10) mod 10) mod 10 = 3) : 1;
-            --RC1逆时针
+上述公式中n表示空间位置结点个数，k表示空间中的机器人数。在完全异步调度策略中，机器人模块中需要设置公平性，使用LTL描述如下：
 
-            ...
+\vspace{0.2cm}
 
-            TRUE  :   0;
-         esac;
-\end{lstlisting}
+\begin{bfseries}公平性(Fairness):\end{bfseries}$\bigwedge_{i=1}^{k} \Box \Diamond \left(r_i.running = true\right)$。
 
-移动算法建模中，对每个移动规则匹配添加先决条件\verb|dispatcher = choose|，表明机器人只有在选中是才会计算移动量，否则移动量永远为0。
+环形空间位置结点个数n=10，机器人数k=3时，使用LTL规格描述机器人任意初始位置、非冲撞性、非互换性和非终止性，实例如下：
 
-\paragraph{完全同步调度策略建模}
-完全同步调度策略是半同步调度策略的一种特殊情况，空间中所有机器人在每次移动过程中都会被调度。在半同步调度策略建模的基础上，调整模型中调度标识的值永远是选中\verb|choose|:
+\paragraph{任意初始位置}
+pos1、pos2、pos3是三个机器人的位置变量，在模型中设定三个机器人在环形空间中的初始位置是按照顺时针排列。那么pos1、pos2、pos3初始值有三种可能的关系：$1、pos3 \ge pos2 \ge pos3$；$2、pos1 \ge pos3 \ge pos2$；$3、pos2 \ge pos1 \ge pos3$。在LTL规则中描述如下：
 
 \begin{lstlisting}
-next(dispatcher) :=
-         case
-            TRUE           :  choose;
-         esac;
+((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3)))
 \end{lstlisting}
 
-\paragraph{完全异步调度策略建模}
-完全异步调度策略中所有机器人的移动都是并行的，在nuXmv中实例化机器人模型时，通过关键字\verb|process|声明实例是异步的。
-
-\begin{lstlisting}
-VAR
-     r1 : process robot(pos1,pos2,pos3);
-     r2 : process robot(pos2,pos3,pos1);
-     r3 : process robot(pos3,pos1,pos2);
-\end{lstlisting}
-
-实例化三个异步机器人r1、r2、r3，在模型验证的过程中，为了确保机器人公平获得执行时间片，可以在机器人模块定义中添加公平性约束。
-
-\begin{lstlisting}
-  FAIRNESS
-       running
-\end{lstlisting}
-
-
-\section{永恒探索性质}
-判定移动算法是否是永恒探索算法，需要移动算法满足三条性质：非冲撞性、非互换性和非终止性。下面以环形空间位置数为10，机器人数为3的最小移动算法为例，任意机器人在任意初始位置，使用LTL公式描述永恒探索算法的三条性质并验证模型对性质的满足性。主模块中声明三个机器人位置变量pos1、pos2、pos3，作为全局变量记录三个机器人的位置。建模时设定三个机器人位置排列顺序是按照顺时针方向依次排列pos1、pos2、pos3。
-
-\begin{lstlisting}
-MODULE main
-   VAR
-     pos1 : 0..9;
-     pos2 : 0..9;
-     pos3 : 0..9;
-     r1 : robot(pos1,pos2,pos3);
-     r2 : robot(pos2,pos3,pos1);
-     r3 : robot(pos3,pos1,pos2);
-\end{lstlisting}
-
-环形空间结点数为n时，空间位置结点编号为0...n-1。当n=10时，机器人的位置编号范围是0到9。在机器人模块实例化时，传入参数列表的第一个参数为当前机器人实例的位置值，后续依次是顺时针方向上机器人位置。例如机器人r1实例化中,第一位参数pos1，表示当前实例是pos1位置上的机器人，并且后续是以pos1为起点顺时针方向依次是pos2和pos3，进行位置参数传入。
-
-使用LTL定义机器人初始位置时，只需限制每个机器人位置的范围和顺时针排列次序。
-
-\begin{lstlisting}
-(((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3)))
-\end{lstlisting}
-
-按照顺时针方向，pos1、pos2、pos3的大小次序有三种可能性:1、pos1<pos2<pos3;2、pos2<pos3<pos1;3、pos3<pos1<pos2;在nuXmv中未给变量分配初始值时，会对该变量的所有取值可能性进行穷举验证。该初始化定义可以实现机器人初始位置任意性的描述。
+在nuXmv中只限制了机器人位置的初始关系，没有具体指定机器人位置值时，机器人在空间中的位置是任意的，只受到初始关系的约束。
 
 \paragraph{非冲撞性}
-非冲撞性是指离散空间模型中，同一时刻同一位置结点上至多只有一个机器人，使用LTL描述就是同一时刻任意两个机器人所在位置不能相同，如下：
 
 \begin{lstlisting}
 LTLSPEC  (((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3)))  ->  (G ((pos1 != pos2) & (pos2 != pos3) & (pos1 != pos3)))
 \end{lstlisting}
 
-上述LTL定义中，三个机器人位置pos1、pos2和pos3的初始化位置是任意的。nuXmv中LTL符号G表示在将来所有时刻都满足一定条件，在非冲撞性中，表示将来所有时刻都满足pos1、pos2和pos3中任意两个位置都不都相同。
-
 \paragraph{非互换性}
-非互换性是指非互换性对应的LTL公式表示如果两个机器人$r_i$与$r_j$物理上相邻,即其所在节点的编号相差1,则一定不会出现$r_i$ 与$r_j$ 在下一个状态位置互换的情况。
 
 \begin{lstlisting}
 LTLSPEC  (((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3))) -> G ((((pos1 + 1) mod 10) = pos2) -> (X (((pos2+1) mod 10) != pos1)) & (((pos2 + 1) mod 10) = pos3) -> (X (((pos3+1) mod 10) != pos2)) & (((pos3 + 1) mod 10) = pos1) -> (X (((pos1+1) mod 10) != pos3)))
 \end{lstlisting}
 
-非互换性中机器人初始位置定义与非冲撞性中的相同。nuXmv中LTL符号X表示在下一个时刻都满足一定条件。由于先决条件是机器人位置pos1、pos2和pos3是在环形空间中是顺时针方向获取的，若当前机器人位置加上1后取模等于前面的机器人位置，那么说明它们相邻，在下一个时刻前面的机器人位置加上1后取模等于前面的机器人位置，表明两者交换了位置。例如((pos1 + 1) mod 10)等于前面位置上的机器人位置pos2，表示pos1与pos2相邻，下一个时刻pos2+1取模不能等于pos1，即pos1和pos2位置不能互换。
-
 \paragraph{非终止性}
-非终止性离散空间中每个机器人对每个空间位置结点进行反复的巡查。
 
 \begin{lstlisting}
 LTLSPEC   (((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3))) -> (((G F (pos1 = 0)) & (G F (pos1 = 1)) &...& (G F (pos1 = 9))) & ((G F (pos2 = 0)) & (G F (pos2 = 1)) &...& (G F (pos2 = 9))) & ((G F (pos2 = 0)) & (G F (pos2 = 1)) &...& (G F (pos2 = 9))))
 \end{lstlisting}
 
-命题p描述机器人的位置取值，例如pos1=1，pos1=2等等。LTL公式G F p等价于G (F p),F p表示将来的某个时刻p为真，G (F p)表示将来(F p)一直为真，即p在未来的某些时刻为真。在此表示机器人对某个空间结点反复巡查。
+从例子中可以看出，使用LTL规格描述非冲撞性、非互换性和非终止性三个性质是时，设定机器人的初始位置是任意的。
+
+\section{三种调度策略建模}
+本小节中把最小移动算法作为建模实例。下面列举半同步调度策略，完全同步调度策略和完全异步调度策略下使用nuXmv的建模代码。详细介绍每种调度策略的建模构思和实现细节。
+
+\subsection{半同步调度策略建模实例}
+下面描述的是环形空间位置结点数为10时，最小移动算法在半同步调度策略下的建模。模型中包含两个模块：主模块\verb|main|和机器人模块\verb|robot|。主模块\verb|main|中定义了空间位置变量、机器人实例和LTL规格。空间位置变量和机器人实例部分代码已经省略。机器人模块\verb|robot|包含了移动阶段、调度策略、移动算法等等。
+
+\begin{lstlisting}
+MODULE main
+   VAR
+     pos1 : 1..10;
+     ...
+     r1 : robot(pos1,pos2,pos3);
+     ...
+   LTLSPEC  (((pos3 > pos2)&(pos2 > pos1))|((pos1 > pos3) & (pos3 > pos2))|((pos2 > pos1)&(pos1 > pos3)))->(((G F( (r1.dispatcher = choose)&(r1.phase = lc)))&(G F((r2.dispatcher = choose)&(r2.phase = lc)))&(G F((r3.dispatcher = choose)&(r3.phase = lc))))->(G ((pos1 != pos2)&(pos2 != pos3)&(pos1 != pos3))))
+                                                                /* 注释 1 */
+
+MODULE robot(p1,p2,p3)
+   VAR
+     phase : {lc,m};
+     move  : -1..1;
+     dispatcher : {choose,steady};                              /* 注释 2 */
+   ASSIGN
+     init(phase)      := lc;
+     init(move)       := 0;
+     next(dispatcher) :=
+         case
+            TRUE           :  {choose,steady};                  /* 注释 3 */
+         esac;
+     next(phase) :=
+         case
+            phase = lc     :  m;
+            ...
+         esac;
+     next(move) :=
+         case
+            dispatcher = choose & phase = lc & ((((p2 - p1) >= 0)? (p2 - p1 - 1):(p2 - p1 - 1 + 10)) = 0) & ((((p3 - p2) >= 0)? (p3 - p2 - 1):(p3 - p2 - 1 + 10)) = 2)  :  -1;
+            ...
+         esac;
+     next(p1) :=
+         case
+            phase = m & (move + p1) <= 0                        : 10 + (move + p1);
+            ...
+         esac;
+\end{lstlisting}
+
+模型中有三处注释代码，\verb|注释 1|处代码描述机器人非碰撞性的LTL规格，LTL规格中包含所有机器人的调度是公平性，如下：
+
+\begin{lstlisting}
+(
+     (G F ((r1.dispatcher = choose)&(r1.phase = lc)))     
+    &(G F ((r2.dispatcher = choose)&(r2.phase = lc)))     
+    &(G F ((r3.dispatcher = choose)&(r3.phase = lc)))    
+)
+\end{lstlisting}
+
+这部分代码表示机器人\verb|r1|、\verb|r2|和\verb|r3|在未来的都会公平的被调度，而不会出现其中某一个机器人永远不会被调度的情况。在半同步调度策略时，机器人模块中需要声明调度变量\verb|dispatcher|，模拟机器人的调度过程，\verb|注释 2|和\verb|注释 1|处代码是变量\verb|dispatcher|的声明和下一个状态时值。所以在半同步调度策略中，最关键的是机器人调度过程的建模。
+
+\subsection{完全同步调度策略建模实例}
+下面描述的是环形空间位置结点数为10时，最小移动算法在完全同步调度策略下的建模。在完全同步调度策略中，所有机器人都会被同步调度，因此在机器人模块中不需要声明调度变量来区分机器人被调度和未被调度。
+
+\begin{lstlisting}
+MODULE main
+   VAR
+     pos1 : 1..10;
+     ...   
+     r1 : robot(pos1,pos2,pos3);
+     ...
+LTLSPEC  (((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3)))  ->  (G ((pos1 != pos2) & (pos2 != pos3) & (pos1 != pos3)))
+
+MODULE robot(p1,p2,p3)
+   VAR
+     phase : {lc,m};
+     move  : -1..1;
+   ASSIGN
+     init(phase) := lc;
+     init(move)  := 0;
+     next(phase) :=
+         case
+            phase = lc     :  m;
+            ...
+         esac;
+     next(move) :=
+         case
+            phase = lc & ((p2 - p1 + 10) mod 10 = 1) & ((p3 - p2 + 10) mod 10 = 3) :  -1;
+            ...              
+         esac;
+     next(p1) :=
+         case
+            phase = m & (move + p1) <= 0                      : 10 + (move + p1);
+            ...
+         esac
+\end{lstlisting}
+
+完全同步调度策略建模实例中，机器人\verb|r1|、\verb|r2|和\verb|r3|都是同步移动。相对于半同步调度策略建模而言，完全同步调度策略建模中没有定义调度变量，其他部分建模完全相同。
+
+
+\subsection{完全异步调度策略建模实例}
+下面描述的是环形空间位置结点数为10时，最小移动算法在完全异步调度策略的建模。同完全同步调度策略建模作比较，完全异步调度策略建模有两点差别。
+
+\begin{lstlisting}
+MODULE main
+   VAR
+     pos1 : 1..10;
+     ...
+     r1 : process robot(pos1,pos2,pos3);                              /* 注释 4 */
+     r2 : process robot(pos2,pos3,pos1);
+     r3 : process robot(pos3,pos1,pos2);
+  LTLSPEC  (((pos3 > pos2) & (pos2 > pos1)) | ((pos1 > pos3) & (pos3 > pos2)) | ((pos2 > pos1) & (pos1 > pos3)))  ->  (G ((pos1 != pos2) & (pos2 != pos3) & (pos1 != pos3)))
+
+MODULE robot(p1,p2,p3)
+   VAR
+     phase : {lc,m};
+     move  : -1..1;
+   ASSIGN
+     init(phase) := lc;
+     init(move)  := 0;
+     next(phase) :=
+         case
+            phase = lc     :  m;
+            phase = m      :  lc;
+            TRUE           :  phase;
+         esac;
+     next(move) :=
+         case
+            phase = lc & ((p2 - p1 + 10) mod 10 = 1) & ((p3 - p2 + 10) mod 10 = 3) :  -1;
+            ...
+         esac;
+     next(p1) :=
+         case
+            phase = m & (move + p1) <= 0                      : 10 + (move + p1);
+            ...
+         esac;
+     FAIRNESS                                                 /* 注释 5 */
+       running                 
+\end{lstlisting}
+
+注释4是机器人模块实例化，使用关键词\verb|process|修饰
+
 
 \section{本章小结}
 本章以最小移动算法为例，详细介绍了使用nuXmv对机器人模块定义包括移动算法建模、移动算法的匹配。根据三种不同调度策略的性质，对建模做了对应调整。使用LTL公式描述永恒探索算法的三条性质：非冲撞性、非互换性和非终止性。通过模型真实的模拟了环形空间中机器人的移动行为，定义了永恒探索算法的性质。
-

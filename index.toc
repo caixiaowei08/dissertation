@@ -53,26 +53,46 @@
 \contentsline {subsection}{\numberline {3.4.2}非互换性}{37}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}非终止性}{38}{subsection.3.4.3}
 \contentsline {section}{\numberline {3.5}本章小结}{38}{section.3.5}
-\contentsline {chapter}{\numberline {第四章\hspace {0.3em}}永恒探索算法建模}{39}{chapter.4}
+\contentsline {chapter}{\numberline {第四章\hspace {0.3em}}机器人移动算法建模}{39}{chapter.4}
 \contentsline {section}{\numberline {4.1}机器人建模}{39}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}移动算法匹配}{40}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}机器人移动}{43}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}调度策略建模}{44}{section.4.2}
-\contentsline {paragraph}{半同步调度策略建模}{44}{section*.45}
-\contentsline {paragraph}{完全同步调度策略建模}{45}{section*.46}
-\contentsline {paragraph}{完全异步调度策略建模}{45}{section*.47}
-\contentsline {section}{\numberline {4.3}永恒探索性质}{45}{section.4.3}
-\contentsline {paragraph}{非冲撞性}{46}{section*.48}
-\contentsline {paragraph}{非互换性}{46}{section*.49}
-\contentsline {paragraph}{非终止性}{47}{section*.50}
-\contentsline {section}{\numberline {4.4}本章小结}{47}{section.4.4}
-\contentsline {chapter}{\numberline {第五章\hspace {0.3em}}自主移动机器人永恒探索算法验证}{48}{chapter.5}
-\contentsline {section}{\numberline {5.1}验证结果与分析}{48}{section.5.1}
-\contentsline {section}{\numberline {5.2}本章小结}{50}{section.5.2}
-\contentsline {chapter}{\numberline {第六章\hspace {0.3em}}总结和展望}{51}{chapter.6}
-\contentsline {section}{\numberline {6.1}总结}{51}{section.6.1}
-\contentsline {section}{\numberline {6.2}展望}{51}{section.6.2}
-\contentsline {chapter}{参考文献}{53}{section.6.2}
-\contentsline {chapter}{致谢}{60}{section*.54}
-\contentsline {chapter}{发表论文和科研情况}{60}{section*.55}
+\contentsline {subsection}{\numberline {4.1.1}空间位置变量}{39}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}移动阶段变量}{41}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}移动变量}{41}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}调度策略变量}{42}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}环境快照建模}{43}{section.4.2}
+\contentsline {section}{\numberline {4.3}移动算法建模}{45}{section.4.3}
+\contentsline {section}{\numberline {4.4}机器人移动建模}{46}{section.4.4}
+\contentsline {section}{\numberline {4.5}永恒探索建模}{47}{section.4.5}
+\contentsline {paragraph}{任意初始位置}{48}{section*.47}
+\contentsline {section}{\numberline {4.6}三种调度策略建模}{48}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}半同步调度策略建模实例}{48}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}完全同步调度策略建模实例}{50}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}完全异步调度策略建模实例}{51}{subsection.4.6.3}
+\contentsline {section}{\numberline {4.7}本章小结}{52}{section.4.7}
+\contentsline {chapter}{\numberline {第五章\hspace {0.3em}}永恒探索算法验证}{53}{chapter.5}
+\contentsline {section}{\numberline {5.1}非碰撞性验证}{53}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}实验操作实例}{53}{subsection.5.1.1}
+\contentsline {paragraph}{半同步调度策略}{53}{section*.48}
+\contentsline {paragraph}{完全同步调度策略}{54}{section*.49}
+\contentsline {paragraph}{完全异步调度策略}{54}{section*.50}
+\contentsline {subsection}{\numberline {5.1.2}实验结果与分析}{55}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}非互换性验证}{56}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}实验描述}{56}{subsection.5.2.1}
+\contentsline {paragraph}{半同步调度策略}{56}{section*.52}
+\contentsline {paragraph}{完全同步调度策略}{57}{section*.53}
+\contentsline {paragraph}{完全异步调度策略}{57}{section*.54}
+\contentsline {subsection}{\numberline {5.2.2}实验结果与分析}{57}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}非终止性验证}{58}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}实验描述}{58}{subsection.5.3.1}
+\contentsline {paragraph}{半同步调度策略}{58}{section*.56}
+\contentsline {paragraph}{完全同步调度策略}{58}{section*.57}
+\contentsline {paragraph}{完全异步调度策略}{59}{section*.58}
+\contentsline {subsection}{\numberline {5.3.2}实验结果与分析}{60}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}本章小结}{61}{section.5.4}
+\contentsline {chapter}{\numberline {第六章\hspace {0.3em}}总结和展望}{62}{chapter.6}
+\contentsline {section}{\numberline {6.1}总结}{62}{section.6.1}
+\contentsline {section}{\numberline {6.2}展望}{62}{section.6.2}
+\contentsline {chapter}{参考文献}{64}{section.6.2}
+\contentsline {chapter}{致谢}{71}{section*.61}
+\contentsline {chapter}{发表论文和科研情况}{73}{section*.63}
 \contentsfinish 

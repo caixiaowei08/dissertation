@@ -25,8 +25,8 @@ muXmv是一种新的符号模型验证工具，主要用于有限和无限状态
 数据类型字(Word)分为无符号字(unsigned word)和有符号字(signed word),在nuXmv中分别定义语法如下：
 
 \begin{lstlisting}
-unsigned word ：unsigned word[n]
-  signed word ：signed word[n]
+ unsigned word ：unsigned word[n]
+   signed word ：signed word[n]
 \end{lstlisting}
 
 无符号字使用关键词unsigned word声明，有符号字使用关键词signed word。语法中n表示字的位宽（bit），例如$\left(unsigned \quad word[3]\right)$ 代表3 位（bit）的无符号字，$\left(signed \quad word[7]\right)$ 代表7位（bit）的有符号字。
@@ -83,7 +83,7 @@ Case表达式类似于高级语言C++，Java中的条件语言\verb|if-else if-e
         cond2 : expr2;
         cond3 : expr3;
         ...
-        TRUE : exprN; -- otherwise
+        TRUE : exprN; /*otherwise*/
     esac
 \end{lstlisting}
 
@@ -129,7 +129,7 @@ VAR
     c : {ready,busy};
 \end{lstlisting}
 
-例子中变量\verb|a|的类型是布尔类型。变量\verb|b|是一个限定值域范围的正数类型，其取值范围是\verb|0|到\verb|10|之间的\verb|11|个正数。变量\verb|c|是一个枚举类型，其取值范围是枚举中两个元素\verb|ready|和\verb|busy|。
+例子中变量\verb|a|的类型是布尔类型。变量\verb|b|是一个限定值域范围的正数类型，其取值范围是\verb|0|到\verb|10| 之间的\verb|11|个正数。变量\verb|c|是一个枚举类型，其取值范围是枚举中两个元素\verb|ready|和\verb|busy|。
 
 
 \subsubsection{输入变量}
@@ -168,8 +168,8 @@ simple_var_list ::
 \begin{lstlisting}
     IVAR i : boolean;
      VAR s : boolean;
-    TRANS i -> s;       – 合法
-    TRANS next(i -> s); - 不合法
+    TRANS i -> s;             /* 合法 */
+    TRANS next(i -> s);       /* 不合法 */
 \end{lstlisting}
 
 下一个时刻状态表达式\verb|next|中，不能包含输入型变量\verb|i|。而输入变量在\verb|TRANS| 约束中，可以包含输入变量。
@@ -179,9 +179,9 @@ simple_var_list ::
        i : boolean;
     VAR
        s : boolean;
-    SPEC       AF (i -> s);  – 不合法
-    LTLSPEC    F (X i -> s); – 合法
-    INVARSPEC  (i -> s);     – 合法
+    SPEC       AF (i -> s);     /* 不合法 */
+    LTLSPEC    F (X i -> s);    /* 合法 */
+    INVARSPEC  (i -> s);        /* 合法 */
 \end{lstlisting}
 
 在一些规格说明语句中不能包含输入变量，这些规格说明是\verb|CTLSPEC|，\verb|SPEC|，\verb|COMPUTE|和\verb|PSLSPEC|。而对于\verb|LTLSPEC|，\verb|INVARSPEC|中包含输入变量是合法的。
@@ -211,10 +211,10 @@ simple_var_list ::
     FROZENVAR e : boolean;
 
     ASSIGN
-        init(a) := d; -- 合法
-        next(b) := d; -- 不合法
-        c := d;       -- 不合法
-        e := a;       -- 不合法
+        init(a) := d;    /* 合法 */
+        next(b) := d;    /* 不合法 */
+        c := d;          /* 不合法 */
+        e := a;          /* 不合法 */
 \end{lstlisting}
 
 在例子中，声明了三个固定变量a、b、c，后面定义一个状态变量d，紧跟着又定义了一个固定变量e。可以使用init对固定变量进行初始化，但不能使用next定义固定变量的下一个状态时刻的值。固定变量在初始化之后也不能使用赋值语句进行赋值操作。
@@ -296,7 +296,7 @@ module_element ::
         | mirror_declaration
 \end{lstlisting}
 
-使用关键词\verb|MODULE|声明一个模块，\verb|MODULE|后面的标识符\verb|identifier|是模块的名称。模块包含两个主要的部分模块的传入参数\verb|module_parameters|和模块的主体部分\verb|module_body|。 模块的传入参数可以是一个或者多个，在给模块定义参数时，直接写参数的名称。模块的主体部分种可以定义很多种声明、约束和规格。声明包括状态变量声明\verb|var_declaration|、输入变量声明\verb|ivar_declaration| 和固定变量声明\verb|frozenvar_declaration|等等。约束包括分配约束\verb|assign_constraint|、 初始化\verb|init_constraint|约束和公平性约束\verb|fairness_constraint|。 规格中包括线性时态规格\verb|ltl_specification|，这也是后续验证过程中使用的验证性质描述方式。nuXmv 支持同步系统和异步系统的建模，在同步系统和异步系统建模时，模块的定义是相同的，只是在一些性质的描述方面不同，下面使用二进制计数器（Binary Counter）和互斥系统（Mutual Exclusion）两个nuXmv建模的例子，分别介绍一下同步系统和异步系统的详细过程。
+使用关键词\verb|MODULE|声明一个模块，\verb|MODULE|后面的标识符\verb|identifier|是模块的名称。模块包含两个主要的部分模块的传入参数\verb|module_parameters|和模块的主体部分\verb|module_body|。 模块的传入参数可以是一个或者多个，在给模块定义参数时，直接写参数的名称。模块的主体部分种可以定义很多种声明、约束和规格。声明包括状态变量声明\verb|var_declaration|、 输入变量声明\verb|ivar_declaration| 和固定变量声明\verb|frozenvar_declaration|等等。约束包括分配约束\verb|assign_constraint|、 初始化\verb|init_constraint|约束和公平性约束\verb|fairness_constraint|。 规格中包括线性时态规格\verb|ltl_specification|，这也是后续验证过程中使用的验证性质描述方式。nuXmv 支持同步系统和异步系统的建模，在同步系统和异步系统建模时，模块的定义是相同的，只是在一些性质的描述方面不同，下面使用二进制计数器（Binary Counter）和互斥系统（Mutual Exclusion）两个nuXmv建模的例子，分别介绍一下同步系统和异步系统的详细过程。
 
 \paragraph{同步系统-二进制计数器}
 下面程序描述一个二进制计数器，其中计数器模块\verb|counter_cell|是一个可重用的模型。在主模块main 中实例化了三个二进制计数器。
@@ -321,7 +321,7 @@ MODULE main
 程序中的主模块\verb|main|中，重复三次实例化计数器模块，分别用符号\verb|bit0|、\verb|bit1|、\verb|bit2|表示。计数器模块\verb|counter_cell| 有一个传入参数\verb|carry_in|。 在实例\verb|bit0|中，传入参数为\verb|TRUE|。在实例\verb|bit1| 中，传入参数为是实例\verb|bit0|的输出参数\verb|carry_out|。同样的，实例\verb|bit2| 的输入参数是\verb|bit1| 的输出参数\verb|carry_out|。 在计数器模块\verb|counter_cell| 中，使用关键词\verb|VAR|声明了一个布尔类型的状态变量\verb|value|。使用\verb|ASSIGN| 约束初始化了状态变量\verb|value|的值为\verb|FASLE|，和下一个状态时\verb|value|的值，下一个状态时\verb|value| 的值等于当前\verb|value| 和输入参数\verb|carry_in| 异或值\verb|value xor carry_in|。 输出变量\verb|carray_out|的值是当前状态下\verb|value|和输入变量\verb|carry_in|的与值。
 
 \paragraph{异步系统-互斥系统}
-下面模型中描述的是一个互斥系统，这是一个异步系统建模的例子。在主模块main中声明公共的布尔类型状态变量\verb|semaphore| 和两个两个模块\verb|user|的实例对象\verb|proc1|和\verb|proc2|。 并将状态变量\verb|semaphore|作为传入参数传入\verb|proc1|和\verb|proc2| 两个实例对象中。实例对象\verb|proc1| 和\verb|proc2|在声明时使用了关键词\verb|process|，表示\verb|proc1|和\verb|proc2|是两个独立的异步进程。状态变量\verb|semaphore|的初始值为\verb|FALSE|。
+下面模型中描述的是一个互斥系统，这是一个异步系统建模的例子。在主模块main中声明公共的布尔类型状态变量\verb|semaphore| 和两个两个模块\verb|user|的实例对象\verb|proc1|和\verb|proc2|。 并将状态变量\verb|semaphore| 作为传入参数传入\verb|proc1| 和\verb|proc2| 两个实例对象中。实例对象\verb|proc1| 和\verb|proc2|在声明时使用了关键词\verb|process|，表示\verb|proc1| 和\verb|proc2|是两个独立的异步进程。状态变量\verb|semaphore|的初始值为\verb|FALSE|。
 
 \begin{lstlisting}
 MODULE main
@@ -355,7 +355,7 @@ MODULE user(semaphore)
         running
 \end{lstlisting}
 
-用户模块\verb|user|的定义中，有传入参数\verb|semaphore|。用户模块主体内部声明了状态变量\verb|state|，\verb|state|的取值有四种分别是\verb|idle|、\verb|entering|、\verb|critical| 和\verb|exiting|。状态变量\verb|state| 的初始值为\verb|idle|，下一个状态时\verb|state|的值分几种情况：当状态变量\verb|state| 是\verb|idle|时，下一个状态时变量\verb|state|取值为\verb|idle| 或者\verb|entering|，并且是随机分配的；当状态变量\verb|state|是\verb|entering|，并且传入参数\verb|semaphore| 是为\verb|FALSE|时，下一个状态时变量\verb|state|取值为\verb|critical|；当状态变量\verb|state|是\verb|critical|时，下一个状态时变量\verb|state|取值为\verb|critical| 或者\verb|exiting|，也是随机分配的；当状态变量\verb|state|是\verb|exiting| 时，下一个状态时变量\verb|state|取值为\verb|idle|；最后的\verb|TRUE ：state| 条件语句，表示在不满足上述几种情况时，一个状态时变量\verb|state|取值为当前状态时\verb|state|的值。传入参数\verb|semaphore|的下一个状态时的值也使用\verb|next(semaphore)|表示：当变量\verb|state| 为\verb|entering|时，下一个状态时\verb|semaphore|的值为\verb|TRUE|；当变量\verb|state| 为\verb|exiting| 时，下一个状态时\verb|semaphore|的值为\verb|FALSE|；\verb|TRUE:semaphore|表示不满足上述两种情况时，下一个状态时\verb|semaphore|的值等于当前的\verb|semaphore|的值。最后，在用户模块\verb|user|中使用关键词\verb|FAIRNESS| 声明了公平性，表示在异步模型中，用户模块\verb|user| 的所有实例化进程是公平的执行。
+用户模块\verb|user|的定义中，有传入参数\verb|semaphore|。用户模块主体内部声明了状态变量\verb|state|，\verb|state|的取值有四种分别是\verb|idle|、\verb|entering|、\verb|critical| 和\verb|exiting|。状态变量\verb|state| 的初始值为\verb|idle|，下一个状态时\verb|state|的值分几种情况：当状态变量\verb|state| 是\verb|idle|时，下一个状态时变量\verb|state|取值为\verb|idle| 或者\verb|entering|，并且是随机分配的；当状态变量\verb|state|是\verb|entering|，并且传入参数\verb|semaphore| 是为\verb|FALSE|时，下一个状态时变量\verb|state|取值为\verb|critical|；当状态变量\verb|state|是\verb|critical|时，下一个状态时变量\verb|state|取值为\verb|critical| 或者\verb|exiting|，也是随机分配的；当状态变量\verb|state|是\verb|exiting| 时，下一个状态时变量\verb|state|取值为\verb|idle|；最后的\verb|TRUE ：state| 条件语句，表示在不满足上述几种情况时，一个状态时变量\verb|state|取值为当前状态时\verb|state|的值。传入参数\verb|semaphore|的下一个状态时的值也使用\verb|next(semaphore)|表示：当变量\verb|state| 为\verb|entering|时，下一个状态时\verb|semaphore|的值为\verb|TRUE|；当变量\verb|state| 为\verb|exiting| 时，下一个状态时\verb|semaphore|的值为\verb|FALSE|；\verb|TRUE:semaphore|表示不满足上述两种情况时，下一个状态时\verb|semaphore|的值等于当前的\verb|semaphore| 的值。最后，在用户模块\verb|user|中使用关键词\verb|FAIRNESS| 声明了公平性，表示在异步模型中，用户模块\verb|user| 的所有实例化进程是公平的执行。
 
 \section{交互式会话验证}
 交互式会话验证是指\verb|nuXmv|模型验证的一种模式，在交互式会话验证过程中，系统的每一步操作都会停止，显示可能出现的状态值，用户可以根据自己的判断选择其中一个，\verb|nuXmv|根据用户输入完成下一步验证。当用户想验证模型中某些特殊性质时，交互式会话验证十分有用。下面使用一个例子，简单介绍一下交互式会话验证的过程。
@@ -387,12 +387,12 @@ nuXmv > print_current_state -v
 Current state is 1.1
 request = FALSE
 state = ready
-nuXmv >  simulate -r -k 3
-********  Simulation Starting From State 1.1   ********
+nuXmv > simulate -r -k 3
+        Simulation Starting From State 1.1 
 nuXmv > show_traces -t
 There is 1 trace currently available.
 nuXmv > show_traces -v
-    <!-- ################### Trace number: 1 ##################
+        Trace number: 1   
 Trace Description: Simulation Trace
 Trace Type: Simulation
   -> State: 1.1 <-
@@ -410,7 +410,7 @@ Trace Type: Simulation
 nuXmv >
 \end{lstlisting}
 
-指令\verb|nuXmv -int demo.smv|中的\verb|-in|t表示\verb|nuXmv|的验证模式为交互式会话验证，\verb|demo.smv|是\verb|nuXmv|的代码文件，内容是模型的构建代码。指令\verb|go|表示交互式会话验证开始执行。指令\verb|pick_state -r|表示选中初始状态为验证的起始状态。指令\verb|simulate -r -k 3|表示从选择的起始状态的下一步状态开始，构建三步的状态路径。指令\verb|show_traces -v| 查看状态路径，可以在示例操作的最后看见包括初始状态在内的四个状态，每个状态都描述着变量\verb|request|和\verb|state|在当前状态下的值。根据这些状态值可以准确分析模型的状态路径。
+指令\verb|nuXmv -int demo.smv|中的\verb|-in|t表示\verb|nuXmv|的验证模式为交互式会话验证，\verb|demo.smv|是\verb|nuXmv| 的代码文件，内容是模型的构建代码。指令\verb|go|表示交互式会话验证开始执行。指令\verb|pick_state -r| 表示选中初始状态为验证的起始状态。指令\verb|simulate -r -k 3|表示从选择的起始状态的下一步状态开始，构建三步的状态路径。指令\verb|show_traces -v| 查看状态路径，可以在示例操作的最后看见包括初始状态在内的四个状态，每个状态都描述着变量\verb|request|和\verb|state|在当前状态下的值。根据这些状态值可以准确分析模型的状态路径。
 
 \section{线性时态逻辑规格介绍}
 通过上面的介绍，了解了\verb|nuXmv|的建模方式和适用范围。在实际适用过程中，使用\verb|nuXmv| 的建模，并验证该模型是否满足某些性质。那么此时就需要使用规格来描述这些需要验证的性质。\verb|nuXmv| 支持的规格有很多比如计算树逻辑\verb|(CTL，Computation Tree Logic)|规格、线性时态逻辑\verb|(LTL，Linear Temporal Logic)|规格、 属性说明语言\verb|PSL(Property Specification Language)| 规格等等。由于本文中使用的是线性时态逻辑规格描述机描述永恒探索算法的性质，所以此处只介绍线性时态逻辑规格。
@@ -424,33 +424,32 @@ ltl_specification ::
      LTLSPEC ltl_expr [;]
 
 ltl_expr ::
-    next_expr                    -- a next boolean expression
+    next_expr                    /* a next boolean expression */
     | ( ltl_expr )
-    | ! ltl_expr                 -- logical not
-    | ltl_expr & ltl_expr        -- logical and
-    | ltl_expr | ltl_expr        -- logical or
-    | ltl_expr xor ltl_expr      -- logical exclusive or
-    | ltl_expr xnor ltl_expr     -- logical NOT exclusive or
-    | ltl_expr -> ltl_expr       -- logical implies
-    | ltl_expr <-> ltl_expr      -- logical equivalence
-    -- FUTURE
-    | X ltl_expr                 -- next state
-    | G ltl_expr                 -- globally
-    | G bound ltl_expr           -- bounded globally
-    | F ltl_expr                 -- finally
-    | F bound ltl_expr           -- bounded finally
-    | ltl_expr U ltl_expr        -- until
-    | ltl_expr V ltl_expr        -- releases
-    -- PAST
-    | Y ltl_expr                 -- previous state
-    | Z ltl_expr                 -- not previous state not
-    | H ltl_expr                 -- historically
-    | H bound ltl_expr           -- bounded historically
-    | O ltl_expr                 -- once
-    | O bound ltl_expr           -- bounded once
-    | ltl_expr S ltl_expr        -- since
-    | ltl_expr T ltl_expr        -- triggered
-
+    | ! ltl_expr                 /* logical not */
+    | ltl_expr & ltl_expr        /* logical and */
+    | ltl_expr | ltl_expr        /* logical or */
+    | ltl_expr xor ltl_expr      /* logical exclusive or */
+    | ltl_expr xnor ltl_expr     /* logical NOT exclusive or */
+    | ltl_expr -> ltl_expr       /* logical implies */
+    | ltl_expr <-> ltl_expr      /* logical equivalence */
+    /*FUTURE*/
+    | X ltl_expr                 /* next state */
+    | G ltl_expr                 /* globally */
+    | G bound ltl_expr           /* bounded globally */
+    | F ltl_expr                 /* finally */
+    | F bound ltl_expr           /* bounded finally */
+    | ltl_expr U ltl_expr        /* until */
+    | ltl_expr V ltl_expr        /* releases */
+    /*PAST*/
+    | Y ltl_expr                 /* previous state */
+    | Z ltl_expr                 /* not previous state not */
+    | H ltl_expr                 /* historically */
+    | H bound ltl_expr           /* bounded historically */
+    | O ltl_expr                 /* once */
+    | O bound ltl_expr           /* bounded once */
+    | ltl_expr S ltl_expr        /* since */
+    | ltl_expr T ltl_expr        /* triggered */
 bound :: [ integer_number , integer_number ]
 \end{lstlisting}
 
@@ -466,8 +465,8 @@ MODULE main
         proc2 : process user(semaphore);
     ASSIGN
         init(semaphore) := FALSE;
-    LTLSPEC G ! (proc1.state = critical & proc2.state = critical);  --规格1
-    LTLSPEC G (proc1.state = entering -> F proc1.state = critical); --规格2
+    LTLSPEC G ! (proc1.state = critical & proc2.state = critical);   /* 规格1 */
+    LTLSPEC G (proc1.state = entering -> F proc1.state = critical);  /* 规格2 */
 
 MODULE user(semaphore)
     VAR
@@ -478,7 +477,7 @@ MODULE user(semaphore)
         running
 \end{lstlisting}
 
-模型的详细内容前面已经介绍过了，这里重点解释一下主模块中新增的两条线性时态逻辑规格。规格1中描述的在未来没有一个状态时，满足进程\verb|proc1|的变量\verb|state|和进程\verb|proc1|的变量\verb|state|的值同时为\verb|critical|。规格2中描述的是当在某个状态进程\verb|proc1|变量\verb|state|的值为\verb|entering|时，在该状态之后必定有个状态满足\verb|proc1|变量\verb|state|的值为\verb|critical|。
+模型的详细内容前面已经介绍过了，这里重点解释一下主模块中新增的两条线性时态逻辑规格。规格1中描述的在未来没有一个状态时，满足进程\verb|proc1|的变量\verb|state|和进程\verb|proc1|的变量\verb|state|的值同时为\verb|critical|。规格2中描述的是当在某个状态进程\verb|proc1|变量\verb|state|的值为\verb|entering|时，在该状态之后必定有个状态满足\verb|proc1|变量\verb|state| 的值为\verb|critical|。
 
 \section{BDD与SMT验证方法}
 nuXmv支持BDD\verb|(binary decision diagram)|\cite{rr3}和SMT\verb|(Satisfiability modulo theories)|\cite{rr4}验证方式。BDD是一个有向无环图，使用二叉树的形式表示布尔逻辑函数。这种二叉分支逻辑判定的算法，可以大大减少算法的复杂度，提升判定结果集搜索效率。SMT求解方式是在SAT算法和一些优秀的求解框架的基础上发展起来的，目前SMT可满足性验证技术已经相当成熟，SMT求解器拥有较强的验证能力，并广泛应用于计算机理论、嵌入式系统、生物科学等相关领域，尤其是在大规模系统的验证中，SMT展现出十分高效的运算能力。nuXmv是一个很方便的符号模型验证工具，在集成大量优秀的形式化验证算法和求解器的同时，也对这些验证算法和求解器进行了完美的封装，提供了对应的操作和执行命令。使用者只需要按照使用手册中的说明，选择自己需要的验证方法，执行验证命令进行求解。下面分别介绍nuXmv 中的BDD和SMT的验证方法。
